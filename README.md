@@ -9,6 +9,7 @@ This is my incredibly cobbled together VIM setup. I'm still learning VIM and it'
 * ~Try to get better split control.~
 * Get better/faster autocomplete for JS files.
   * Tried disabling `omni` for JS files but no benefit.
+* Snippets
 * Get `anyfed` working
   * Try to install docker
   * If that works, try to expose a port on `anyfed`
