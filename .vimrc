@@ -1,5 +1,5 @@
-set nocompatible
-filetype off
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -23,7 +23,16 @@ Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'skielbasa/vim-material-monokai' 
-Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+if has('nvim')
+  Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plugin 'Shougo/deoplete.nvim'
+  Plugin 'roxma/nvim-yarp'
+  Plugin 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 Plugin 'wokalski/autocomplete-flow'
 " For func argument completion
 Plugin 'Shougo/neosnippet'
@@ -49,19 +58,13 @@ set background=dark
 set termguicolors
 colorscheme material-monokai
 
-" CTRL+P to open fzf. Nice.
 map <C-p> :FZF<CR>
-
-" CTRL+O to toggle Nerdtree.
 map <C-o> :NERDTreeToggle<CR>
-
-" Remap the pane navigation to save a stroke.
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" I Don't remember what this does.
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 autocmd vimenter * NERDTree
@@ -71,8 +74,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-let g:NERDTreeDirArrowExpandable = '>'
-let g:NERDTreeDirArrowCollapsible = 'v'
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 let g:ale_linters = {
 \  'javascript': ['eslint', 'flow']
