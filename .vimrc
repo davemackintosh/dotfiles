@@ -31,7 +31,11 @@ else
   Plugin 'roxma/nvim-yarp'
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
+
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_completion_start_length = 1
+let g:deoplete#ignore_sources.js = ['omni']
 
 Plugin 'wokalski/autocomplete-flow'
 " For func argument completion
@@ -58,6 +62,7 @@ set background=dark
 set termguicolors
 colorscheme material-monokai
 
+" Key bindings
 map <C-p> :FZF<CR>
 map <C-o> :NERDTreeToggle<CR>
 nnoremap <C-J> <C-W><C-J>
@@ -68,6 +73,28 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 
 autocmd vimenter * NERDTree
+
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-y': 'vsplit' }
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
