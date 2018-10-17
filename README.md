@@ -2,6 +2,8 @@
 
 This is my incredibly cobbled together VIM setup. I'm still learning VIM and it's ecosystem but I'm impressed so far. I'm mostly using this on my One Plus 3
 
+Currently depends on the device being rooted, I'm using LineageOS 15 at the moment.
+
 ## TODO:
 
 * Install ocaml/opam on Termux and
