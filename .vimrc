@@ -22,7 +22,7 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'wesQ3/vim-windowswap'
-Plugin 'skielbasa/vim-material-monokai' 
+Plugin 'skielbasa/vim-material-monokai'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -69,13 +69,14 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
 nnoremap <silent> <expr> <c-p> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+map <F2> :mksession! ~/vim_session <cr> " Quick write session with F2
+map <F3> :source ~/vim_session <cr>     " And load session with F3
 
 autocmd vimenter * NERDTree
 
 " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
+function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
@@ -107,8 +108,14 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 let g:ale_linters = {
 \  'javascript': ['eslint', 'flow']
 \}
-let b:ale_fixers = ['eslint', 'remove_trailing_lines', 'trim_whitespace']
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
 let b:ale_fix_on_save = 1
+autocmd BufWritePost *.js,*.jsx,*.json ALEFix
+
 
 let g:airline_theme='materialmonokai'
 
