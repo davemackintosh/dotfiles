@@ -23,6 +23,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'skielbasa/vim-material-monokai'
+Plugin 'othree/html5.vim'
+Plugin 'mhartington/oceanic-next'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -59,8 +61,13 @@ set softtabstop=2
 set shiftwidth=2
 
 set background=dark
-set termguicolors
-colorscheme material-monokai
+" colorscheme material-monokai
+
+if (has("termguicolors"))
+  set termguicolors
+ endif
+
+colorscheme OceanicNext
 
 " Key bindings
 map <C-p> :FZF<CR>
@@ -126,15 +133,3 @@ let g:ale_statusline_format = ['X %d', '? %d', '']
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter% says %s'
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line

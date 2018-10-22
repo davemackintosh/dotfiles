@@ -2,7 +2,7 @@
 
 termux-setup-storage &&
 apt update &&
-apt install zsh openssh git clang curl wget nodejs python python-dev neovim &&
+apt install ctags zsh openssh git clang curl wget nodejs python python2 python-dev neovim &&
 pip install neovim &&
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &&
 [[ ! -d ~/.vim/bundle/Vundle.vim ]] && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &&
