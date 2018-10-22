@@ -16,4 +16,6 @@ This is my incredibly cobbled together VIM setup. I'm still learning VIM and it'
   * If that works, try to expose a port on `anyfed`
   * install docker client on Termux and map to `anyfed`
   * profit.
+* ~Ctags~
+  * Stole from https://medium.com/adorableio/modern-javascript-ctags-configuration-199884dbcc1
 * Other stuff... 
