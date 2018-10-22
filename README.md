@@ -1,6 +1,6 @@
 # My VIM setup
 
-This is my incredibly cobbled together VIM setup. I'm still learning VIM and it's ecosystem but I'm impressed so far. I'm mostly using this on my mobile phone.
+This is my incredibly cobbled together VIM setup. I'm still learning VIM and it's ecosystem but I'm impressed so far. I'm mostly using this on my mobile phone. This is targetted at making writing JS super fun.
 
 ## TODO:
 
