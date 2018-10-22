@@ -10,5 +10,5 @@ npm i -g flow-bin eslint flow-node yarn &&
 mkdir -p $HOME/.config/nvim &&
 cp .config-nvim-init.vim $HOME/.config/nvim/init.vim &&
 [[ -f $HOME/.vimrc ]] && mv $HOME/.vimrc $HOME/.vimrc-yours &&
-nvim +PluginClean +qall &&
+nvim +PluginClean! +qall &&
 nvim +PluginInstall +qall
