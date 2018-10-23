@@ -25,6 +25,7 @@ Plugin 'wesQ3/vim-windowswap'
 Plugin 'skielbasa/vim-material-monokai'
 Plugin 'othree/html5.vim'
 Plugin 'mhartington/oceanic-next'
+Plugin 'chrisbra/Colorizer'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -46,6 +47,10 @@ Plugin 'Shougo/neosnippet-snippets'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 syntax enable
 
