@@ -4,18 +4,20 @@ This is my incredibly cobbled together VIM setup. I'm still learning VIM and it'
 
 ## TODO:
 
-* Install ocaml/opam on Termux and
-  * Try to compile Flow to run on Android as currently it's "unsupported" even though ALE can run it...
 * ~Try to get better split control.~
+  * Stop NERDTree being open in 2 buffers when opening.
+  * Stop NERDTree opening file in a new split next to the other NERDTree buffer
 * Make setup responsive to device
+  * Autohide NERDtree on mobile portrait
+  * Autoshow (if not manually closed) NERDTree in landscape/DEX mode.
+* Better pointer support
 * Get better/faster autocomplete for JS files.
   * Tried disabling `omni` for JS files but no benefit.
 * Snippets
-* Get `anyfed` working
-  * Try to install docker
-  * If that works, try to expose a port on `anyfed`
-  * install docker client on Termux and map to `anyfed`
-  * profit.
+* Containers
+  * Get `docker` installed or some way to proot environments safely on android.
+  * Manage them safely.
 * ~Ctags~
   * Stole from https://medium.com/adorableio/modern-javascript-ctags-configuration-199884dbcc1
+* Workspace/session saving.
 * Other stuff... 

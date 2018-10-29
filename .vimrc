@@ -26,6 +26,7 @@ Plugin 'skielbasa/vim-material-monokai'
 Plugin 'othree/html5.vim'
 Plugin 'mhartington/oceanic-next'
 Plugin 'chrisbra/Colorizer'
+Plugin 'thaerkh/vim-workspace'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
