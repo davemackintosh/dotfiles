@@ -57,6 +57,8 @@ syntax enable
 
 au BufNewFile *.vim,*.pl,*.sh set fileformat=unix
 
+set mouse=a
+set clipboard=unnamed
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
