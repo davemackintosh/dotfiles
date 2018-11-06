@@ -8,7 +8,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/syntastic'
-Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'eslint/eslint'
 Plugin 'yannickcr/eslint-plugin-react'
 Plugin 'tonsky/firacode'
@@ -80,7 +80,7 @@ colorscheme OceanicNext
 
 if (has("termguicolors"))
   set termguicolors
- endif
+endif
 
 " Key bindings
 map <C-o> :NERDTreeToggle<CR>
@@ -88,8 +88,8 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-map <F2> :mksession! ~/vim_session <cr>
-map <F3> :source ~/vim_session <cr>
+map <F2> :mksession! ./vim_session <cr>
+map <F3> :source ./vim_session <cr>
 
 autocmd vimenter * NERDTree
 
@@ -123,8 +123,9 @@ let g:fzf_action = {
 
 " Highlight currently open buffer in NERDTree
 autocmd BufEnter * call SyncTree()
-autocmd BufEnter * call CDToGitRoot()
 
+" CD to the git root if one exists for saving/loading sessions.
+autocmd BufEnter * call CDToGitRoot()
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -145,8 +146,7 @@ let g:ale_fixers = {
 let b:ale_fix_on_save = 1
 autocmd BufWritePost *.js,*.jsx,*.json ALEFix
 
-
-"let g:airline_theme='materialmonokai'
+let g:airline_theme='bubblegum'
 
 highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 let g:ale_sign_error = 'X' " could use emoji
@@ -155,15 +155,3 @@ let g:ale_statusline_format = ['X %d', '? %d', '']
 " %linter% is the name of the linter that provided the message
 " %s is the error or warning message
 let g:ale_echo_msg_format = '%linter% says %s'
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
