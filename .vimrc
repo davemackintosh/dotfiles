@@ -93,6 +93,15 @@ map <F3> :source ~/vim_session <cr>
 
 autocmd vimenter * NERDTree
 
+function! CDToGitRoot()
+  let gitdir=fnameescape(substitute(system('git rev-parse --show-toplevel'), '\n', '', ''))
+  let isnotgitdir=matchstr(gitdir, '^fatal:.*')
+
+  if empty(isnotgitdir)
+    cd `=gitdir`
+  endif
+endfunction
+
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
@@ -114,6 +123,8 @@ let g:fzf_action = {
 
 " Highlight currently open buffer in NERDTree
 autocmd BufEnter * call SyncTree()
+autocmd BufEnter * call CDToGitRoot()
+
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
