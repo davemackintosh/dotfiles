@@ -29,6 +29,8 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'thaerkh/vim-workspace'
 Plugin 'mhartington/oceanic-next'
 Plugin 'othree/yajs.vim'
+Plugin 'othree/es.next.syntax.vim'
+Plugin 'pangloss/vim-javascript'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -38,6 +40,8 @@ else
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_flow = 1
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
@@ -134,6 +138,7 @@ let g:syntastic_check_on_wq = 0
 
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeShowHidden=1
 
 let g:ale_linters = {
 \  'javascript': ['eslint', 'flow']
