@@ -1,7 +1,7 @@
 setupTermuxStorage:
-  ifeq ("$OS", "Android")
-    termux-setup-storage
-  endif
+ifeq ("$OS", "Android")
+  termux-setup-storage
+endif
   
 aptTasks:
   apt update
@@ -10,13 +10,12 @@ aptTasks:
 nvimTasks:
   apt install python python2 python-dev neovim
   pip install neovim
+  yarn add -G neovim
   [[ ! -d ~/.vim/bundle/Vundle.vim ]] && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-  npm i -g neovim
-  mkdir -p $HOME/.config/nvim
-  mv .config-nvim-init.vim $HOME/.config/nvim/init.vim
+  mv .config/nvim $HOME/.config
   nvim +UpdateRemotePlugins +qall
-  nvim +PluginClean! +qall &&
-  nvim +PluginInstall +qall &&
+  nvim +PluginClean! +qall
+  nvim +PluginInstall +qall
   
 ohMyZSHTasks:
   wget -O $HOME/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh 
