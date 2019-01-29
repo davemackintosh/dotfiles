@@ -21,8 +21,12 @@ nvimTasks:
 ohMyZSHTasks:
   wget -O "$HOME/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh"
   cp .zshrc "$HOME/.zshrc"
+ifeq ("$OS", "Android")
   sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
-  test ! -f "$HOME/.ssh/id_rsa.pub" && ssh-keygen -t rsa
+endif
+ifeq ("$OS", "Linux")
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+endif
   
 all:
   make aptTasks
@@ -32,4 +36,7 @@ all:
   make nvimTasks
   
   yarn add -G flow-bin eslint flow-node
+  test ! -f "$HOME/.ssh/id_rsa.pub" && ssh-keygen -f id_rsa -t rsa -N ''
+  echo "\nCreated a new public key, here it is:\n"
+  cat $HOME'/.ssh/id_rsa.pub
   
