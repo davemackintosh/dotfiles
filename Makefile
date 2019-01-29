@@ -19,7 +19,7 @@ nvimTasks:
   nvim +PluginInstall +qall
   
 ohMyZSHTasks:
-  wget -O "$HOME/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh"
+  wget -O "$HOME/z.sh" https://raw.githubusercontent.com/rupa/z/master/z.sh
   cp .zshrc "$HOME/.zshrc"
 ifeq ("$OS", "Android")
   sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)"
