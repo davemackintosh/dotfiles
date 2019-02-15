@@ -4,7 +4,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 . $ZSH/oh-my-zsh.sh
 
 # Editor config
