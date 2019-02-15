@@ -28,8 +28,6 @@ alias gc='git commit -m'
 alias ga='git add'
 alias gaa='git add -A'
 
-. $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 if [[ $OS = "Android" ]]; then
   alias chcolor="$HOME/.termux/colors.sh"
   alias chfont="$HOME/.termux/fonts.sh"
