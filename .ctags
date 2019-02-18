@@ -1,6 +1,7 @@
 --exclude=node_modules
 --exclude=gulp
 --exclude=dist
+--exclude=build
 --exclude=dist-server
 --exclude=features
 --exclude=tests
@@ -9,6 +10,8 @@
 --languages=-javascript
 
 --langdef=js
+--langdef=js:.ts
+--langdef=js:.tsx
 --langmap=js:.js
 --langmap=js:+.jsx
 --regex-js=/[ \t.]([A-Z][A-Z0-9._$]+)[ \t]*[=:][ \t]*([0-9"'\[\{]|null)/\1/n,constant/
