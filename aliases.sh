@@ -9,6 +9,7 @@ alias reset='echo -e "\e[3J" && reset'
 alias gs='git status'
 alias gp='git push'
 alias gc='git commit -m'
+alias gca='git commit -a -v'
 alias ga='git add'
 alias gaa='git add -A'
 
