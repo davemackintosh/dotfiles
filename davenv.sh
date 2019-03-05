@@ -2,7 +2,7 @@
 
 apt install -y make git openssh &&
 
-git clone git@github.com:davemackintosh/dotfiles.git "$HOME/dotfiles" &&
+git clone https://github.com/davemackintosh/dotfiles.git "$HOME/dotfiles" &&
 
 make
 
