@@ -4,5 +4,5 @@ apt install -y make git openssh &&
 
 git clone https://github.com/davemackintosh/dotfiles.git "$HOME/dotfiles" &&
 
-make
+cd "$HOME/dotfiles" && make
 
