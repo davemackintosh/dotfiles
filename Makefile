@@ -5,7 +5,7 @@ endif
 	
 aptTasks:
 	apt update
-	apt install ctags zsh openssh git clang curl wget nodejs
+	apt install ctags zsh openssh clang curl wget nodejs
 	
 nvimTasks:
 	apt install python python2 python-dev neovim
@@ -13,7 +13,8 @@ nvimTasks:
 	yarn add -G neovim
 	[[ ! -d ~/.vim/bundle/Vundle.vim ]] && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	cp .ctags "$HOME/"
-	cp -R .config/nvim $HOME/.config
+	mkdir -p "$HOME/.config"
+	cp -R .config/nvim "$HOME/.config"
 	nvim +UpdateRemotePlugins +qall
 	nvim +PluginClean! +qall
 	nvim +PluginInstall +qall
