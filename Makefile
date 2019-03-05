@@ -1,11 +1,6 @@
-setupTermuxStorage:
-ifeq ("$OS", "Android")
-	termux-setup-storage
-endif
-	
 aptTasks:
 	apt update
-	apt install ctags zsh openssh clang curl wget nodejs
+	apt install -y ctags zsh openssh clang curl wget nodejs
 	
 nvimTasks:
 	apt install python python2 python-dev neovim
@@ -31,9 +26,11 @@ ifeq ("$OS", "Linux")
 endif
 	
 all:
+ifeq ("$OS", "Android")
+	termux-setup-storage
+endif
 	make aptTasks
 	npm i -g yarn
-	make setupTermuxStorage
 	make ohMyZSHTasks
 	make nvimTasks
 	
