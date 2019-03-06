@@ -31,6 +31,9 @@ Plugin 'mhartington/oceanic-next'
 Plugin 'othree/yajs.vim'
 Plugin 'othree/es.next.syntax.vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'luochen1990/rainbow'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -40,12 +43,14 @@ else
   Plugin 'roxma/vim-hug-neovim-rpc'
 endif
 
+let g:rainbow_active = 1
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_flow = 1
 let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#ignore_sources.js = ['omni']
+let g:deoplete#ignore_sources.ts = ['omni']
 
 set mouse=a
 set clipboard=unnamed
@@ -147,9 +152,10 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
+\   'typescript': ['tslint'],
 \}
 let b:ale_fix_on_save = 1
-autocmd BufWritePost *.js,*.jsx,*.json ALEFix
+autocmd BufWritePost *.js,*.jsx,*.json,*.ts ALEFix
 
 let g:airline_theme='bubblegum'
 
