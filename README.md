@@ -1,4 +1,12 @@
-# My VIM setup
+# My setup
+
+on Termux first you need to run
+
+`pkg i -y wget curl`
+
+then run `wget https://raw.githubusercontent.com/davemackintosh/dotfiles/master/davenv.sh -O - | bash`
+
+It will install everything I use on my phone/tablet/laptop for development.
 
 This is my incredibly cobbled together VIM setup. I'm still learning VIM and it's ecosystem. This is targetted at making writing JS super fun. I run this on my phone (Termux) and my Laptop (Kubuntu/Konsole)
 
