@@ -7,4 +7,6 @@ termux-setup-storage &&
 ./tasks/nvim.sh &&
 ./tasks/ssh.sh &&
 echo -e "\nPlease restart Termux, installation has completed" &&
-kill -HUP $PPID
+termux-reload-settings &&
+exit
+
