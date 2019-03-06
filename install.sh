@@ -2,7 +2,7 @@
 
 echo "Running install for $OS"
 
-if [[ "$OS" = "Android"  ]]; then
+if [[ "$ANDROID_ROOT" = "/system"  ]]; then
   ./android.sh
 elif [[ "$OS" = "Linux" ]]; then
   ./linux.sh
