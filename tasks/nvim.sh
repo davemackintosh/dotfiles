@@ -7,7 +7,6 @@ cp .ctags "$HOME/" || true &&
 cp .vimrc "$HOME/" || true &&
 mkdir -p "$HOME/.config" &&
 cp -R .config/nvim "$HOME/.config" &&
-nvim +UpdateRemotePlugins +qall &&
-nvim +PluginClean! +qall &&
-nvim +PluginInstall +qall 
+nvim +PluginInstall +qall &&
+nvim +UpdateRemotePlugins +qall
 
