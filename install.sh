@@ -1,6 +1,6 @@
-ifeq ("$OS", "Android")
+if [[ "$OS" = "Android"  ]]; then
 	termux-setup-storage &&
-endif
+fi
 
 # apt tasks.
 apt update && 
@@ -13,13 +13,11 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 cp .zshrc "$HOME/.zshrc" &&
 npm i -G yarn typescript ts-node &&
 
-ifeq ("$OS", "Android")
+if [[ "$OS" = "Android"  ]]; then
 	sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)" &&
-endif
-ifeq ("$OS", "Linux")
+elif [[ "$OS" = "Linux" ]]; then
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &&
-endif
-
+fi
 # nvim tasks.
 apt install python python2 python-dev neovim &&
 pip install neovim &&
@@ -34,6 +32,6 @@ nvim +PluginInstall +qall &&
 	
 test ! -f "$HOME/.ssh/id_rsa.pub" && ssh-keygen -f id_rsa -t rsa -N '' &&
 echo "\nCreated a new public key, here it is:\n" &&
-cat $HOME'/.ssh/id_rsa.pub
+cat "$HOME/.ssh/id_rsa.pub"
  
 
