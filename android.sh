@@ -5,6 +5,6 @@ termux-setup-storage &&
 ./tasks/zsh.sh &&
 ./tasks/npm.sh &&
 ./tasks/nvim.sh &&
-source ".zshrc" &&
-./tasks/ssh.sh
-
+./tasks/ssh.sh &&
+echo -e "\nPlease restart Termux, installation has completed" &&
+logout
