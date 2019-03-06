@@ -6,5 +6,6 @@ termux-setup-storage &&
 sh -c "$(curl -fsSL https://github.com/Cabbagec/termux-ohmyzsh/raw/master/install.sh)" &&
 ./tasks/npm.sh &&
 ./tasks/nvim.sh &&
+source "$HOME/.zshrc" &&
 ./tasks/ssh.sh
 
