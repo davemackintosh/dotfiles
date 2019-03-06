@@ -1,5 +1,9 @@
 # ZSH config.
-export ZSH="/home/dave/.oh-my-zsh"
+if [[ "$ANDROID_SYSTEM" = "/system" ]]; then
+  export ZSH="/home/dave/termux-ohmyzsh"
+else
+  export ZSH="/home/dave/.oh-my-zsh"
+fi
 ZSH_THEME="powerlevel9k/powerlevel9k"
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
