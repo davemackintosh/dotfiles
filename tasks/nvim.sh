@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 pip install neovim &&
-yarn add -G neovim &&
+npm i -G neovim &&
 [[ ! -d ~/.vim/bundle/Vundle.vim ]] && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim &&
 cp .ctags "$HOME/" &&
 mkdir -p "$HOME/.config" &&
