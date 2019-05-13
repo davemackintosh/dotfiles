@@ -55,6 +55,7 @@ let g:deoplete#ignore_sources.ts = ['omni']
 set mouse=a
 set clipboard=unnamed
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+set background=dark
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
   \ }
@@ -63,8 +64,8 @@ Plugin 'wokalski/autocomplete-flow'
 " For func argument completion
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
-
 call vundle#end()            " required
+
 filetype plugin indent on    " required
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -72,6 +73,8 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
 syntax enable
+
+colorscheme OceanicNext
 
 au BufNewFile *.vim,*.pl,*.sh set fileformat=unix
 
@@ -84,12 +87,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
-set background=dark
-colorscheme OceanicNext
 
-if (has("termguicolors"))
-  set termguicolors
-endif
 
 " Key bindings
 map <C-o> :NERDTreeToggle<CR>
@@ -160,6 +158,7 @@ autocmd BufWritePost *.js,*.jsx,*.json,*.ts ALEFix
 let g:airline_theme='bubblegum'
 
 highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
+hi Normal ctermbg=NONE ctermfg=NONE
 let g:ale_sign_error = 'X' " could use emoji
 let g:ale_sign_warning = '?' " could use emoji
 let g:ale_statusline_format = ['X %d', '? %d', '']

@@ -1,7 +1,7 @@
 # ZSH config.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
