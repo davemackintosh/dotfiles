@@ -201,7 +201,7 @@ awful.screen.connect_for_each_screen(function(s)
       settings = function()
         if bat_now.status and bat_now.status ~= "N/A" then
             if bat_now.ac_status == 1 then
-                widget:set_markup(lain.util.markup.font(beautiful.font, " AC "))
+                widget:set_markup(lain.util.markup.font(beautiful.font, " " .. bat_now.perc .. "% ⚡ "))
             end
 
             widget:set_markup(lain.util.markup.font(beautiful.font, " " .. bat_now.perc .. "% "))

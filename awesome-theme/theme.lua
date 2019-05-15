@@ -1,21 +1,42 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
+local beautiful = require("beautiful")
 local gfs = require("gears.filesystem")
 local lain = require("lain")
+local awful = require("awful")
+local wibox = require("wibox")
+local gears = require("gears")
 
 local dpi = xresources.apply_dpi
 
 local themes_path = gfs.get_themes_dir()
+
+local colourPalette = {
+  "#ECD078",
+  "#D95B43",
+  "#C02942",
+  "#542437",
+  "#53777A",
+  "#222222"
+}
+
+local typographyColours = {
+  normal = colourPalette[6],
+  light = colourPalette[1]
+}
+local separators = lain.util.separators
 
 local theme = {}
 
 theme.name = string.gsub(debug.getinfo(1).short_src, "^(.+\\)[^\\]+$", "%1")
 theme.dir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 
-theme.font          = "sans 10"
+-- typography
+theme.font          = "Fira Mono 11"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
+-- colours
+theme.bg_normal     = colourPalette[6]
+theme.bg_focus      = colourPalette[5]
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
@@ -75,14 +96,147 @@ theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
-)
-
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+awful.screen.connect_for_each_screen(function(s)
+  local taglist_buttons = gears.table.join(
+    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({ modkey }, 1, function(t)
+          if client.focus then
+              client.focus:move_to_tag(t)
+          end
+      end),
+    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({ modkey }, 3, function(t)
+          if client.focus then
+              client.focus:toggle_tag(t)
+          end
+      end),
+    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+  )
+
+  local tasklist_buttons = gears.table.join(
+    awful.button({ }, 1, function (c)
+      if c == client.focus then
+          c.minimized = true
+      else
+          c:emit_signal(
+              "request::activate",
+              "tasklist",
+              {raise = true}
+          )
+      end
+    end)
+  )
+
+  -- Create a taglist widget
+  s.mytaglist = awful.widget.taglist {
+      screen  = s,
+      filter  = awful.widget.taglist.filter.all,
+      buttons = taglist_buttons
+  }
+
+  local sgeo = s.geometry
+
+  s.mywibar = awful.wibar({
+    position = "top",
+    screen = s,
+  })
+
+  s.mypromptbox = awful.widget.prompt()
+
+  local batteryWidget = lain.widget.bat({
+    settings = function()
+      if bat_now.status and bat_now.status ~= "N/A" then
+          if bat_now.ac_status == 1 then
+              widget:set_markup(lain.util.markup.font(theme.font, " " .. bat_now.perc .. "% ⚡ "))
+              return 
+          end
+
+          widget:set_markup(lain.util.markup.font(theme.font, " " .. bat_now.perc .. "% "))
+        end
+    end
+  })
+
+  s.mywibar:setup {
+    layout = wibox.layout.align.horizontal,
+    {
+      s.mytaglist
+    {
+      separators.arrow_left(colourPalette[6], colourPalette[3]),
+      wibox.container.background(wibox.widget.textclock(), colourPalette[3]),
+      separators.arrow_left(colourPalette[3], colourPalette[4]),
+      wibox.container.background(batteryWidget.widget, colourPalette[4]),
+      separators.arrow_left(colourPalette[4], colourPalette[5]),
+      wibox.container.background(wibox.container.margin(awful.widget.layoutbox(s), dpi(5)), colourPalette[5]),
+    },
+    }
+  }
+
+end)
+
+-- Battery notifications
+-- The signals are sent by a udev rule.
+-- battery code from https://github.com/elenapan/dotfiles/blob/master/config/awesome/rc.lua#L861
+local last_battery_notification_id
+awesome.connect_signal(
+  "charger_plugged", function(c)
+    notification = naughty.notify({
+        title = "Juice status:",
+        text = "Your battery is charging!",
+        icon = beautiful.battery_charging_icon,
+        timeout = 3,
+        replaces_id = last_battery_notification_id
+    })
+    last_battery_notification_id = notification.id
+end)
+awesome.connect_signal(
+  "charger_unplugged", function(c)
+    notification = naughty.notify({
+        title = "Juice status:",
+        text = "Your battery is discharging!",
+        icon = beautiful.battery_icon,
+        timeout = 3,
+        replaces_id = last_battery_notification_id
+    })
+    last_battery_notification_id = notification.id
+end)
+awesome.connect_signal(
+  "battery_full", function(c)
+    notification = naughty.notify({
+        title = "Juice status:",
+        text = "Full! Your tank is topped up!",
+        icon = beautiful.battery_icon,
+        timeout = 3,
+        replaces_id = last_battery_notification_id
+    })
+    last_battery_notification_id = notification.id
+end)
+awesome.connect_signal(
+  "battery_low", function(c)
+    notification = naughty.notify({
+        title = "Juice status:",
+        text = "Low. Running out of juice soon!",
+        icon = beautiful.battery_icon,
+        timeout = 5,
+        replaces_id = last_battery_notification_id
+    })
+    last_battery_notification_id = notification.id
+end)
+awesome.connect_signal(
+  "battery_critical", function(c)
+    notification = naughty.notify({
+        title = "Juice status:",
+        text = "Critical! Where is the cable?!",
+        icon = beautiful.battery_icon,
+        timeout = 0,
+        replaces_id = last_battery_notification_id
+    })
+    last_battery_notification_id = notification.id
+end)
 
 return theme
 
