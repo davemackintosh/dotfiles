@@ -1,8 +1,8 @@
 URxvt.scrollBar: false
-URxvt.termName: rxvt-unicode-256color
+URxvt*termName: rxvt-256color
 
 *.foreground: #c5c8c6
-*.background: [90]#1d1f21
+*.background: [10]#1d1f21
 *.cursorColor: #c5c8c6
 
 ! Black
@@ -41,23 +41,38 @@ URxvt.perl-ext-common: tabbed
 
 
 ! Fonts
-URxvt.font: xft:Fira Mono:size=11,style=medium,\
+*font: xft:Fira Code:size=13,style=medium,\
             xft:Noto Color Emoji,\
             xft:Font Awesome:pixelsize=27:minspace=False,\
             xft:PowerlineSymbols:pixelsize=27:minispace=False
-URxvt.boldFont: xft:Fira Mono:size=11,style=bold
-URxvt.italicFont: xft:Fira Mono:size=11,style=bold
-URxvt.boldItalicFont: xft:Fira Mono:size=11,style=bold
-
-URxvt.font: xft:FuraCode Nerd Font:style=Regular:size=11
-URxvt.boldFont: xft:FuraCode Nerd Font:style=Regular:size=11
+URxvt*boldFont: xft:Fira Code:size=13,style=bold
+URxvt*italicFont: xft:Fira Code:size=13,style=bold
+URxvt*boldItalicFont: xft:Fira Code:size=13,style=bold
 
 ! Transparency
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
 urxvt*transparent: true
 urxvt*shading: 15
+urxvt*blueRadius: 5
+urxvt.inheritPixmap: true
 
 ! Keybindings
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+Xft.dpi:                        96
+Xft.antialias:                  1
+Xft.autohint:                   1
+Xft.hinting:                    1
+Xft.hintstyle:                  hintslight
+Xft.lcdfilter:                  lcdlight
+Xft.rgba:                       rgb
+
+URxvt.depth:                    32
+URxvt.letterSpace:              -1
+URxvt.iso14755:                 false
+URxvt.iso14755_52:              false
+URxvt*loginShell:               true
+URxvt.internalBorder:           25
+URxvt.perl-ext:	 		default,matcher
+URxvt.url-launcher:             firefox
+Rxvt.matcher.button: 1

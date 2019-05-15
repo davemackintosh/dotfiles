@@ -13,6 +13,8 @@ alias gca='git commit -a -v'
 alias ga='git add'
 alias gaa='git add -A'
 
+alias open='xdg-open'
+
 if [[ $OS = "Android" ]]; then
   alias chcolor="$HOME/.termux/colors.sh"
   alias chfont="$HOME/.termux/fonts.sh"

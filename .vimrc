@@ -55,7 +55,7 @@ let g:deoplete#ignore_sources.ts = ['omni']
 set mouse=a
 set clipboard=unnamed
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
-set background=dark
+"set background=dark
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
   \ }

@@ -21,7 +21,6 @@ require("awful.hotkeys_popup.keys")
 
 
 local themePath = os.getenv("HOME") .. "/dotfiles/awesome-theme"
-print("THEME_DIR: "..themePath)
 
 -- local mpdwidget = dofile(themePath .. "/widgets/mpd.lua")
 
@@ -264,8 +263,6 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-              {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,

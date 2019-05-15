@@ -5,7 +5,9 @@ source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-plugins=(git zsh-syntax-highlighting)
+plugins=(git)
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Tools
 . $ZSH/oh-my-zsh.sh
@@ -19,4 +21,9 @@ else
   export EDITOR='nvim'
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+neofetch
 
