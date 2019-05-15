@@ -165,7 +165,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "code", "social", "browser", "misc" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -201,10 +201,10 @@ awful.screen.connect_for_each_screen(function(s)
       settings = function()
         if bat_now.status and bat_now.status ~= "N/A" then
             if bat_now.ac_status == 1 then
-                widget:set_markup(markup.font(theme.font, " AC "))
+                widget:set_markup(lain.util.markup.font(beautiful.font, " AC "))
             end
 
-            widget:set_markup(markup.font(theme.font, " " .. bat_now.perc .. "% "))
+            widget:set_markup(lain.util.markup.font(beautiful.font, " " .. bat_now.perc .. "% "))
           end
       end
     })
@@ -224,9 +224,9 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.container.background(mytextclock, "#5b92fa"),
             separators.arrow_left("#5b92fa", "alpha"),
             batteryWidget.widget,
-            separators.arrow_left("#5b92fa", "alpha"),
+            separators.arrow_left("alpha", "#5b92fa"),
             -- mpdwidget.widget,
-            s.mylayoutbox,
+            wibox.container.background(s.mylayoutbox, "#5b92fa"),
         },
     }
 end)

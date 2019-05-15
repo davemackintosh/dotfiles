@@ -43,7 +43,8 @@ URxvt.perl-ext-common: tabbed
 ! Fonts
 *font: xft:Fira Code:size=13,style=medium,\
             xft:Noto Color Emoji:size=10,\
-            xft:DejaVu Sans Mono for Powerline:size=10
+            xft:DejaVu Sans Mono for Powerline:size=10,\
+            xft:xft:TerminessTTFNerdFontMono:size=12
 *boldFont: xft:Fira Code:size=13,style=bold
 *italicFont: xft:Fira Code:size=13,style=bold
 *boldItalicFont: xft:Fira Code:size=13,style=bold
