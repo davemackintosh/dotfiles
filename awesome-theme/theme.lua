@@ -20,7 +20,7 @@ theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#333333"
+theme.fg_normal     = "#CFCFCF"
 theme.fg_focus      = "#32d6ff"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
@@ -34,7 +34,6 @@ theme.tasklist_disable_icon = true
 
 theme.useless_gap = 7
 theme.wallpaper = theme.dir .. "/wallpapers/80s.jpg"
-print("WALLPAPER: "..theme.wallpaper)
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
