@@ -42,17 +42,16 @@ URxvt.perl-ext-common: tabbed
 
 ! Fonts
 *font: xft:Fira Code:size=13,style=medium,\
-            xft:Noto Color Emoji,\
-            xft:Font Awesome:pixelsize=27:minspace=False,\
-            xft:PowerlineSymbols:pixelsize=27:minispace=False
-URxvt*boldFont: xft:Fira Code:size=13,style=bold
-URxvt*italicFont: xft:Fira Code:size=13,style=bold
-URxvt*boldItalicFont: xft:Fira Code:size=13,style=bold
+            xft:Noto Color Emoji:size=10,\
+            xft:DejaVu Sans Mono for Powerline:size=10
+*boldFont: xft:Fira Code:size=13,style=bold
+*italicFont: xft:Fira Code:size=13,style=bold
+*boldItalicFont: xft:Fira Code:size=13,style=bold
 
 ! Transparency
 urxvt*transparent: true
 urxvt*shading: 15
-urxvt*blueRadius: 5
+urxvt*blurRadius: 10
 urxvt.inheritPixmap: true
 
 ! Keybindings
@@ -72,7 +71,7 @@ URxvt.letterSpace:              -1
 URxvt.iso14755:                 false
 URxvt.iso14755_52:              false
 URxvt*loginShell:               true
-URxvt.internalBorder:           25
-URxvt.perl-ext:	 		default,matcher
+URxvt.internalBorder:           5
+URxvt.perl-ext:	 	            	default,matcher
 URxvt.url-launcher:             firefox
 Rxvt.matcher.button: 1
