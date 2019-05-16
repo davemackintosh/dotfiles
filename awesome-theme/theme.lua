@@ -38,9 +38,10 @@ local transparent = "00000000"
 
 local typographyColours = {
   normal = colourPalette[6],
-  light = colourPalette[1]
+  light = colourPalette[1],
+  unfocused = colourPalette[2],
+  urgent = colourPalette[1],
 }
-
 
 -- typography
 theme.font          = "Fira Mono 11"
@@ -48,19 +49,19 @@ theme.font          = "Fira Mono 11"
 -- colours
 theme.bg_normal     = colourPalette[6]
 theme.bg_focus      = colourPalette[5]
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_urgent     = colourPalette[2]
+theme.bg_minimize   = colourPalette[1]
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#CFCFCF"
-theme.fg_focus      = "#32d6ff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = typographyColours.normal
+theme.fg_focus      = typographyColours.light
+theme.fg_urgent     = typographyColours.urgent
+theme.fg_minimize   = typographyColours.normal
 
 theme.border_width  = dpi(4)
-theme.border_normal = "#000000"
-theme.border_focus  = "#5b92fa"
-theme.border_marked = "#91231c"
+theme.border_normal = colourPalette[6]
+theme.border_focus  = colourPalette[5]
+theme.border_marked = colourPalette[2]
 theme.tasklist_plain_task_name = true
 theme.tasklist_disable_icon = true
 
@@ -68,7 +69,7 @@ theme.useless_gap = 7
 theme.wallpaper = theme.dir .. "/wallpapers/80s.jpg"
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
+local taglist_square_size = dpi(0)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
@@ -86,7 +87,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
+theme.menu_height = dpi(20)
 theme.menu_width  = dpi(100)
 
 -- Define the icon theme for application icons. If not set then the icons
