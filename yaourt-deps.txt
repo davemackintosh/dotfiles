@@ -5,6 +5,7 @@ local/google-chrome 74.0.3729.131-1
 local/google-drive-ocamlfuse 0.7.1-1
 local/lua-ldbus r118.a6e77a0-1
 local/nerd-fonts-fira-code 2.0.0-1 (nerd-fonts)
+local/nerd-fonts-terminus 2.0.0-1 (nerd-fonts)
 local/ocaml-base 0.12.0-1
 local/ocaml-cryptokit 1.13-2
 local/ocaml-curl 0.8.2-1
@@ -21,5 +22,6 @@ local/ocamlnet 4.1.6-1
 local/package-query 1.9-3
 local/rxvt-unicode-pixbuf 9.22-2
 local/slack-desktop 3.4.0-1
+local/ttf-dejavu-sans-mono-powerline-git r202.e80e3eb-1
 local/yaourt 1.9-1
 local/zoom 2.8.183302.0415-1

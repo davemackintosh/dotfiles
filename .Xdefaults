@@ -52,7 +52,7 @@ URxvt.perl-ext-common: tabbed
 ! Transparency
 urxvt*transparent: true
 urxvt*shading: 15
-urxvt*blurRadius: 10
+! urxvt*blurRadius: 10
 urxvt.inheritPixmap: true
 
 ! Keybindings

@@ -28,10 +28,12 @@ luarocks
 neofetch
 neovim
 nerd-fonts-fira-code
+nerd-fonts-terminus
 noto-fonts-emoji
 ntp
 nvidia
 openssh
+otf-font-awesome
 otf-overpass
 package-query
 powerline
@@ -44,6 +46,7 @@ rxvt-unicode-pixbuf
 slack-desktop
 thefuck
 ttf-dejavu
+ttf-dejavu-sans-mono-powerline-git
 ttf-fira-code
 ttf-fira-mono
 ttf-font-awesome
