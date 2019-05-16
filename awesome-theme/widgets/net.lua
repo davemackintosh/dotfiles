@@ -2,6 +2,7 @@ local wibox = require("wibox")
 local lain = require("lain")
 local inspect = require("inspect")
 local icons = require("vars").icons
+local utils = require("utils")
 
 local wifi_icon = wibox.widget.imagebox(icons.wifiOff)
 local eth_icon = wibox.widget.imagebox()
@@ -40,5 +41,5 @@ local net = lain.widget.net {
     end
 }
 
-return wifi_icon 
+return utils.iconMargin(wifi_icon)
 

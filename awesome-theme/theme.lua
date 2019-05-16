@@ -19,8 +19,9 @@ theme.dir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 
 package.path = theme.dir .. '?.lua;' .. package.path
 
-local utils = require(".utils")
-local vars = require(".vars")
+local utils = require("utils")
+local vars = require("vars")
+local batteryWidget = require("widgets.battery")
 local netWidget = require("widgets.net")
 local powerlineBarWidget = require(".widgets.powerline-widgets")
 
@@ -112,21 +113,6 @@ awful.screen.connect_for_each_screen(function(s)
     screen = s,
     opacity = 0,
     bg = transparent
-  })
-
-
-  local batteryWidget = lain.widget.bat({
-    settings = function()
-      if bat_now.status and bat_now.status ~= "N/A" then
-        if bat_now.ac_status == 1 then
-            widget:set_markup(utils.wiBarFont(bat_now.perc .. "% ⚡"))
-        end
-
-        widget:set_markup(utils.wiBarFont(bat_now.perc .. "%"))
-      else
-        widget:set_markup(utils.wiBarFont(bat_now.perc .. "%"))
-      end
-    end
   })
 
   -- Add widgets to the wibox

@@ -22,6 +22,7 @@ vars.typographyColours = {
 }
 
 vars.icons = {
+  batteryFull = iconBase .. "baseline-battery_full-24px.svg",
   batteryCharging = iconBase .. "baseline-battery_charging_full-24px.svg",
   brightness = iconBase .. "baseline-brightness_high-24px.svg",
   wifiWeak = iconBase .. "baseline-signal_wifi_0_bar-24px.svg",

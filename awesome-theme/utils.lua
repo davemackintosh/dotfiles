@@ -9,7 +9,7 @@ local function wiBarFont(text)
 end
 
 local function wiBarMargin(widget)
-  return wibox.container.margin(widget, dpi(5), dpi(5))
+  return wibox.container.margin(widget, 5, 5)
 end
 
 local function iconMargin(imageWidget)

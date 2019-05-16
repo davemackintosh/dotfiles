@@ -2,6 +2,8 @@ local wibox = require("wibox")
 local lain = require("lain")
 local inspect = require("inspect")
 
+local utils = require("utils")
+
 local separators = lain.util.separators
 local background = wibox.container.background
 
@@ -33,9 +35,9 @@ function powerlineBarWidget(widgets, direction)
         end
       end
 
-      table.insert(bar, background(widget, colour))
+      table.insert(bar, background(utils.wiBarMargin(widget), colour))
   else
-    table.insert(bar, background(widget, colour))
+    table.insert(bar, background(utils.wiBarMargin(widget), colour))
 print(index, #widgets, offset, index ~= (#widgets - (offset or 0)))
     if index ~= #widgets then
       table.insert(bar, arrow(colour, adjacentColour or "alpha"))
