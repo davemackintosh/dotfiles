@@ -15,6 +15,7 @@ declare -a files=(
   .config/neofetch
   .config/nvim
   .config/ranger
+  .config/compton
   z.sh
   aliases.sh
 )
@@ -28,3 +29,10 @@ for fileOrFolder in ${files[@]}; do
     cp $fileOrFolder $HOME/dotfiles/$fileOrFolder
   fi
 done
+
+echo "Generating new deps lists\n"
+
+echo "Generating pacman deps list\n"
+comm -23 <(pacman -Qeq | sort) <(pacman -Qgq base base-devel | sort) > $HOME/dotfiles/deps.txt &&
+echo "Generating yaourt deps list\n"
+yaourt -Qm > dotfiles/yaourt-deps.txt &&
