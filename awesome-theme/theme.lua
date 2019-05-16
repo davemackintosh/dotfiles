@@ -17,12 +17,17 @@ local theme = {}
 theme.name = string.gsub(debug.getinfo(1).short_src, "^(.+\\)[^\\]+$", "%1")
 theme.dir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 
+package.path = theme.dir .. '?.lua;' .. package.path
+
+local powerlineBarWidget = require(".widgets.powerline-widgets")
+
 local icons = {
-  batteryCharging = theme.dir .. "icons/baseline_battery_charging_full_white_18dp.png",
-  brightness = theme.dir .. "icons/baseline_brightness_high_white_18dp.png",
-  wifiConnected = theme.dir .. "icons/baseline_signal_wifi_4_bar_white_18dp.png",
-  volumeOn = theme.dir .. "icons/baseline_volume_up_white_18dp.png",
-  volumeOff = theme.dir .. "icons/baseline_volume_off_white_18dp.png",
+  batteryCharging = theme.dir .. "icons/baseline-battery_charging_full-24px.svg",
+  brightness = theme.dir .. "icons/baseline-brightness_high-24px.svg",
+  wifiConnected = theme.dir .. "icons/baseline-signal_wifi_4_bar-24px.svg",
+  wifiOff = theme.dir .. "icons/baseline-signal_wifi_off-24px.svg",
+  volumeOn = theme.dir .. "icons/baseline-volume_up-24px.svg",
+  volumeOff = theme.dir .. "icons/ic_volume_off_48px.svg",
 }
 
 local colourPalette = {
@@ -87,7 +92,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(20)
+theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
 
 -- Define the icon theme for application icons. If not set then the icons
@@ -113,6 +118,7 @@ local taglist_buttons = gears.table.join(
 )
 
 awful.screen.connect_for_each_screen(function(s)
+  s.addPromptBox = false
 
   -- Create a taglist widget
   s.mytaglist = awful.widget.taglist {
@@ -120,7 +126,13 @@ awful.screen.connect_for_each_screen(function(s)
       filter  = awful.widget.taglist.filter.all,
   }
 
-  s.mypromptbox =  awful.widget.prompt()
+  s.mypromptbox =  awful.widget.prompt({
+    args = {
+      hooks = {
+        {{ modkey, }, "r", function() s.addPromptBox = true end}
+      }
+    }
+  })
 
   -- Create the wibox
   s.mywibox = awful.wibar({ 
@@ -138,6 +150,10 @@ awful.screen.connect_for_each_screen(function(s)
     return wibox.container.margin(widget, dpi(5), dpi(5))
   end
 
+  local function iconMargin(imageWidget)
+    return wibox.container.margin(imageWidget, 2, 2, 2, 2)
+  end
+
   local batteryWidget = lain.widget.bat({
     settings = function()
       if bat_now.status and bat_now.status ~= "N/A" then
@@ -152,7 +168,7 @@ awful.screen.connect_for_each_screen(function(s)
     end
   })
 
-  local wifi_icon = wibox.widget.imagebox()
+  local wifi_icon = wibox.widget.imagebox(icons.wifiOff)
   local eth_icon = wibox.widget.imagebox()
   local net = lain.widget.net {
       notify = "off",
@@ -189,25 +205,19 @@ awful.screen.connect_for_each_screen(function(s)
       end
   }
 
+  local leftWidgets = {
+  }
+
   -- Add widgets to the wibox
   s.mywibox:setup {
       layout = wibox.layout.align.horizontal,
-      { -- Tags on the left.
-          layout = wibox.layout.fixed.horizontal,
-          s.mytaglist,
-          s.mypromptbox,
-      },
-      wibox.widget({}), -- Middle widget to space out the left and right widgets.
-      { -- Meta info on the right.
-          layout = wibox.layout.fixed.horizontal,
-          separators.arrow_left("alpha", colourPalette[3]),
-          wibox.container.background(wibox.widget.textclock(), colourPalette[3]),
-          separators.arrow_left(colourPalette[3], colourPalette[4]),
-          wibox.container.background(wiBarMargin(batteryWidget.widget), colourPalette[4]),
-          wibox.container.background(wibox.container.margin(wibox.widget.imagebox(icons.batteryCharging), dpi(0), dpi(5)), colourPalette[4]),
-          separators.arrow_left(colourPalette[4], colourPalette[5]),
-          wibox.container.background(wiBarMargin(wifi_icon), colourPalette[5]),
-      },
+      powerlineBarWidget({ s.mytaglist }, "arrow_right"), -- Left widgets
+      wibox.container.margin(s.mypromptbox, 5), -- Centre widget
+      powerlineBarWidget({ -- Right widgets
+        wibox.widget.textclock(),
+        batteryWidget.widget,
+        wifi_icon,
+      })
   }
 
 end)
