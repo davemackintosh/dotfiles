@@ -5,10 +5,25 @@ local lain = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
+local inspect = require("inspect")
 
 local dpi = xresources.apply_dpi
 
 local themes_path = gfs.get_themes_dir()
+local separators = lain.util.separators
+local markup = lain.util.markup
+
+local theme = {}
+theme.name = string.gsub(debug.getinfo(1).short_src, "^(.+\\)[^\\]+$", "%1")
+theme.dir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
+
+local icons = {
+  batteryCharging = theme.dir .. "icons/baseline_battery_charging_full_white_18dp.png",
+  brightness = theme.dir .. "icons/baseline_brightness_high_white_18dp.png",
+  wifiConnected = theme.dir .. "icons/baseline_signal_wifi_4_bar_white_18dp.png",
+  volumeOn = theme.dir .. "icons/baseline_volume_up_white_18dp.png",
+  volumeOff = theme.dir .. "icons/baseline_volume_off_white_18dp.png",
+}
 
 local colourPalette = {
   "#ECD078",
@@ -19,16 +34,13 @@ local colourPalette = {
   "#222222"
 }
 
+local transparent = "00000000"
+
 local typographyColours = {
   normal = colourPalette[6],
   light = colourPalette[1]
 }
-local separators = lain.util.separators
 
-local theme = {}
-
-theme.name = string.gsub(debug.getinfo(1).short_src, "^(.+\\)[^\\]+$", "%1")
-theme.dir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 
 -- typography
 theme.font          = "Fira Mono 11"
@@ -77,24 +89,6 @@ theme.menu_submenu_icon = themes_path.."default/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
 
--- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."default/layouts/magnifierw.png"
-theme.layout_max = themes_path.."default/layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
-
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
@@ -117,76 +111,103 @@ local taglist_buttons = gears.table.join(
   awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
-local tasklist_buttons = gears.table.join(
-  awful.button({ }, 1, function (c)
-    if c == client.focus then
-        c.minimized = true
-    else
-        c:emit_signal(
-            "request::activate",
-            "tasklist",
-            {raise = true}
-        )
-    end
-  end)
-)
-
 awful.screen.connect_for_each_screen(function(s)
+  -- Each screen has its own tag table.
+  awful.tag({ "code", "social", "browser", "misc" }, s, awful.layout.layouts[1])
+
   -- Create a taglist widget
   s.mytaglist = awful.widget.taglist {
       screen  = s,
       filter  = awful.widget.taglist.filter.all,
---      buttons = taglist_buttons
   }
 
   s.mypromptbox =  awful.widget.prompt()
-
-  -- Create a tasklist widget
-  s.mytasklist = awful.widget.tasklist {
-      screen  = s,
-      filter  = awful.widget.tasklist.filter.currenttags,
-      buttons = tasklist_buttons,
-      opacity = 0,
-      visible = false
-  }
 
   -- Create the wibox
   s.mywibox = awful.wibar({ 
     position = "top", 
     screen = s,
     opacity = 0,
-    bg = "00000000"
+    bg = transparent
   })
+
+  local function wiBarFont(text)
+    return markup.font(theme.font .. " 11", text)
+  end
+
+  local function wiBarMargin(widget)
+    return wibox.container.margin(widget, dpi(5), dpi(5))
+  end
 
   local batteryWidget = lain.widget.bat({
     settings = function()
       if bat_now.status and bat_now.status ~= "N/A" then
-          if bat_now.ac_status == 1 then
-              widget:set_markup(lain.util.markup.font(theme.font, " " .. bat_now.perc .. "% ⚡ "))
-          end
-
-          widget:set_markup(lain.util.markup.font(theme.font, " " .. bat_now.perc .. "% "))
+        if bat_now.ac_status == 1 then
+            widget:set_markup(wiBarFont(bat_now.perc .. "% ⚡"))
         end
+
+        widget:set_markup(wiBarFont(bat_now.perc .. "%"))
+      else
+        widget:set_markup(wiBarFont(bat_now.perc .. "%"))
+      end
     end
   })
+
+  local wifi_icon = wibox.widget.imagebox()
+  local eth_icon = wibox.widget.imagebox()
+  local net = lain.widget.net {
+      notify = "off",
+      wifi_state = "on",
+      eth_state = "on",
+      settings = function()
+          local eth0 = net_now.devices.eth0
+          if eth0 then
+              if eth0.ethernet then
+                  eth_icon:set_image(ethernet_icon_filename)
+              else
+                  eth_icon:set_image()
+              end
+          end
+
+          local wlan0 = net_now.devices.wlp2s0
+          -- print(inspect(wlan0), icons.wifiConnected)
+          if wlan0 then
+              if wlan0.wifi then
+                  -- local signal = wlan0.signal
+                  -- if signal < -83 then
+                      -- wifi_icon:set_image(wifi_weak_filename)
+                  -- elseif signal < -70 then
+                      -- wifi_icon:set_image(wifi_mid_filename)
+                  -- elseif signal < -53 then
+                      -- wifi_icon:set_image(wifi_good_filename)
+                  -- elseif signal >= -53 then
+                      wifi_icon:set_image(icons.wifiConnected)
+                  -- end
+              else
+                  wifi_icon:set_image()
+              end
+          end
+      end
+  }
 
   -- Add widgets to the wibox
   s.mywibox:setup {
       layout = wibox.layout.align.horizontal,
-      { -- Left widgets
+      { -- Tags on the left.
           layout = wibox.layout.fixed.horizontal,
           s.mytaglist,
           s.mypromptbox,
       },
-      wibox.widget({}), -- Middle widget
-      { -- Right widgets
+      wibox.widget({}), -- Middle widget to space out the left and right widgets.
+      { -- Meta info on the right.
           layout = wibox.layout.fixed.horizontal,
-          separators.arrow_left(colourPalette[6], colourPalette[3]),
+          separators.arrow_left("alpha", colourPalette[3]),
           wibox.container.background(wibox.widget.textclock(), colourPalette[3]),
           separators.arrow_left(colourPalette[3], colourPalette[4]),
-          wibox.container.background(batteryWidget.widget, colourPalette[4]),
+          wibox.container.background(wiBarMargin(batteryWidget.widget), colourPalette[4]),
+          wibox.container.background(wibox.container.margin(wibox.widget.imagebox(icons.batteryCharging), dpi(0), dpi(5)), colourPalette[4]),
           separators.arrow_left(colourPalette[4], colourPalette[5]),
-          wibox.container.background(wibox.container.margin(awful.widget.layoutbox(s), dpi(5)), colourPalette[5]),
+          wibox.container.background(wiBarMargin(wifi_icon), colourPalette[5]),
       },
   }
 
