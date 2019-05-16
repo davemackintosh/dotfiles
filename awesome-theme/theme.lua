@@ -19,54 +19,32 @@ theme.dir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 
 package.path = theme.dir .. '?.lua;' .. package.path
 
+local utils = require(".utils")
+local vars = require(".vars")
+local netWidget = require("widgets.net")
 local powerlineBarWidget = require(".widgets.powerline-widgets")
 
-local icons = {
-  batteryCharging = theme.dir .. "icons/baseline-battery_charging_full-24px.svg",
-  brightness = theme.dir .. "icons/baseline-brightness_high-24px.svg",
-  wifiConnected = theme.dir .. "icons/baseline-signal_wifi_4_bar-24px.svg",
-  wifiOff = theme.dir .. "icons/baseline-signal_wifi_off-24px.svg",
-  volumeOn = theme.dir .. "icons/baseline-volume_up-24px.svg",
-  volumeOff = theme.dir .. "icons/ic_volume_off_48px.svg",
-}
-
-local colourPalette = {
-  "#ECD078",
-  "#D95B43",
-  "#C02942",
-  "#542437",
-  "#53777A",
-  "#222222"
-}
-
 local transparent = "00000000"
-
-local typographyColours = {
-  normal = colourPalette[6],
-  light = colourPalette[1],
-  unfocused = colourPalette[2],
-  urgent = colourPalette[1],
-}
 
 -- typography
 theme.font          = "Fira Mono 11"
 
 -- colours
-theme.bg_normal     = colourPalette[6]
-theme.bg_focus      = colourPalette[5]
-theme.bg_urgent     = colourPalette[2]
-theme.bg_minimize   = colourPalette[1]
+theme.bg_normal     = vars.colourPalette[6]
+theme.bg_focus      = vars.colourPalette[5]
+theme.bg_urgent     = vars.colourPalette[2]
+theme.bg_minimize   = vars.colourPalette[1]
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = typographyColours.normal
-theme.fg_focus      = typographyColours.light
-theme.fg_urgent     = typographyColours.urgent
-theme.fg_minimize   = typographyColours.normal
+theme.fg_normal     = vars.typographyColours.normal
+theme.fg_focus      = vars.typographyColours.light
+theme.fg_urgent     = vars.typographyColours.urgent
+theme.fg_minimize   = vars.typographyColours.normal
 
 theme.border_width  = dpi(4)
-theme.border_normal = colourPalette[6]
-theme.border_focus  = colourPalette[5]
-theme.border_marked = colourPalette[2]
+theme.border_normal = vars.colourPalette[6]
+theme.border_focus  = vars.colourPalette[5]
+theme.border_marked = vars.colourPalette[2]
 theme.tasklist_plain_task_name = true
 theme.tasklist_disable_icon = true
 
@@ -126,13 +104,7 @@ awful.screen.connect_for_each_screen(function(s)
       filter  = awful.widget.taglist.filter.all,
   }
 
-  s.mypromptbox =  awful.widget.prompt({
-    args = {
-      hooks = {
-        {{ modkey, }, "r", function() s.addPromptBox = true end}
-      }
-    }
-  })
+  s.mypromptbox =  awful.widget.prompt()
 
   -- Create the wibox
   s.mywibox = awful.wibar({ 
@@ -142,71 +114,20 @@ awful.screen.connect_for_each_screen(function(s)
     bg = transparent
   })
 
-  local function wiBarFont(text)
-    return markup.font(theme.font .. " 11", text)
-  end
-
-  local function wiBarMargin(widget)
-    return wibox.container.margin(widget, dpi(5), dpi(5))
-  end
-
-  local function iconMargin(imageWidget)
-    return wibox.container.margin(imageWidget, 2, 2, 2, 2)
-  end
 
   local batteryWidget = lain.widget.bat({
     settings = function()
       if bat_now.status and bat_now.status ~= "N/A" then
         if bat_now.ac_status == 1 then
-            widget:set_markup(wiBarFont(bat_now.perc .. "% ⚡"))
+            widget:set_markup(utils.wiBarFont(bat_now.perc .. "% ⚡"))
         end
 
-        widget:set_markup(wiBarFont(bat_now.perc .. "%"))
+        widget:set_markup(utils.wiBarFont(bat_now.perc .. "%"))
       else
-        widget:set_markup(wiBarFont(bat_now.perc .. "%"))
+        widget:set_markup(utils.wiBarFont(bat_now.perc .. "%"))
       end
     end
   })
-
-  local wifi_icon = wibox.widget.imagebox(icons.wifiOff)
-  local eth_icon = wibox.widget.imagebox()
-  local net = lain.widget.net {
-      notify = "off",
-      wifi_state = "on",
-      eth_state = "on",
-      settings = function()
-          local eth0 = net_now.devices.eth0
-          if eth0 then
-              if eth0.ethernet then
-                  eth_icon:set_image(ethernet_icon_filename)
-              else
-                  eth_icon:set_image()
-              end
-          end
-
-          local wlan0 = net_now.devices.wlp2s0
-          -- print(inspect(wlan0), icons.wifiConnected)
-          if wlan0 then
-              if wlan0.wifi then
-                  -- local signal = wlan0.signal
-                  -- if signal < -83 then
-                      -- wifi_icon:set_image(wifi_weak_filename)
-                  -- elseif signal < -70 then
-                      -- wifi_icon:set_image(wifi_mid_filename)
-                  -- elseif signal < -53 then
-                      -- wifi_icon:set_image(wifi_good_filename)
-                  -- elseif signal >= -53 then
-                      wifi_icon:set_image(icons.wifiConnected)
-                  -- end
-              else
-                  wifi_icon:set_image()
-              end
-          end
-      end
-  }
-
-  local leftWidgets = {
-  }
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -216,7 +137,7 @@ awful.screen.connect_for_each_screen(function(s)
       powerlineBarWidget({ -- Right widgets
         wibox.widget.textclock(),
         batteryWidget.widget,
-        wifi_icon,
+        netWidget,
       })
   }
 
