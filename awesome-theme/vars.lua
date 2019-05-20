@@ -1,6 +1,12 @@
 local thisDir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 local iconBase = thisDir .. "icons/"
 local vars = {}
+
+-- Used throughout the theme.
+vars.themeRoot = thisDir
+
+-- Colours used throughout the theme.
+-- @TODO pull this from beautiful.xresources.
 vars.colourPalette = {
   "#ECD078",
   "#D95B43",
@@ -23,6 +29,9 @@ vars.typographyColours = {
 
 vars.icons = {
   batteryFull = iconBase .. "baseline-battery_full-24px.svg",
+  battery20 = iconBase .. "baseline-battery_20-24px.svg",
+  battery50 = iconBase .. "baseline-battery_50-24px.svg",
+  battery90 = iconBase .. "baseline-battery_90-24px.svg",
   batteryCharging = iconBase .. "baseline-battery_charging_full-24px.svg",
   brightness = iconBase .. "baseline-brightness_high-24px.svg",
   wifiWeak = iconBase .. "baseline-signal_wifi_0_bar-24px.svg",

@@ -8,7 +8,6 @@ local gears = require("gears")
 local inspect = require("inspect")
 
 local dpi = xresources.apply_dpi
-
 local themes_path = gfs.get_themes_dir()
 local separators = lain.util.separators
 local markup = lain.util.markup
@@ -17,18 +16,24 @@ local theme = {}
 theme.name = string.gsub(debug.getinfo(1).short_src, "^(.+\\)[^\\]+$", "%1")
 theme.dir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 
+-- Update the package path so we can easily import our widgets
 package.path = theme.dir .. '?.lua;' .. package.path
 
+-- Import our widgets
 local utils = require("utils")
 local vars = require("vars")
 local batteryWidget = require("widgets.battery")
 local netWidget = require("widgets.net")
+local clockWidget = require("widgets.clock")
 local powerlineBarWidget = require(".widgets.powerline-widgets")
+local taglistWidget = require("widgets.taglist")
+local volumeWidget = require("widgets.volume")
 
-local transparent = "00000000"
+-- Other stuff.
+local healthTools = require("tools.health")
 
 -- typography
-theme.font          = "Fira Mono 11"
+theme.font          = vars.mainFont
 
 -- colours
 theme.bg_normal     = vars.colourPalette[6]
@@ -78,41 +83,20 @@ theme.menu_width  = dpi(100)
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
--- Create a wibox for each screen and add it
-local taglist_buttons = gears.table.join(
-  awful.button({ }, 1, function(t) t:view_only() end),
-  awful.button({ modkey }, 1, function(t)
-        if client.focus then
-            client.focus:move_to_tag(t)
-        end
-    end),
-  awful.button({ }, 3, awful.tag.viewtoggle),
-  awful.button({ modkey }, 3, function(t)
-        if client.focus then
-            client.focus:toggle_tag(t)
-        end
-    end),
-  awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-  awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-)
-
 awful.screen.connect_for_each_screen(function(s)
   s.addPromptBox = false
 
   -- Create a taglist widget
-  s.mytaglist = awful.widget.taglist {
-      screen  = s,
-      filter  = awful.widget.taglist.filter.all,
-  }
+  s.mytaglist = taglistWidget(s)
 
-  s.mypromptbox =  awful.widget.prompt()
+  s.mypromptbox = awful.widget.prompt()
 
   -- Create the wibox
   s.mywibox = awful.wibar({ 
     position = "top", 
     screen = s,
     opacity = 0,
-    bg = transparent
+    bg = "00000000"
   })
 
   -- Add widgets to the wibox
@@ -121,13 +105,19 @@ awful.screen.connect_for_each_screen(function(s)
       powerlineBarWidget({ s.mytaglist }, "arrow_right"), -- Left widgets
       wibox.container.margin(s.mypromptbox, 5), -- Centre widget
       powerlineBarWidget({ -- Right widgets
-        wibox.widget.textclock(),
+        clockWidget,
         batteryWidget.widget,
+        volumeWidget,
         netWidget,
       })
   }
 
 end)
+
+-- These will send small notifications to 
+-- remind you to be healthy while working at your computer.
+healthTools.waterReminder()
+healthTools.walkReminder()
 
 return theme
 
