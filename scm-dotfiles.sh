@@ -16,6 +16,7 @@ declare -a files=(
   .config/nvim
   .config/ranger
   .config/compton
+  .config/rofi
   z.sh
   aliases.sh
 )
@@ -32,7 +33,7 @@ done
 
 echo "Generating new deps lists\n"
 
-echo "Generating pacman deps list\n"
+echo "Generating pacman deps list"
 comm -23 <(pacman -Qeq | sort) <(pacman -Qgq base base-devel | sort) > $HOME/dotfiles/deps.txt &&
-echo "Generating yaourt deps list\n"
+echo "Generating yaourt deps list"
 yaourt -Qm > dotfiles/yaourt-deps.txt &&

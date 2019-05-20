@@ -3,7 +3,7 @@ URxvt*termName: rxvt-256color
 
 *.foreground: #c5c8c6
 *.background: [10]#1d1f21
-*.cursorColor: #c5c8c6
+*.cursorColor: #DA70D6
 
 ! Black
 *.color0: #282a2e
@@ -41,23 +41,19 @@ URxvt.perl-ext-common: tabbed
 
 
 ! Fonts
-*font: xft:Fira Code:size=13,style=medium,\
+urxvt*font: xft:Fira Code:size=13,style=medium,\
             xft:Noto Color Emoji:size=10,\
             xft:DejaVu Sans Mono for Powerline:size=10,\
             xft:xft:TerminessTTFNerdFontMono:size=12
-*boldFont: xft:Fira Code:size=13,style=bold
-*italicFont: xft:Fira Code:size=13,style=bold
-*boldItalicFont: xft:Fira Code:size=13,style=bold
+urxvt*boldFont: xft:Fira Code:size=13,style=bold
+urxvt*italicFont: xft:Fira Code:size=13,style=bold
+urxvt*boldItalicFont: xft:Fira Code:size=13,style=bold
 
 ! Transparency
 urxvt*transparent: true
 urxvt*shading: 15
 ! urxvt*blurRadius: 10
 urxvt.inheritPixmap: true
-
-! Keybindings
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 
 Xft.dpi:                        96
 Xft.antialias:                  1
@@ -73,6 +69,13 @@ URxvt.iso14755:                 false
 URxvt.iso14755_52:              false
 URxvt*loginShell:               true
 URxvt.internalBorder:           5
-URxvt.perl-ext:	 	            	default,matcher
-URxvt.url-launcher:             firefox
-Rxvt.matcher.button: 1
+URxvt.perl-ext:	 	            	default,matcher,resize-font
+URxvt.url-launcher:             /usr/bin/xdg-open
+Rxvt.matcher.button:            1
+URxvt.matcher.rend.0:           Uline Bold fg5
+
+! Keybindings
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.keysym.Control-Down:  resize-font:smaller
+URxvt.keysym.Control-Up:    resize-font:bigger
