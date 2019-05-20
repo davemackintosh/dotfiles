@@ -9,7 +9,7 @@ local notificationStyles = require("notification-style")
 local function waterReminder()
   gears.timer {
       timeout   = 3600,
-      call_now  = true,
+      call_now  = false,
       autostart = true,
       callback  = function()
         naughty.notify({
@@ -30,7 +30,7 @@ end
 local function walkReminder()
   gears.timer {
       timeout   = 7200,
-      call_now  = true,
+      call_now  = false,
       autostart = true,
       callback  = function()
         naughty.notify({

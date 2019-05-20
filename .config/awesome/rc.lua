@@ -124,7 +124,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "   code ", "   browser ", "   social ", "   misc " }, s, awful.layout.layouts[1])
+    awful.tag({ " code ", " browser ", "  social ", " misc " }, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
