@@ -1,12 +1,13 @@
+local xresources = require("beautiful.xresources")
 local thisDir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 local iconBase = thisDir .. "icons/"
+local sysTheme = xresources.get_current_theme()
 local vars = {}
 
 -- Used throughout the theme.
 vars.themeRoot = thisDir
 
 -- Colours used throughout the theme.
--- @TODO pull this from beautiful.xresources.
 vars.colourPalette = {
   "#ECD078",
   "#D95B43",
@@ -16,10 +17,26 @@ vars.colourPalette = {
   "#222222"
 }
 
-vars.typography = {
-  mainFont = "Fira Mono 11"
-}
+-- Update the colour pallette to the system resources.
+for colourIndex=0,15 do
+  vars.colourPalette[colourIndex + 1] = sysTheme["color" .. colourIndex]
+end
 
+table.insert(vars.colourPalette, sysTheme.background)
+table.insert(vars.colourPalette, sysTheme.foreground)
+  
+
+vars.typography = {}
+
+-- Primary font face.
+vars.typography.mainFontFamily = "Fira Code"
+vars.mainFont = vars.typography.mainFontFamily .. " 11"
+
+-- Secondary font face.
+vars.typography.secondaryFontFamily = "Overpass"
+vars.typography.secondaryFont = vars.typography.secondaryFontFamily .. " 11"
+
+-- Text colours.
 vars.typographyColours = {
   normal = vars.colourPalette[6],
   light = vars.colourPalette[1],

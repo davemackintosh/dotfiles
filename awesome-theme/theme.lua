@@ -1,12 +1,12 @@
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
-local gfs = require("gears.filesystem")
+local gears = require("gears")
 local lain = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
-local gears = require("gears")
 local inspect = require("inspect")
 
+local gfs = gears.filesystem
 local dpi = xresources.apply_dpi
 local themes_path = gfs.get_themes_dir()
 local separators = lain.util.separators
@@ -22,12 +22,14 @@ package.path = theme.dir .. '?.lua;' .. package.path
 -- Import our widgets
 local utils = require("utils")
 local vars = require("vars")
+local notificationStyles = require("notification-style")
 local batteryWidget = require("widgets.battery")
 local netWidget = require("widgets.net")
 local clockWidget = require("widgets.clock")
 local powerlineBarWidget = require(".widgets.powerline-widgets")
 local taglistWidget = require("widgets.taglist")
 local volumeWidget = require("widgets.volume")
+local brightnessWidget = require("widgets.brightness")
 
 -- Other stuff.
 local healthTools = require("tools.health")
@@ -66,11 +68,10 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
 
--- Variables set for theming notifications:
--- notification_font
--- notification_[bg|fg]
--- notification_[width|height|margin]
--- notification_[border_color|border_width|shape|opacity]
+-- Add the notification styles.
+theme = gears.table.join(theme, notificationStyles)
+
+print(inspect(theme))
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -107,6 +108,7 @@ awful.screen.connect_for_each_screen(function(s)
       powerlineBarWidget({ -- Right widgets
         clockWidget,
         batteryWidget.widget,
+        brightnessWidget,
         volumeWidget,
         netWidget,
       })
