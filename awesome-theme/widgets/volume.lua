@@ -4,9 +4,10 @@ local wibox = require("wibox")
 local markup = require("lain.util.markup")
 local vars = require("vars")
 
-local getVolumePercCmd = 'amixer sget Master'
-
--- Actual volume changes are handled by xbindkeys, see ~/.xbindkeysrc for more.
+local getVolumePercCmd = 'amixer -D pulse sget Master'
+local increaseVolumeCmd = 'amixer -D pulse sset Master 5%+'
+local decreaseVolumeCmd = 'amixer -D pulse sset Master 5%-'
+local toggleDeviceCmd = 'amixer -D pulse sset Master toggle'
 
 local percWidget = wibox.widget.textbox()
 
@@ -27,17 +28,28 @@ local volumeWidget = wibox.widget {
 
 local function checkIcon(widget, percOutput)
   local volume = tonumber(string.match(percOutput, "(%d?%d?%d)%%"))
+  local muted = percOutput:match "%[(o%D%D?)%]+"
 
   percWidget:set_markup(markup.font(vars.typography.mainFont, volume .. "%"))
 
-  if volume == 0 then
+  if volume == 0 or muted == "on" then
     widget.image = vars.themeRoot .. "icons/baseline-volume_off-24px.svg"
   else
     widget.image = vars.themeRoot .. "icons/baseline-volume_up-24px.svg"
   end
 end
 
-watch(getVolumePercCmd, 1, checkIcon, volumeWidget)
+volumeWidget:connect_signal("button::press", function(_,_,_,button)
+  if button == 1 then
+    awful.spawn.easy_async_with_shell(toggleDeviceCmd, function(stdout)
+      checkIcon(volumeWidget, stdout)
+    end)
+  end
+end)
+
+awful.spawn.easy_async_with_shell(getVolumePercCmd, function(stdout)
+  checkIcon(volumeWidget, stdout)
+end)
 
 return volumeWidget
 
