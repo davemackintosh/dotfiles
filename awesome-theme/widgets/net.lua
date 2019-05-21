@@ -14,7 +14,6 @@ local net = lain.widget.net {
       local eth0 = net_now.devices.enp14s0u1u2
       if eth0 then
         if eth0.ethernet then
-          print(icons.ethernetConnected)
           eth_icon:set_image(icons.ethernetConnected)
         else
           eth_icon:set_image()
