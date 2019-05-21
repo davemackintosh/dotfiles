@@ -25,9 +25,12 @@ linux-headers
 lua-ldbus
 lua52
 luarocks
+mpd
+ncmpcpp
 neofetch
 neovim
 nerd-fonts-fira-code
+nerd-fonts-source-code-pro
 nerd-fonts-terminus
 noto-fonts-emoji
 ntp
