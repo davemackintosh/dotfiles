@@ -36,18 +36,15 @@ URxvt*termName: rxvt-256color
 ! white
 *.color7: #707880
 *.color15: #c5c8c6
-~
-URxvt.perl-ext-common: tabbed
 
 
 ! Fonts
-urxvt*font: xft:Fira Code:size=13,style=medium,\
+urxvt*font: xft:FuraCode Nerd Font:size=13,\
             xft:Noto Color Emoji:size=10,\
-            xft:DejaVu Sans Mono for Powerline:size=10,\
-            xft:xft:TerminessTTFNerdFontMono:size=12
-urxvt*boldFont: xft:Fira Code:size=13,style=bold
-urxvt*italicFont: xft:Fira Code:size=13,style=bold
-urxvt*boldItalicFont: xft:Fira Code:size=13,style=bold
+            xft:DejaVu Sans Mono for Powerline:size=10
+urxvt*boldFont: xft:FuraCode Nerd Font:size=13
+urxvt*italicFont: xft:FuraCode Nerd Font:size=13
+urxvt*boldItalicFont: xft:FuraCode Nerd Font:size=13
 
 ! Transparency
 urxvt*transparent: true
@@ -69,7 +66,7 @@ URxvt.iso14755:                 false
 URxvt.iso14755_52:              false
 URxvt*loginShell:               true
 URxvt.internalBorder:           5
-URxvt.perl-ext:	 	            	default,matcher,resize-font
+URxvt.perl-ext:	 	            	tabbed,default,matcher,resize-font
 URxvt.url-launcher:             /usr/bin/xdg-open
 Rxvt.matcher.button:            1
 URxvt.matcher.rend.0:           Uline Bold fg5
