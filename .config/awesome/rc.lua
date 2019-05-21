@@ -227,10 +227,10 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey }, "r",     function () 
+    awful.key({ modkey }, "r",     function ()
       local screen = awful.screen.focused()
       screen.addPromptBox = true
-      screen.mypromptbox:run() 
+      screen.mypromptbox:run()
     end,
               {description = "run prompt", group = "launcher"}),
 
@@ -352,4 +352,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Run some other apps.
 awful.spawn.easy_async_with_shell("xbindkeys", function() end)
-
+awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", function() end)
+awful.spawn.easy_async_with_shell("[ ! -s ~/.config/mpd/pid ] && mpd")
