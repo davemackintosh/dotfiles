@@ -3,6 +3,7 @@ local watch = awful.widget.watch
 local wibox = require("wibox")
 local markup = require("lain.util.markup")
 local vars = require("vars")
+local utils = require("utils")
 
 local getVolumePercCmd = 'amixer -D pulse sget Master'
 local increaseVolumeCmd = 'amixer -D pulse sset Master 5%+'
@@ -11,45 +12,62 @@ local toggleDeviceCmd = 'amixer -D pulse sset Master toggle'
 
 local percWidget = wibox.widget.textbox()
 
-local volumeWidget = wibox.widget {
+local volumeWidget = {}
+
+local volumeIcon = wibox.widget.imagebox(vars.icons.volumeOff)
+
+volumeWidget.widget = wibox.widget {
   layout = wibox.layout.align.horizontal,
-  {
-    id = "perc",
-    markup = markup.font(vars.typography.mainFont, "0%"),
-    widget = percWidget,
-    visible = true,
-  },
-  {
-    id = "icon",
-    image = vars.themeRoot .. "icons/baseline-volume_up-24px.svg",
-    widget = wibox.widget.imagebox,
-  },
+  percWidget,
+  utils.iconMargin(volumeIcon),
 }
 
-local function checkIcon(widget, percOutput)
+function volumeWidget.incVolume()
+  awful.spawn.easy_async_with_shell(increaseVolumeCmd, function(stdout)
+    volumeWidget:checkIcon(volumeWidget, stdout)
+  end)
+end
+
+function volumeWidget.decVolume()
+  awful.spawn.easy_async_with_shell(decreaseVolumeCmd, function(stdout)
+    volumeWidget:checkIcon(volumeWidget, stdout)
+  end)
+end
+
+function volumeWidget.toggleVolume()
+  awful.spawn.easy_async_with_shell(toggleDeviceCmd, function(stdout)
+    volumeWidget:checkIcon(volumeWidget, stdout)
+  end)
+end
+
+function volumeWidget:updateIcon()
+  awful.spawn.easy_async_with_shell(getVolumePercCmd, function(stdout)
+    self:checkIcon(self, stdout)
+  end)
+end
+
+function volumeWidget:checkIcon(widget, percOutput)
   local volume = tonumber(string.match(percOutput, "(%d?%d?%d)%%"))
   local muted = percOutput:match "%[(o%D%D?)%]+"
 
-  percWidget:set_markup(markup.font(vars.typography.mainFont, volume .. "%"))
-
   if volume == 0 or muted == "on" then
-    widget.image = vars.themeRoot .. "icons/baseline-volume_off-24px.svg"
+    volumeIcon:set_image(vars.icons.volumeOff)
+    percWidget:set_markup(markup.font(vars.typography.mainFont, ""))
   else
-    widget.image = vars.themeRoot .. "icons/baseline-volume_up-24px.svg"
+    volumeIcon:set_image(vars.icons.volumeOn)
+  percWidget:set_markup(markup.font(vars.typography.mainFont, volume .. "%"))
   end
 end
 
-volumeWidget:connect_signal("button::press", function(_,_,_,button)
+volumeWidget.widget:connect_signal("button::press", function(_,_,_,button)
   if button == 1 then
     awful.spawn.easy_async_with_shell(toggleDeviceCmd, function(stdout)
-      checkIcon(volumeWidget, stdout)
+      volumeWidget:checkIcon(volumeWidget, stdout)
     end)
   end
 end)
 
-awful.spawn.easy_async_with_shell(getVolumePercCmd, function(stdout)
-  checkIcon(volumeWidget, stdout)
-end)
+volumeWidget:updateIcon()
 
 return volumeWidget
 

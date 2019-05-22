@@ -1,36 +1,47 @@
 local awful = require("awful")
-local watch = awful.widget.watch
 local wibox = require("wibox")
 local markup = require("lain.util.markup")
 local vars = require("vars")
+local utils = require("utils")
 
 local getBrightnessPercCmd = '/usr/bin/light'
+local increaseBrightnessCmd = '/usr/bin/light -A 5'
+local decreaseBrightnessCmd = '/usr/bin/light -U 5'
 
--- Actual volume changes are handled by xbindkeys, see ~/.xbindkeysrc for more.
-
+local brightnessWidget = {}
 local percWidget = wibox.widget.textbox()
+local brightnessIcon = wibox.widget.imagebox(vars.icons.brightness)
 
-local brightnessWidget = wibox.widget {
+brightnessWidget.widget = wibox.widget {
   layout = wibox.layout.align.horizontal,
-  {
-    id = "perc",
-    markup = markup.font(vars.typography.mainFont, "0%"),
-    widget = percWidget,
-    visible = true,
-  },
-  {
-    id = "icon",
-    image = vars.themeRoot .. "icons/baseline-brightness_high-24px.svg",
-    widget = wibox.widget.imagebox,
-  },
+  percWidget,
+  utils.iconMargin(brightnessIcon),
 }
 
-local function checkIcon(widget, brightnessRaw)
+function brightnessWidget.incBrightness()
+  awful.spawn.easy_async_with_shell(increaseBrightnessCmd, function()
+    brightnessWidget:updateIcon()
+  end)
+end
+
+function brightnessWidget.decBrightness()
+  awful.spawn.easy_async_with_shell(decreaseBrightnessCmd, function()
+    brightnessWidget:updateIcon()
+  end)
+end
+
+function brightnessWidget:updateIcon()
+  awful.spawn.easy_async_with_shell(getBrightnessPercCmd, function(stdout)
+    self:checkIcon(self, stdout)
+  end)
+end
+
+function brightnessWidget:checkIcon(widget, brightnessRaw)
   local brightness = tonumber(brightnessRaw)
   percWidget:set_markup(markup.font(vars.typography.mainFont, brightness .. "%"))
 end
 
-watch(getBrightnessPercCmd, 60, checkIcon, brightnessWidget)
+brightnessWidget:updateIcon()
 
 return brightnessWidget
 

@@ -18,17 +18,14 @@ local taglist_buttons = gears.table.join(
 )
 
 local function taglist(s)
-  -- Create a taglist for each screen.
   local taglist = awful.widget.taglist {
     screen  = s,
     filter  = awful.widget.taglist.filter.all,
     buttons = taglist_buttons,
     style = {
       shape = gears.shape.powerline
-    }
+    },
   }
-
-  taglist.taglist_fg_focus = vars.typographyColours.light
 
   return taglist
 end

@@ -26,7 +26,7 @@ local batteryWidget = lain.widget.bat({
       batteryImage:set_image(icons.batteryCharging)
     end
 
-    widget:set_markup(utils.wiBarFont(lain.util.markup.font(vars.mainFont, bat_now.perc .. "%")))
+    widget:set_markup(utils.wiBarFont(bat_now.perc .. "%"))
   end
 })
 

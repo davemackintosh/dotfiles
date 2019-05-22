@@ -34,6 +34,9 @@ local brightnessWidget = require("widgets.brightness")
 -- Other stuff.
 local healthTools = require("tools.health")
 
+theme.volumeWidget = volumeWidget
+theme.brightnessWidget = brightnessWidget
+
 -- typography
 theme.font          = vars.mainFont
 
@@ -44,6 +47,8 @@ theme.bg_urgent     = vars.colourPalette[2]
 theme.bg_minimize   = vars.colourPalette[1]
 theme.bg_systray    = theme.bg_normal
 
+theme.taglist_font = vars.typography.mainFont
+
 theme.fg_normal     = vars.typographyColours.normal
 theme.fg_focus      = vars.typographyColours.light
 theme.fg_urgent     = vars.typographyColours.urgent
@@ -53,9 +58,12 @@ theme.border_width  = dpi(4)
 theme.border_normal = vars.colourPalette[6]
 theme.border_focus  = vars.colourPalette[5]
 theme.border_marked = vars.colourPalette[2]
+
+-- Task list
 theme.tasklist_plain_task_name = true
 theme.tasklist_disable_icon = true
 
+-- Pretty
 theme.useless_gap = 7
 theme.wallpaper = theme.dir .. "/wallpapers/80s.jpg"
 
@@ -70,8 +78,6 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 
 -- Add the notification styles.
 theme = gears.table.join(theme, notificationStyles)
-
-print(inspect(theme))
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
@@ -104,12 +110,12 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywibox:setup {
       layout = wibox.layout.align.horizontal,
       powerlineBarWidget({ s.mytaglist }, "arrow_right"), -- Left widgets
-      wibox.container.margin(s.mypromptbox, 5), -- Centre widget
+      wibox.container.margin(s.mypromptbox, 10), -- Centre widget
       powerlineBarWidget({ -- Right widgets
         clockWidget,
         batteryWidget.widget,
-        brightnessWidget,
-        volumeWidget,
+        brightnessWidget.widget,
+        volumeWidget.widget,
         netWidget,
       })
   }

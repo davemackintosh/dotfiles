@@ -2,7 +2,7 @@ local wibox = require("wibox")
 local lain = require("lain")
 local markup = lain.util.markup
 
-local typography = require(".vars").typography
+local typography = require("vars").typography
 
 local function wiBarFont(text)
   return markup.font(typography.mainFont, text)
