@@ -20,6 +20,7 @@ grub
 gvfs-google
 imagemagick
 iw
+jq
 light
 linux-headers
 lua-ldbus
