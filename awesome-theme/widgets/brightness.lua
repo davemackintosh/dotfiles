@@ -37,7 +37,7 @@ function brightnessWidget:updateIcon()
 end
 
 function brightnessWidget:checkIcon(widget, brightnessRaw)
-  local brightness = tonumber(brightnessRaw)
+  local brightness = math.floor(tonumber(brightnessRaw))
   percWidget:set_markup(markup.font(vars.typography.mainFont, brightness .. "%"))
 end
 
