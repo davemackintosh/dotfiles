@@ -1,11 +1,13 @@
 # ZSH config.
 export ZSH="$HOME/.oh-my-zsh"
 
+bindkey -v
+
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-plugins=(git)
+plugins=(git vi-mode safe-paste)
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -24,9 +26,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-touch $HOME/.env
-source "$HOME/.env"
 
 neofetch
 

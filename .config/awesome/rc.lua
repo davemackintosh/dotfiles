@@ -141,15 +141,23 @@ end)
 globalkeys = gears.table.join(
   awful.key({  }, "XF86MonBrightnessUp", function () beautiful.brightnessWidget.incBrightness() end, { desription = "Increase LCD brightness", group = "client" }),
   awful.key({  }, "XF86MonBrightnessDown", function () beautiful.brightnessWidget.decBrightness() end, { desription = "Decrease LCD brightness", group = "client" }),
-    awful.key({  }, "XF86AudioRaiseVolume", function () 
-      beautiful.volumeWidget.incVolume()
-    end, { description = "Increase volume", group = "media" }),
-    awful.key({  }, "XF86AudioLowerVolume", function () beautiful.volumeWidget.decVolume() end, { description = "Increase volume", group = "media" }),
-    awful.key({  }, "XF86AudioMute", function () beautiful.volumeWidget.toggleVolume() end, { description = "Increase volume", group = "media" }),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+  awful.key({  }, "XF86AudioRaiseVolume", function () beautiful.volumeWidget.incVolume() end, { description = "Increase volume", group = "media" }),
+  awful.key({  }, "XF86AudioLowerVolume", function () beautiful.volumeWidget.decVolume() end, { description = "Increase volume", group = "media" }),
+  awful.key({  }, "XF86AudioMute", function () beautiful.volumeWidget.toggleVolume() end, { description = "Increase volume", group = "media" }),
+
+  awful.key({ "Mod1", "Control", "Shift" }, "4", function()
+    awful.spawn.easy_async_with_shell([===[
+      TMP="/tmp/$RANDOM.png"
+      import $TMP &&
+      xclip -selection clipboard -t image/png -i $TMP &&
+      rm -rf $TMP
+    ]===], function() end)
+  end),
+
+  awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+            {description = "view previous", group = "tag"}),
+  awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+            {description = "view next", group = "tag"}),
 
     awful.key({ modkey }, "Tab",
         function ()

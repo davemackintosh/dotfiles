@@ -57,7 +57,8 @@ vars.icons = {
   wifiOff = iconBase .. "baseline-signal_wifi_off-24px.svg",
   volumeOn = iconBase .. "baseline-volume_up-24px.svg",
   volumeOff = iconBase .. "baseline-volume_off-24px.svg",
-  ethernetConnected = iconBase .. "ethernet-cable.svg"
+  ethernetConnected = iconBase .. "ethernet-cable.svg",
+  systemUpdates = iconBase .. "baseline-update-24px.svg"
 }
 
 return vars

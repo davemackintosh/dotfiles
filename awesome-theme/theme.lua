@@ -30,6 +30,7 @@ local powerlineBarWidget = require(".widgets.powerline-widgets")
 local taglistWidget = require("widgets.taglist")
 local volumeWidget = require("widgets.volume")
 local brightnessWidget = require("widgets.brightness")
+local systemUpdatesWidget = require("widgets.updates")
 
 -- Other stuff.
 local healthTools = require("tools.health")
@@ -116,6 +117,7 @@ awful.screen.connect_for_each_screen(function(s)
         batteryWidget.widget,
         brightnessWidget.widget,
         volumeWidget.widget,
+        systemUpdatesWidget.widget,
         netWidget,
       })
   }
