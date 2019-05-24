@@ -17,6 +17,7 @@ declare -a files=(
   .config/ranger
   .config/compton
   .config/rofi
+  .config/mpd
   z.sh
   aliases.sh
 )

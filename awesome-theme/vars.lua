@@ -38,7 +38,7 @@ vars.typography.secondaryFont = vars.typography.secondaryFontFamily .. " 11"
 
 -- Text colours.
 vars.typographyColours = {
-  normal = vars.colourPalette[6],
+  normal = "#1d1f21",
   light = vars.colourPalette[1],
   unfocused = vars.colourPalette[2],
   urgent = vars.colourPalette[1],

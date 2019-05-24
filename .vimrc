@@ -34,6 +34,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'luochen1990/rainbow'
+Plugin 'ap/vim-css-color'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
