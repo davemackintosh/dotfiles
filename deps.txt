@@ -12,6 +12,7 @@ docker
 docker-compose
 efibootmgr
 firefox
+flashfocus-git
 franz-bin
 git
 google-chrome

@@ -1,4 +1,5 @@
 local/camlidl 1.06-4
+local/flashfocus-git v1.2.1.r1.g75e1d96-1
 local/franz-bin 5.1.0-1
 local/gapi-ocaml 0.3.10-1
 local/google-chrome 74.0.3729.131-1

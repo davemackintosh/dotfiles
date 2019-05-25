@@ -37,7 +37,5 @@ xbindkeys &
 xclock -geometry 50x50-1+1 &
 xterm -geometry 80x50+494+51 &
 xterm -geometry 80x20+494-0 &
-compton --config ~/.config/compton/compton.conf
-# compton -cCGfF -o 0.38 -O 200 -I 200 -t 0 -l 0 -r 3 -D2 -m 0.88 &
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 exec awesome

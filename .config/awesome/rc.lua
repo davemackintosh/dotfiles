@@ -318,6 +318,7 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Run some other apps.
 -- awful.spawn.easy_async_with_shell("xbindkeys", function() end)
+awful.spawn.easy_async_with_shell("compton --config ~/.config/compton/compton.conf", function() end)
 awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", function() end)
 awful.spawn.easy_async_with_shell("[ ! -s ~/.config/mpd/pid ] && mpd", function() end)
 awful.spawn.easy_async_with_shell("bluetoothctl power on", function() end)

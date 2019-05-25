@@ -108,7 +108,6 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywibox = awful.wibar({ 
     position = "top", 
     screen = s,
-    opacity = 0,
     bg = "00000000"
   })
 
