@@ -1,5 +1,6 @@
 local wibox = require("wibox")
 local awful = require("awful")
+local timer = require("gears.timer")
 local spawn = awful.spawn
 local vars = require("vars")
 local utils = require("utils")
@@ -7,7 +8,7 @@ local markup = require("lain.util.markup")
 
 local updateWidget = {}
 
-local getUpdateCountCmd = "pacman -Sup --noprogressbar | wc -l"
+local getUpdateCountCmd = "pacman -Qu"
 
 local updateIcon = wibox.widget.imagebox(vars.icons.systemUpdates)
 local textWidget = wibox.widget.textbox()
@@ -20,6 +21,10 @@ updateWidget.widget = wibox.widget {
   utils.iconMargin(updateIcon),
 }
 
+function trim(s)
+   return s:gsub("^%s+", ""):gsub("%s+$", "")
+end
+
 function updateWidget:update(count)
   if count ~= nil then
     textWidget:set_markup(markup.font(vars.typography.mainFont, count))
@@ -31,11 +36,17 @@ function updateWidget:update(count)
 end
 
 function updateWidget:getUpdates()
-  spawn.easy_async_with_shell(getUpdateCountCmd, function(stdout) updateWidget:update(stdout) end)
+  spawn.easy_async(getUpdateCountCmd, function(stdout) 
+    local _, count = stdout:gsub('\n', '\n')
+    updateWidget:update(count)
+  end)
 end
 
-updateWidget:getUpdates()
-
-awful.widget.watch(getUpdateCountCmd, 3600, function(_, stdout) updateWidget:update(stdout) end)
+timer {
+  timeout = 3600,
+  call_now = true,
+  autostart = true,
+  callback = function() updateWidget:getUpdates() end,
+}
 
 return updateWidget

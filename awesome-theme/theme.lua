@@ -4,7 +4,6 @@ local gears = require("gears")
 local lain = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
-local inspect = require("inspect")
 
 local gfs = gears.filesystem
 local dpi = xresources.apply_dpi
@@ -67,7 +66,7 @@ theme.tasklist_disable_icon = true
 
 -- Pretty
 theme.useless_gap = 7
-theme.wallpaper = theme.dir .. "/wallpapers/snow.jpg"
+theme.wallpaper = theme.dir .. "/wallpapers/carina-nebula.jpg"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(0)
@@ -93,14 +92,12 @@ theme.menu_width  = dpi(100)
 theme.icon_theme = nil
 
 awful.screen.connect_for_each_screen(function(s)
-  s.addPromptBox = false
-
   -- Create a taglist widget
   s.mytaglist = taglistWidget(s)
 
   s.mypromptbox = awful.widget.prompt({
     bg_cursor = "#DA70D6",
-    fg = vars.typographyColours.normal,
+    fg = vars.typographyColours.bright,
     font = vars.typography.mainFont,
   })
 

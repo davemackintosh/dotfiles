@@ -129,12 +129,6 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox:buttons(gears.table.join(
-      awful.button({ }, 1, function () awful.layout.inc( 1) end),
-      awful.button({ }, 3, function () awful.layout.inc(-1) end),
-      awful.button({ }, 4, function () awful.layout.inc( 1) end),
-      awful.button({ }, 5, function () awful.layout.inc(-1) end)))
--- }}}
 end)
 
 -- {{{ Key bindings
@@ -263,12 +257,32 @@ awful.rules.rules = {
      }
     },
 
+    {
+      rule = {
+        class = "Firefox",
+      },
+      properties = {
+        tag = "browser",
+      },
+    },
+
+    {
+      rule = {
+        instance = "sysstatus",
+      },
+      properties = {
+        border_width = 0,
+        margins = 0,
+      },
+    },
+
     -- Floating clients.
     { rule_any = {
         instance = {
           "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
           "pinentry",
+          "sysstatus",
         },
         class = {
           "Arandr",
@@ -293,6 +307,8 @@ awful.rules.rules = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
+
+
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }

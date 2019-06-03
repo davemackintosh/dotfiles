@@ -13,6 +13,7 @@ local getMutedCmd = 'pactl list sinks | grep "^[[:space:]]Mute:"'
 local increaseVolumeCmd = 'pactl set-sink-volume @DEFAULT_SINK@ +5%'
 local decreaseVolumeCmd = 'pactl set-sink-volume @DEFAULT_SINK@ -5%'
 local toggleDeviceCmd = 'pactl set-sink-mute @DEFAULT_SINK@ toggle'
+local disableDeviceMuteCmd = 'pactl set-sink-mute @DEFAULT_SINK@ off'
 
 local percWidget = wibox.widget.textbox()
 
@@ -27,7 +28,7 @@ volumeWidget.widget = wibox.widget {
 }
 
 function volumeWidget.incVolume()
-  awful.spawn.easy_async_with_shell(increaseVolumeCmd, function(stdout)
+  awful.spawn.easy_async_with_shell(disableDeviceMuteCmd .. " && " .. increaseVolumeCmd, function(stdout)
     volumeWidget:updateIcon()
   end)
 end

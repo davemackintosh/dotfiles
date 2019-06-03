@@ -21,7 +21,7 @@ local notificationStyles = {
   notification_bg = string.sub(sysTheme.background, -7), -- Because in all liklihood, there's transparency
   notification_fg = sysTheme.foreground,
   notification_margin = 15,
-  notification_font = vars.typography.secondaryFontFamily .. " 12",
+  notification_font = vars.typography.mainFont,
   notification_spacing = 10
 }
 
