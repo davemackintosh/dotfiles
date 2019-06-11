@@ -1,9 +1,10 @@
 local/camlidl 1.06-4
+local/etcher-bin 1.5.45-1
 local/flashfocus-git v1.2.1.r1.g75e1d96-1
 local/franz-bin 5.1.0-1
 local/gapi-ocaml 0.3.10-1
 local/google-chrome 74.0.3729.169-1
-local/google-cloud-sdk 247.0.0-1
+local/google-cloud-sdk 248.0.0-1
 local/google-drive-ocamlfuse 0.7.1-1
 local/lua-ldbus r118.a6e77a0-1
 local/makemkv 1.14.3-1

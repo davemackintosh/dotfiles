@@ -1,3 +1,4 @@
 .config/ranger/plugins/
+.config/nvim/bundle/
 vim_session
 .git

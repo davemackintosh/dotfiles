@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set encoding=UTF-8
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -8,6 +9,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'eslint/eslint'
 Plugin 'yannickcr/eslint-plugin-react'
@@ -35,6 +37,9 @@ Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'luochen1990/rainbow'
 Plugin 'ap/vim-css-color'
+Plugin 'wokalski/autocomplete-flow'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 
 if has('nvim')
   Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -52,6 +57,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#ignore_sources.js = ['omni']
 let g:deoplete#ignore_sources.ts = ['omni']
+let g:airline_powerline_fonts = 1
 
 set mouse=a
 set clipboard=unnamed
@@ -61,10 +67,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
   \ }
 
-Plugin 'wokalski/autocomplete-flow'
-" For func argument completion
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
 call vundle#end()            " required
 
 filetype plugin indent on    " required
@@ -79,16 +81,16 @@ colorscheme OceanicNext
 
 au BufNewFile *.vim,*.pl,*.sh set fileformat=unix
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 set expandtab
 set number
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-
-
+set laststatus=2
+set ttimeoutlen=50
 
 " Key bindings
 map <C-o> :NERDTreeToggle<CR>
@@ -155,8 +157,6 @@ let g:ale_fixers = {
 \}
 let b:ale_fix_on_save = 1
 autocmd BufWritePost *.js,*.jsx,*.json,*.ts ALEFix
-
-let g:airline_theme='bubblegum'
 
 highlight clear ALEWarningSign " otherwise uses error bg color (typically red)
 hi Normal ctermbg=NONE ctermfg=NONE

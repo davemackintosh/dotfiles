@@ -7,10 +7,13 @@ blueman
 bluez-utils
 bumblebee
 compton
+ctags
 dialog
 docker
 docker-compose
+dvdbackup
 efibootmgr
+etcher-bin
 firefox
 flashfocus-git
 franz-bin
@@ -54,9 +57,11 @@ python-pip
 qtcreator
 ranger
 rofi
+rsync
 rxvt-unicode-pixbuf
 slack-desktop
 thefuck
+tigervnc
 transmission-qt
 ttf-dejavu
 ttf-dejavu-sans-mono-powerline-git
