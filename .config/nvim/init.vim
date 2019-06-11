@@ -12,6 +12,7 @@ call plug#begin('~/.config/nvim/bundle')
 
 	" SCM plugins
 	Plug 'tpope/vim-fugitive'
+  Plug 'kristijanhusak/defx-git'
 
 	" Code plugins
   Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}

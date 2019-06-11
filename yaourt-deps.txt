@@ -25,7 +25,6 @@ local/ocaml-zarith 1.8-2
 local/ocamlfuse 2.7.1-6
 local/ocamlnet 4.1.6-1
 local/package-query 1.9-3
-local/rxvt-unicode-pixbuf 9.22-2
 local/slack-desktop 3.4.2-1
 local/ttf-dejavu-sans-mono-powerline-git r202.e80e3eb-1
 local/yaourt 1.9-1

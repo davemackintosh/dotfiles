@@ -210,6 +210,7 @@ $schema	.config/nvim/bundle/coc.nvim/data/schema.json	/^  "$schema": "http:\/\/j
 4	.config/nvim/coc-settings.json	/^      "rootPatterns": [".ccls", "compile_commands.json", ".vim\/", ".git\/", ".hg\/"],$/;"	s	array:languageserver.ccls.rootPatterns
 5	.config/nvim/bundle/coc.nvim/data/schema.json	/^      "enum": ["edit", "split", "vsplit", "tabe", "drop", "tab drop"]$/;"	s	array:properties.coc.preferences.jumpCommand.enum
 <BS>	.config/nvim/bundle/coc.nvim/autoload/coc/snippet.vim	/^  snoremap <silent> <BS> <c-g>c$/;"	m
+<C-.>	.config/nvim/mappings/defx.vim	/^	nnoremap <silent><buffer><expr> <C-.>$/;"	m
 <C-H>	.config/nvim/mappings/buffers.vim	/^nnoremap <C-H> <C-W><C-H>$/;"	m
 <C-H>	.vimrc	/^nnoremap <C-H> <C-W><C-H>$/;"	m
 <C-J>	.config/nvim/mappings/buffers.vim	/^nnoremap <C-J> <C-W><C-J>$/;"	m
@@ -225,7 +226,6 @@ $schema	.config/nvim/bundle/coc.nvim/data/schema.json	/^  "$schema": "http:\/\/j
 <C-W>C	.config/nvim/bundle/vim-fugitive/autoload/fugitive.vim	/^    nnoremap <buffer> <silent> <C-W>C :<C-U>exe 'Gsplit ' . <SID>fnameescape(<SID>ContainingComm/;"	m
 <C-c>	.config/nvim/coc-settings.json	/^    "<C-c>": "do:exit"$/;"	s	object:list.insertMappings
 <C-c>	.config/nvim/coc-settings.json	/^    "<C-c>": "do:exit"$/;"	s	object:list.normalMappings
-<C-h>	.config/nvim/mappings/defx.vim	/^	nnoremap <silent><buffer><expr> <C-h>$/;"	m
 <C-o>	.config/nvim/mappings/defx.vim	/^map <C-o> :Defx -toggle -show-ignored-files -columns=indent:icons:filename:type:size:time<CR>$/;"	m
 <C-o>	.vimrc	/^map <C-o> :NERDTreeToggle<CR>$/;"	m
 <C-r>	.config/nvim/mappings/vista.vim	/^map <C-r> :Vista<CR>$/;"	m

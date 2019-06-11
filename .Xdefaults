@@ -39,7 +39,8 @@ URxvt*termName: rxvt-256color
 
 
 ! Fonts
-urxvt*font: xft:FuraCode Nerd Font:size=13,\
+urxvt*font: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
+            xft:FuraCode Nerd Font:size=13,\
             xft:Noto Color Emoji:size=10,\
             xft:DejaVu Sans Mono for Powerline:size=10
 urxvt*boldFont: xft:FuraCode Nerd Font:size=13

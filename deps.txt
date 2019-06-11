@@ -58,7 +58,7 @@ qtcreator
 ranger
 rofi
 rsync
-rxvt-unicode-pixbuf
+rxvt-unicode
 slack-desktop
 thefuck
 tigervnc
