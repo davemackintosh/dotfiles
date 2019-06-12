@@ -2,11 +2,14 @@
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["go"],
   "tsserver.enableJavascript": true,
+  "tslint.enable": true,
+  "tslint.autoFixOnSave": true,
   "javascript.validate.enable": false,
   "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
   "signature.target": "echo",
+  "eslint.autoFixOnSave": true,
   "list.normalMappings": {
     "<C-c>": "do:exit"
   },

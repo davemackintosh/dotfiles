@@ -1,4 +1,5 @@
 set nocompatible
+set shell=/bin/bash\ --login
 
 call plug#begin('~/.config/nvim/bundle')
 	" File plugins.
@@ -17,6 +18,10 @@ call plug#begin('~/.config/nvim/bundle')
 	" Code plugins
   Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
   Plug 'ludovicchabant/vim-gutentags'
+  Plug 'terryma/vim-multiple-cursors'
+  Plug 'eslint/eslint'
+  Plug 'yannickcr/eslint-plugin-react'
+  Plug 'HerringtonDarkholme/yats.vim'
 
   " Look and feel plugins
   Plug 'mhartington/oceanic-next'
