@@ -2,3 +2,4 @@
 .config/nvim/bundle/
 vim_session
 .git
+tags
