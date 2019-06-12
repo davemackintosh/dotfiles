@@ -1,6 +1,12 @@
 ":CocInstall coc-json
+":CocInstall coc-github
+":CocInstall coc-git
 ":CocInstall coc-tsserver
 ":CocInstall coc-html
 ":CocInstall coc-css
 ":CocInstall coc-svg
-
+":CocInstall coc-marketplace
+":CocInstall coc-tslint-plugin
+":CocInstall coc-tslint
+":CocInstall coc-eslint
+":CocInstall coc-emoji

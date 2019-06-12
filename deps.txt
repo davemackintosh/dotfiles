@@ -6,6 +6,7 @@ bbswitch
 blueman
 bluez-utils
 bumblebee
+cdrtools
 compton
 ctags
 dialog

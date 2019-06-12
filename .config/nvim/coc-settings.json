@@ -1,6 +1,5 @@
 {
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["go"],
   "tsserver.enableJavascript": true,
   "tslint.enable": true,
   "tslint.autoFixOnSave": true,
@@ -9,13 +8,23 @@
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
   "signature.target": "echo",
+
+  "suggest.triggerAfterInsertEnter": false,
+  "suggest.timeout": 500,
+  "suggest.noselect": false,
+  "suggest.detailField":"abbr",
+  "suggest.snippetIndicator": "🌟",
+  "suggest.triggerCompletionWait": 100,
+  "suggest.echodocSupport": true,
+
   "eslint.autoFixOnSave": true,
-  "list.normalMappings": {
-    "<C-c>": "do:exit"
-  },
-  "list.insertMappings": {
-    "<C-c>": "do:exit"
-  },
+  "eslint.autoFix": true,
+
+  "git.enableGutters": true,
+  "git.addGlameToBufferVar": true,
+  "git.addGlameToVirtualText": true,
+  "git.virtualTextPrefix": " ❯❯❯ ",
+
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -45,7 +54,7 @@
     "flow": {
       "command": "flow",
       "args": ["lsp"],
-      "filetypes": ["javascript", "javascriptreact"],
+      "filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
       "initializationOptions": {},
       "requireRootPattern": true,
       "settings": {},
