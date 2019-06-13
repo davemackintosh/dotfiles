@@ -22,9 +22,12 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'eslint/eslint'
   Plug 'yannickcr/eslint-plugin-react'
   Plug 'HerringtonDarkholme/yats.vim'
+  Plug 'ap/vim-css-color'
 
   " Look and feel plugins
-  Plug 'mhartington/oceanic-next'
+  " Plug 'mhartington/oceanic-next'
+  " Plug 'flrnprz/taffy.vim'
+  Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 call plug#end()
 
 " Path to the vim config.

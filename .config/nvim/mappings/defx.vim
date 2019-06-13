@@ -1,5 +1,5 @@
 " Open or close Defx
-map <C-o> :Defx -toggle -show-ignored-files -columns=indent:git:icons:filename:type:size:time<CR>
+map <C-o> :Defx<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort

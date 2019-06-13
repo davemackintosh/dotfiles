@@ -5,6 +5,15 @@ set ruler
 set laststatus=2
 set number
 set t_Co=256
+set background=dark
 
-colorscheme OceanicNext
+syntax on
+
+" colorscheme OceanicNext
+" colorscheme taffy
+colorscheme challenger_deep
+
+let g:lightline = { 'colorscheme': 'challenger_deep'}
+
+" Enable transparent backgrounds.
 hi Normal ctermbg=NONE ctermfg=NONE

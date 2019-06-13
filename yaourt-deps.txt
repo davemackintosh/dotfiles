@@ -1,4 +1,5 @@
 local/camlidl 1.06-4
+local/ccls 0.20190314-2
 local/etcher-bin 1.5.45-1
 local/flashfocus-git v1.2.1.r1.g75e1d96-1
 local/franz-bin 5.1.0-1
@@ -27,5 +28,6 @@ local/ocamlnet 4.1.6-1
 local/package-query 1.9-3
 local/slack-desktop 3.4.2-1
 local/ttf-dejavu-sans-mono-powerline-git r202.e80e3eb-1
+local/urxvt-resize-font-git 19.854ba29-1
 local/yaourt 1.9-1
 local/zoom 2.8.222599.0519-1

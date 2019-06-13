@@ -6,6 +6,7 @@ bbswitch
 blueman
 bluez-utils
 bumblebee
+ccls
 cdrtools
 compton
 ctags
@@ -69,6 +70,7 @@ ttf-dejavu-sans-mono-powerline-git
 ttf-fira-code
 ttf-fira-mono
 ttf-font-awesome
+urxvt-resize-font-git
 vicious
 virtualbox
 w3m

@@ -40,18 +40,19 @@ URxvt*termName: rxvt-256color
 
 ! Fonts
 urxvt*font: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:FuraCode Nerd Font:size=13,\
-            xft:Noto Color Emoji:size=10,\
-            xft:DejaVu Sans Mono for Powerline:size=10
-urxvt*boldFont: xft:FuraCode Nerd Font:size=13
-urxvt*italicFont: xft:FuraCode Nerd Font:size=13
-urxvt*boldItalicFont: xft:FuraCode Nerd Font:size=13
+            xft:Noto Color Emoji:size=10
+urxvt*boldFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
+            xft:Noto Color Emoji:size=10
+urxvt*italicFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
+            xft:Noto Color Emoji:size=10
+urxvt*boldItalicFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
+            xft:Noto Color Emoji:size=10
 
 ! Transparency
 urxvt*transparent: true
 urxvt*shading: 15
-! urxvt*blurRadius: 10
-urxvt.inheritPixmap: true
+! urxvt*blurRadius: 5
+! urxvt.inheritPixmap: true
 
 Xft.dpi:                        96
 Xft.antialias:                  1
@@ -66,7 +67,7 @@ URxvt.letterSpace:              -1
 URxvt.iso14755:                 false
 URxvt.iso14755_52:              false
 URxvt*loginShell:               true
-URxvt.internalBorder:           5
+URxvt.internalBorder:           10
 URxvt.perl-ext:	 	            	tabbed,default,matcher,resize-font
 URxvt.url-launcher:             /usr/bin/xdg-open
 Rxvt.matcher.button:            1
@@ -77,3 +78,23 @@ URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.keysym.Control-Down:  resize-font:smaller
 URxvt.keysym.Control-Up:    resize-font:bigger
+
+! XDM Display Manager
+xlogin*width: 300
+xlogin*height: 200
+xlogin*x: 100
+xlogin*y: 100
+!xlogin*geometry
+!xlogin*foreground
+!xlogin*background
+!xlogin*font
+!xlogin*greeting
+!xlogin*greetFont
+!xlogin*greetColor
+!xlogin*namePrompt
+!xlogin*passwdPrompt
+!xlogin*promptFont
+!xlogin*promptColor
+!xlogin*fail
+!xlogin*failFont
+!xlogin*failColor
