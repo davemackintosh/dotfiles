@@ -1,5 +1,5 @@
 " Open or close Defx
-map <C-o> :Defx<CR>
+map <silent><C-o> :Defx<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort

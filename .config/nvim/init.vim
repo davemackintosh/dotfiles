@@ -5,7 +5,9 @@ call plug#begin('~/.config/nvim/bundle')
 	" File plugins.
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'kristijanhusak/defx-icons'
-	Plug 'ctrlpvim/ctrlp.vim'
+	" Plug 'ctrlpvim/ctrlp.vim'
+  Plug '/usr/local/opt/fzf'
+  Plug 'junegunn/fzf.vim'
 
 	" Status plugins
   Plug 'itchyny/lightline.vim'

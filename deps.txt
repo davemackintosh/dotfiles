@@ -16,9 +16,11 @@ docker-compose
 dvdbackup
 efibootmgr
 etcher-bin
+fd
 firefox
 flashfocus-git
 franz-bin
+fzf
 git
 google-chrome
 google-cloud-sdk

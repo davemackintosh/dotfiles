@@ -19,6 +19,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # Editor config
 export EDITOR='nvim'
+export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Export NVM program.
 export NVM_DIR="$HOME/.nvm"

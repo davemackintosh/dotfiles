@@ -1,1 +1,1 @@
-map <C-r> :Vista!!<CR>
+map <silent><C-r> :Vista!!<CR>
