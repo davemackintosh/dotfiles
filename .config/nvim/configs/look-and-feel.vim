@@ -13,7 +13,5 @@ syntax on
 " colorscheme taffy
 colorscheme challenger_deep
 
-let g:lightline = { 'colorscheme': 'challenger_deep'}
-
 " Enable transparent backgrounds.
 hi Normal ctermbg=NONE ctermfg=NONE

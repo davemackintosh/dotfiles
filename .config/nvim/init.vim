@@ -1,20 +1,24 @@
 set nocompatible
+
+" Ignore dotfiles when opening Fugitive
+" so it opens pretty instantly instead of 
+" setting up an entire environment.
 set shell=/bin/bash\ --login
 
 call plug#begin('~/.config/nvim/bundle')
 	" File plugins.
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'kristijanhusak/defx-icons'
-	" Plug 'ctrlpvim/ctrlp.vim'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
 
 	" Status plugins
-  Plug 'itchyny/lightline.vim'
+  " Plug 'itchyny/lightline.vim' " If you use this, its worth removing the
+  " .vim suffix from configs/statusline.vim
   Plug 'liuchengxu/vista.vim'
 
 	" SCM plugins
-	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-fugitive', { 'on': [] }
   Plug 'kristijanhusak/defx-git'
 
 	" Code plugins
@@ -26,13 +30,14 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'ap/vim-css-color'
 
-  " Look and feel plugins
+  " Look and feel plugins. I'm so very fickle.
+  " these are my favourites.
   " Plug 'mhartington/oceanic-next'
   " Plug 'flrnprz/taffy.vim'
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 call plug#end()
 
-" Path to the vim config.
+" Directory path to the vim config.
 let s:path = fnamemodify(expand('$MYVIMRC'), ':h')
 
 " Glob and source all the files in `path`
@@ -45,4 +50,12 @@ endfunction
 " Get our files.
 call SourceAllIn('/configs/')
 call SourceAllIn('/mappings/')
+
+" I do this a lot. this saves me a lot
+" of time. 
+map <C-u> :source $MYVIMRC<CR>
+
+" Because apparently I can't let go of 
+" Shift fast enough. Alias this.
+command! W :write
 
