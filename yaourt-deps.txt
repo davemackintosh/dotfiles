@@ -9,9 +9,11 @@ local/google-cloud-sdk 248.0.0-1
 local/google-drive-ocamlfuse 0.7.1-1
 local/lua-ldbus r118.a6e77a0-1
 local/makemkv 1.14.3-1
+local/neovim-nightly 1:0.4.0+20190616-1
 local/nerd-fonts-fira-code 2.0.0-1 (nerd-fonts)
 local/nerd-fonts-source-code-pro 2.0.0-4
 local/nerd-fonts-terminus 2.0.0-1 (nerd-fonts)
+local/nvidia-xrun 0.3-0
 local/ocaml-base 0.12.0-1
 local/ocaml-cryptokit 1.13-2
 local/ocaml-curl 0.8.2-1
