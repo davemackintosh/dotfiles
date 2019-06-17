@@ -51,8 +51,8 @@ urxvt*boldItalicFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
 ! Transparency
 urxvt*transparent: true
 urxvt*shading: 15
-urxvt*blurRadius: 25
-urxvt.inheritPixmap: true
+! urxvt*blurRadius: 25
+! urxvt.inheritPixmap: true
 
 Xft.dpi:                        96
 Xft.antialias:                  1
@@ -71,7 +71,7 @@ URxvt.internalBorder:           10
 URxvt.perl-ext:	 	            	tabbed,default,matcher,resize-font
 URxvt.url-launcher:             /usr/bin/xdg-open
 Rxvt.matcher.button:            1
-URxvt.matcher.rend.0:           Uline Bold fg5
+URxvt.matcher.rend.0:           Uline Bold fg0
 
 URxvt.tabbed.tabbar-fg: 7
 URxvt.tabbed.tabbar-bg: 0
