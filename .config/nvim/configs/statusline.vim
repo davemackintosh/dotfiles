@@ -1,4 +1,3 @@
-set termguicolors
 hi User1 guifg=#000000 guibg=#4cbf99
 hi User2 guifg=#000000 guibg=#4cbf99
 
