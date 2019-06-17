@@ -3,20 +3,14 @@ export ZSH="$HOME/.oh-my-zsh"
 
 bindkey -v
 
-if [ "$ANDROID_ROOT" = "/system" ]
-then
-  ZSH_THEME="powerlevel9k/powerlevel9k"
-  plugins=(git safe-paste zsh-syntax-highlighting)
-else
-  source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  plugins=(git safe-paste)
-fi
+source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs_joined)
+plugins=(git vi-mode safe-paste)
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Tools
 . $ZSH/oh-my-zsh.sh
