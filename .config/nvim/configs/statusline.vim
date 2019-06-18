@@ -1,7 +1,8 @@
 hi User1 ctermbg=004 ctermfg=015
 hi User2 ctermbg=005 ctermfg=015
-hi User3 ctermfg=005 ctermbg=NONE
-hi User4 ctermfg=004 ctermbg=NONE
+hi User3 ctermfg=005 ctermbg=004
+hi User4 ctermfg=004 ctermbg=005
+hi User5 ctermfg=005 ctermbg=NONE
 
 function! GetFIcon(ext)
 let ext = expand('%:e')
@@ -19,7 +20,7 @@ set statusline+=%1*\ %{toupper(mode())}\
 set statusline+=%4*
 set statusline+=%2*\ %{GetFIcon(expand('%:e'))}\ 
 set statusline+=%2*\ %t@%l:%c\ 
-set statusline+=%3*
+set statusline+=%5*
 set statusline+=%0*
 
 
