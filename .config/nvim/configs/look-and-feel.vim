@@ -15,5 +15,7 @@ colorscheme challenger_deep
 
 " Enable transparent backgrounds.
 hi Normal ctermbg=NONE ctermfg=NONE
-highlight LineNr ctermbg=NONE
-highlight StatusLine ctermbg=NONE
+hi LineNr ctermbg=NONE
+hi StatusLine ctermbg=NONE
+hi TabLine ctermbg=NONE
+hi TabLineFill ctermbg=NONE
