@@ -1,3 +1,5 @@
+autocmd VimEnter * if isdirectory(expand(printf('#%s:p', expand('<abuf>')))) | call Defx | endif
+
 call defx#custom#option('_', {
 \ 'winwidth': 40,
 \ 'split': 'vertical',

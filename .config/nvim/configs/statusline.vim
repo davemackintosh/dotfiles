@@ -21,4 +21,12 @@ set statusline+=%2*\ %{GetFIcon(expand('%:e'))}\
 set statusline+=%2*\ %t@%l:%c\ 
 set statusline+=%4*
 
-
+au BufEnter,BufWinEnter,WinEnter,CmdwinEnter *
+                       \ call s:disable_statusline('defx')
+fun! s:disable_statusline(bn)
+   if a:bn == bufname('%')
+       set laststatus=0
+   else
+       set laststatus=2
+   endif
+endfunction
