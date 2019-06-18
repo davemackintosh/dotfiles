@@ -29,6 +29,9 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'yannickcr/eslint-plugin-react'
   Plug 'HerringtonDarkholme/yats.vim'
   Plug 'ap/vim-css-color'
+  Plug 'prabirshrestha/async.vim'
+  Plug 'prabirshrestha/vim-lsp'
+  Plug 'ryanolsonx/vim-lsp-typescript'
 
   " Look and feel plugins. I'm so very fickle.
   " these are my favourites.
