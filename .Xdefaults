@@ -40,13 +40,20 @@ URxvt*termName: rxvt-256color
 
 ! Fonts
 urxvt*font: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10
+            xft:Noto Color Emoji:size=10,\
+            xft:PowerlineSymbols:style=Medium
 urxvt*boldFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10
+            xft:Noto Color Emoji:size=10,\
+            xft:PowerlineSymbols:style=Medium
+
 urxvt*italicFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10
+            xft:Noto Color Emoji:size=10,\
+            xft:PowerlineSymbols:style=Medium
+
 urxvt*boldItalicFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10
+            xft:Noto Color Emoji:size=10,\
+            xft:PowerlineSymbols:style=Medium
+
 
 ! Transparency
 urxvt*transparent: true
