@@ -53,25 +53,25 @@ then
   exit -1
 fi
 
-if [ -z "$TYPE" ]
+if [ -z "$TYPE" ] 
 then
   echo "Usage dvd-to-iso-kodi.sh $NAME {movies | tv} season episode-num-start episode-num-end"
   exit -1
 fi
 
-if [ -z "$SERIES" ]
+if [ "$TYPE" = "tv" ] && [ -z "$SERIES" ]
 then
   echo "Usage dvd-to-iso-kodi.sh $NAME $TYPE season episode-num-start episode-num-end"
   exit -1
 fi
 
-if [ -z "$EPSTART" ]
+if [ "$TYPE" = "tv" ] && [ -z "$EPSTART" ]
 then
   echo "Usage dvd-to-iso-kodi.sh $NAME $TYPE $SERIES episode-num-start episode-num-end"
   exit -1
 fi
 
-if [ -z "$EPSEND" ]
+if [ "$TYPE" = "tv" ] && [ -z "$EPSEND" ]
 then
   echo "Usage dvd-to-iso-kodi.sh $NAME $TYPE $SERIES $EPSTART episode-num-end"
   exit -1
