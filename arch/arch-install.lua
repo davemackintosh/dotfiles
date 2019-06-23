@@ -22,7 +22,7 @@ end
 
 -- Run an Shell command.
 -- @Global
-function exec(command, args)
+function exec(command)
   local os = require("os")
 
   local f = io.popen(command)
@@ -31,15 +31,20 @@ function exec(command, args)
   return results
 end
 
-function confirm(message, confirmInput, exitStatus) 
+function confirm(message, confirmInput, exactMatch, exitStatus) 
   confirmInput = confirmInput or "YES/no"
+  exactMatch = type(exactMatch) ~= "nil" and exitStatus or 0
   exitStatus = type(exitStatus) ~= "nil" and exitStatus or 1
 
   print(message)
   print(confirmInput)
   local answer = io.read()
 
-  if answer ~= confirmInput:match("^(%w+)/") then
+  if exactMatch and confirmInput ~= answer then
+    printf("Exiting %d", exitStatus)
+    os.exit(exitStatus)
+  elseif answer ~= confirmInput:match("^(%w+)/") then
+    printf("Exiting %d", exitStatus)
     os.exit(exitStatus)
   end
 end
@@ -56,59 +61,21 @@ confirm(messages.secondDiskConfirm)
 -- Ask for a confirmation phrase to make this really real.
 confirm(messages.finalDiskConfirm, "erase all my data please")
 
+print("Setting up locale.")
+exec("bash ./bash/locale.sh")
+
+print("Formatting the drive.")
+exec(string.format("bash ./bash/format-drive.sh %s %s %s", config.drives.drive, config.drives.volGroupName, config.drives.drive .. "p" .. 2))
+
+print("Installing Arch")
+exec("pacstrap /mnt base base-devel")
+
 --[[
-loadkeys $keyboard &&
-timedatectl set-ntp true &&
-
-# Taken from https://superuser.com/a/984637
-# Thanks, updated slightly but works all the same.
-# Note that a blank line (commented as "defualt" will send a empty
-# line terminated with a newline to take the fdisk default.
-(
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk $drive
-  o # clear the in memory partition table
-  n # new partition BOOT
-  p # primary partition
-  1 # partition number 1
-    # default - start at beginning of disk 
-  +100M # 100 MB boot partition
-  a # make a partition bootable
-  t # Change type
-  ef # EFI Partition type.
-
-  n # new partition system
-  p # It's a primary partition
-  2 # Partition number /dev/sda2
-    # Start at the end of the last partition
-    # Continue to the end of the disk
-
-  w # write the partition table
-  q # and we're done
-EOF
-) &&
-
-# Time to create our volume groups.
-yes | pvcreate -ff /dev/sda2 &&
-vgcreate "$volGroupName" /dev/sda2 &&
-lvcreate -L 15G -n root "$volGroupName" &&
-lvcreate -L 500M -n swap "$volGroupName" &&
-lvcreate -l 100%FREE -n home "$volGroupName" &&
-
-# Format and encrypt the "drives"
-yes | mkfs.vfat -F32 /dev/sda1 &&
-echo -e "Enter your desired encryption password. You'll be asked for this again in a moment." &&
-cryptsetup luksFormat -c aes-xts-plain64 -s 512 /dev/mapper/${volGroupName}-root &&
-echo -e "Okay, enter that password again so we can unlock the encryption to write to it." &&
-cryptsetup open /dev/mapper/${volGroupName}-root root &&
-yes | mkfs.ext4 /dev/mapper/root &&
-
 # Mount drives
 mount /dev/mapper/root /mnt &&
 mkdir /mnt/boot &&
 mount /dev/sda1 /mnt/boot &&
 
-# Install Arch
-pacstrap /mnt base base-devel &&
 
 # Update the file system table.
 genfstab -U -p /mnt >> /mnt/etc/fstab &&

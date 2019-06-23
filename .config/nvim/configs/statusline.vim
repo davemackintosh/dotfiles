@@ -3,6 +3,7 @@ hi User1 ctermbg=004 ctermfg=015 " Blue background, white foreground
 hi User2 ctermbg=005 ctermfg=015 " Pink background, white foreground
 hi User3 ctermbg=005 ctermfg=004 " Pink background, blue foreground
 hi User4 ctermbg=NONE ctermfg=005 " No background, pink foreground.
+hi User5 ctermbg=NONE ctermfg=004 " No background, pink foreground.
 
 function! GetFIcon(ext)
 let ext = expand('%:e')

@@ -25,6 +25,6 @@ function! GitDirty()
 endfunction
 
 set tabline=
-set tabline+=%2*\ \ %{GitBranchName()}%{GitDirty()}\ 
-set tabline+=%4*
+set tabline+=%1*\ \ %{GitBranchName()}%{GitDirty()}\ 
+set tabline+=%5*
 set tabline+=%0*

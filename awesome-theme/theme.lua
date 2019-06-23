@@ -30,7 +30,7 @@ local powerlineBarWidget = require(".widgets.powerline-widgets")
 local taglistWidget = require("widgets.taglist")
 local volumeWidget = require("widgets.volume")
 local brightnessWidget = require("widgets.brightness")
-local systemUpdatesWidget = require("widgets.updates")
+--local systemUpdatesWidget = require("widgets.updates")
 
 -- Other stuff.
 local healthTools = require("tools.health")
@@ -39,7 +39,8 @@ theme.volumeWidget = volumeWidget
 theme.brightnessWidget = brightnessWidget
 
 -- typography
-theme.font          = vars.mainFont
+theme.font         = vars.mainFont
+theme.taglist_font = vars.typography.mainFont
 
 -- colours
 theme.bg_normal     = vars.colourPalette[6]
@@ -47,8 +48,6 @@ theme.bg_focus      = vars.colourPalette[5]
 theme.bg_urgent     = vars.colourPalette[2]
 theme.bg_minimize   = vars.colourPalette[1]
 theme.bg_systray    = theme.bg_normal
-
-theme.taglist_font = vars.typography.mainFont
 
 theme.fg_normal     = vars.typographyColours.normal
 theme.fg_focus      = vars.typographyColours.light
@@ -66,7 +65,7 @@ theme.tasklist_disable_icon = true
 
 -- Pretty
 theme.useless_gap = 7
-theme.wallpaper = theme.dir .. "/wallpapers/carina-nebula.jpg"
+theme.wallpaper = theme.dir .. "/wallpapers/pink.jpg"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(0)
@@ -80,13 +79,6 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 -- Add the notification styles.
 theme = gears.table.join(theme, notificationStyles)
 
--- Variables set for theming the menu:
--- menu_[bg|fg]_[normal|focus]
--- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width  = dpi(100)
-
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
@@ -97,7 +89,7 @@ awful.screen.connect_for_each_screen(function(s)
 
   s.mypromptbox = awful.widget.prompt({
     bg_cursor = "#DA70D6",
-    fg = vars.typographyColours.bright,
+    fg = vars.typographyColours.normal,
     font = vars.typography.mainFont,
   })
 
@@ -118,7 +110,7 @@ awful.screen.connect_for_each_screen(function(s)
         batteryWidget.widget,
         brightnessWidget.widget,
         volumeWidget.widget,
-        systemUpdatesWidget.widget,
+        --systemUpdatesWidget.widget,
         netWidget,
       })
   }

@@ -2,20 +2,16 @@ local xresources = require("beautiful.xresources")
 local thisDir = debug.getinfo( 1, "S" ).source:match( "/.*/" )
 local iconBase = thisDir .. "icons/"
 local sysTheme = xresources.get_current_theme()
+local inspect = require("inspect")
 local vars = {}
+
+print(inspect(sysTheme))
 
 -- Used throughout the theme.
 vars.themeRoot = thisDir
 
 -- Colours used throughout the theme.
-vars.colourPalette = {
-  "#ECD078",
-  "#D95B43",
-  "#C02942",
-  "#542437",
-  "#53777A",
-  "#222222"
-}
+vars.colourPalette = {}
 
 -- Update the colour pallette to the system resources.
 for colourIndex=0,15 do
