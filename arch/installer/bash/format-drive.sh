@@ -7,6 +7,7 @@
 drive=$1
 volGroupName=$2
 lvPartition=$3
+bootPartition=$4
 
 dmsetup remove_all --force &&
 wipefs --all --force $drive &&
@@ -41,16 +42,26 @@ EOF
 yes | pvcreate -ff $lvPartition &&
 vgcreate "$volGroupName" $lvPartition &&
 lvcreate -L 15G -n root "$volGroupName" &&
-lvcreate -L 500M -n swap "$volGroupName" &&
+lvcreate -L 1GB -n swap "$volGroupName" &&
 lvcreate -l 100%FREE -n home "$volGroupName" &&
 
+# Format the boot partition.
+yes | mkfs.vfat -F32 $bootPartition &&
+
 # Format and encrypt the "drives"
-yes | mkfs.vfat -F32 /dev/sda1 &&
-echo -e "Enter your desired encryption password. You'll be asked for this again in a moment." &&
+#### ROOT
+yes | mkfs.ext4 /dev/mapper/${volGroupName}-root &&
+echo -e "Enter your desired encryption password for the ROOT partition. You'll be asked for this again in a moment." &&
 cryptsetup luksFormat -c aes-xts-plain64 -s 512 /dev/mapper/${volGroupName}-root &&
 echo -e "Okay, enter that password again so we can unlock the encryption to write to it." &&
 cryptsetup open /dev/mapper/${volGroupName}-root root &&
-yes | mkfs.ext4 /dev/mapper/root &&
+
+#### HOME
+yes | mkfs.ext4 /dev/mapper/${volGroupName}-home &&
+echo -e "Enter your desired encryption password for the HOME partition. You'll be asked for this again in a moment." &&
+cryptsetup luksFormat -c aes-xts-plain64 -s 512 /dev/mapper/${volGroupName}-home &&
+echo -e "Okay, enter that password again so we can unlock the encryption to write to it." &&
+cryptsetup open /dev/mapper/${volGroupName}-root root &&
 
 echo "Drive wiped and prepped"
 
