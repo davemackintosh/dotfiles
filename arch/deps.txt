@@ -142,8 +142,6 @@ xorg-xwininfo
 xorg-xwud
 xterm
 yajl
-yaourt
-zoom
 zsh
 zsh-syntax-highlighting
 zsh-theme-powerlevel9k

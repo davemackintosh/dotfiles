@@ -1,3 +1,6 @@
+# I don't actually use this anymore. All my keybindings are in 
+# ~/.config/awesome/rc.lua so I can update widget states without
+# any timers/watchers.
 "xbindkeys_show" 
   control+shift + q
 

@@ -51,7 +51,7 @@ end
 -- }}}
 
 -- {{{ Variable definitions
-beautiful.init("~/dotfiles/awesome-theme/theme.lua")
+beautiful.init("~/.config/awesome/themes/vex/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -72,20 +72,6 @@ awful.layout.layouts = {
     awful.layout.suit.fair.horizontal,
 }
 -- }}}
-
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
-}
-
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -168,7 +154,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-              {description = "quit awesome", group = "awesome"}),
+              {description = "log out", group = "awesome"}),
 
     awful.key({ modkey, "Shift"   }, "space", function () os.execute("rofimoji.py")                end,
               {description = "Show emoji picker", group = "typography"}),
@@ -311,9 +297,16 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- Run some other apps.
--- awful.spawn.easy_async_with_shell("xbindkeys", function() end)
+-- Run our compositor.
 awful.spawn.easy_async_with_shell("compton --config ~/.config/compton/compton.conf", function() end)
+
+-- Mount Google drive.
 awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", function() end)
+
+-- Start the MPD server
 awful.spawn.easy_async_with_shell("[ ! -s ~/.config/mpd/pid ] && mpd", function() end)
+
+-- Turn bluetooth on. This needs moving to xinitrc I think.
+-- would be nice to have wireless mouse/keyboard in XDG/LightDM.
 awful.spawn.easy_async_with_shell("bluetoothctl power on", function() end)
+

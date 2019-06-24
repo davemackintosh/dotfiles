@@ -1,5 +1,10 @@
 #!/bin/env bash
 
+# I do not endorse pirating, copying for distribution or any
+# other illegal or unlicensed use of digital media. I just
+# use this to backup my DVDs to my Latte Panda with Kodi on
+# While my DVD collection is in storage. 
+
 clear &&
 
 NAME="$1"

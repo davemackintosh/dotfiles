@@ -1,5 +1,6 @@
 .config/ranger/plugins/
 .config/nvim/bundle/
+.config/awesome/themes
 vim_session
-.git
+.git # Because some plugins want in.
 tags
