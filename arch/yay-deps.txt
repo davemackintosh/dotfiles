@@ -32,5 +32,3 @@ slack-desktop 3.4.2-1
 steam-fonts 1.0.0-4
 ttf-dejavu-sans-mono-powerline-git r202.e80e3eb-1
 urxvt-resize-font-git 19.854ba29-1
-yaourt 1.9-1
-zoom 2.8.222599.0519-1
