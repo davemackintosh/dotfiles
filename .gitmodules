@@ -1,0 +1,3 @@
+[submodule ".config/awesome/themes/vex"]
+	path = .config/awesome/themes/vex
+	url = https://github.com/davemackintosh/vex.git
