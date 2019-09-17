@@ -120,6 +120,7 @@ end)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+  awful.key({ modkey }, "XF86AudioRaiseVolume", function () awful.spawn.easy_async_with_shell("onboard", function() end) end),
   awful.key({  }, "XF86MonBrightnessUp", function () beautiful.brightnessWidget.incBrightness() end, { desription = "Increase LCD brightness", group = "client" }),
   awful.key({  }, "XF86MonBrightnessDown", function () beautiful.brightnessWidget.decBrightness() end, { desription = "Decrease LCD brightness", group = "client" }),
   awful.key({  }, "XF86AudioRaiseVolume", function () beautiful.volumeWidget.incVolume() end, { description = "Increase volume", group = "media" }),
@@ -299,4 +300,5 @@ awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", funct
 -- Turn bluetooth on. This needs moving to xinitrc I think.
 -- would be nice to have wireless mouse/keyboard in XDG/LightDM.
 awful.spawn.easy_async_with_shell("bluetoothctl power on", function() end)
+awful.spawn.easy_async_with_shell("touchegg", function() end)
 
