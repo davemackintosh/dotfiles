@@ -10,5 +10,10 @@
 
   "dependencies": [
     "lua-cjson"
-  ]
+  ],
+
+  "fonts": {
+    "primary": "Iosevka 12"
+  },
+  "colours": {}
 }
