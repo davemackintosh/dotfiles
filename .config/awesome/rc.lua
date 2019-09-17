@@ -17,8 +17,6 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 
 local themePath = os.getenv("HOME") .. "/.config/awesome/themes/mim"
 
-require ".plugins.keyboard"
-
 -- local mpdwidget = dofile(themePath .. "/widgets/mpd.lua")
 
 local separators = lain.util.separators
