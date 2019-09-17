@@ -1,0 +1,14 @@
+{
+  "tabs": [
+    "code",
+    "browser",
+    "social",
+    "misc"
+  ],
+
+  "wallpaper": "#FFF",
+
+  "dependencies": [
+    "lua-cjson"
+  ]
+}
