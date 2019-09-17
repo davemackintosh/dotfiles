@@ -7,19 +7,17 @@ local gears = require("gears")
 local awful = require("awful")
 local lain = require("lain")
 require("awful.autofocus")
--- Widget and layout library
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+-- local cairo = require("lgi").cairo
 
+local themePath = os.getenv("HOME") .. "/.config/awesome/themes/mim"
 
-local themePath = os.getenv("HOME") .. "/dotfiles/awesome-theme"
+require ".plugins.keyboard"
 
 -- local mpdwidget = dofile(themePath .. "/widgets/mpd.lua")
 
@@ -52,9 +50,10 @@ end
 
 -- {{{ Variable definitions
 beautiful.init("~/.config/awesome/themes/vex/theme.lua")
+local apply_shape = require("utils").apply_shape
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "termite -e tmux"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -87,7 +86,11 @@ client.connect_signal("manage", function (c)
 end)
 
 clientbuttons = awful.util.table.join(
-    awful.button({ }, 1, function (c) client.focus = c; c:raise() end)
+    awful.button({ }, 1, function (c)
+      if c.name ~= "Onboard" then
+        client.focus = c; c:raise() 
+      end
+    end)
 )
 
 local function set_wallpaper(s)
@@ -125,6 +128,11 @@ globalkeys = gears.table.join(
   awful.key({  }, "XF86AudioLowerVolume", function () beautiful.volumeWidget.decVolume() end, { description = "Increase volume", group = "media" }),
   awful.key({  }, "XF86AudioMute", function () beautiful.volumeWidget.toggleVolume() end, { description = "Increase volume", group = "media" }),
 
+  awful.key({modkey, }, "1", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "code")) end),
+  awful.key({modkey, }, "2", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "browser")) end),
+  awful.key({modkey, }, "3", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "social")) end),
+  awful.key({modkey, }, "4", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "misc")) end),
+
   awful.key({ "Mod1", "Control", "Shift" }, "4", function()
     awful.spawn.easy_async_with_shell([===[
       TMP="/tmp/$RANDOM.png"
@@ -158,18 +166,6 @@ globalkeys = gears.table.join(
 
     awful.key({ modkey, "Shift"   }, "space", function () os.execute("rofimoji.py")                end,
               {description = "Show emoji picker", group = "typography"}),
-
-    awful.key({ modkey, "Control" }, "n",
-              function ()
-                  local c = awful.client.restore()
-                  -- Focus restored client
-                  if c then
-                    c:emit_signal(
-                        "request::activate", "key.unminimize", {raise = true}
-                    )
-                  end
-              end,
-              {description = "restore minimized", group = "client"}),
 
     -- Prompt
     awful.key({ modkey }, "r",     function ()
@@ -226,47 +222,46 @@ root.keys(globalkeys)
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap + awful.placement.no_offscreen
-     }
+    { 
+      rule = { },
+      properties = { 
+        border_width = beautiful.border_width,
+        border_color = beautiful.border_normal,
+        focus = awful.client.focus.filter,
+        raise = true,
+        keys = clientkeys,
+        buttons = clientbuttons,
+        screen = awful.screen.preferred,
+        placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+      }
     },
 
     {
       rule = {
-        class = "Firefox",
+        class = "Onboard",
       },
-      properties = {
-        tag = "browser",
-      },
-    },
-
-    {
-      rule = {
-        instance = "sysstatus",
-      },
-      properties = {
-        border_width = 0,
-        margins = 0,
-      },
+        properties = {
+          border_width = 0,
+          focusable = false,
+        },
     },
 
     -- Floating clients.
-    { rule_any = {
+    { 
+      rule_any = {
         instance = {
           "pinentry",
-          "sysstatus",
+          "peek",
+          "xvkbd",
         },
         class = {
           "Arandr",
         },
-      }, properties = { floating = true }},
+      }, 
+      properties = { 
+        floating = true 
+      }
+    },
 
     { 
       rule_any = {
@@ -302,9 +297,6 @@ awful.spawn.easy_async_with_shell("compton --config ~/.config/compton/compton.co
 
 -- Mount Google drive.
 awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", function() end)
-
--- Start the MPD server
-awful.spawn.easy_async_with_shell("[ ! -s ~/.config/mpd/pid ] && mpd", function() end)
 
 -- Turn bluetooth on. This needs moving to xinitrc I think.
 -- would be nice to have wireless mouse/keyboard in XDG/LightDM.
