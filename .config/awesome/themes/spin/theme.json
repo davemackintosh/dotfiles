@@ -1,4 +1,11 @@
 {
+  "extends": [
+    "recommended"
+  ],
+  "vars": [
+    ["primaryFont", "Iosevka 12"]
+  ],
+
   "tabs": [
     "code",
     "browser",
@@ -6,14 +13,20 @@
     "misc"
   ],
 
-  "wallpaper": "#FFF",
+  "background": "#ffcba4",
 
   "dependencies": [
     "lua-cjson"
   ],
 
   "fonts": {
-    "primary": "Iosevka 12"
+    "primary": "$primaryFont"
   },
-  "colours": {}
+  "colours": {
+    "wibar": {
+      "font": "$primaryFont",
+      "color": "#fff",
+      "background": "#333"
+    }
+  }
 }

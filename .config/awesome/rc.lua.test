@@ -4,6 +4,7 @@ pcall(require, "luarocks.loader")
 local gears = require "gears"
 local awful = require "awful"
 local lain = require "lain"
+local themer = require "awesome-themer"
 require "awful.autofocus"
 
 -- Theme handling library
