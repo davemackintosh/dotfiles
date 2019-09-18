@@ -1,7 +1,7 @@
 # ZSH config.
+export LANG="en_GB.UTF-8"
+export TERM=screen-256color
 export ZSH="$HOME/.oh-my-zsh"
-
-bindkey -v
 
 source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 ENABLE_CORRECTION="true"
@@ -39,5 +39,6 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
+tmux
 neofetch
 

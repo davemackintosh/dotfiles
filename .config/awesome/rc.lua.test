@@ -1,7 +1,5 @@
 pcall(require, "luarocks.loader")
 
-local awesomePath = os.getenv("HOME") .. "/.config/awesome"
-
 -- Standard awesome library
 local gears = require "gears"
 local awful = require "awful"
@@ -14,11 +12,11 @@ local beautiful = require "beautiful"
 -- Notification library
 local naughty = require "naughty"
 local menubar = require "menubar"
-local JSON = require "cjson"
+local themer = require ".themer"
 
 -- Get awesome config.
-local configFile = io.open(awesomePath .. "/awesome.json", "r")
-local config = JSON.decode(configFile:read("*a"))
+local config = themer.getJSON("/awesome.json")
+local themeConfig = themer.getJSON("/themes/" .. config.theme .. "/theme.json")
 
 local separators = lain.util.separators
 

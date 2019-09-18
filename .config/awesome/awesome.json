@@ -1,10 +1,13 @@
 {
   "theme": "spin",
+
   "terminal": "termite",
+
   "autorun": [
     "compton --config ~/.config/compton/compton.conf",
     "google-drive-ocamlfuse ~/google-drive",
     "touchegg",
-    "bluetoothctl power on"
+    "bluetoothctl power on",
+    "termite"
   ]
 }

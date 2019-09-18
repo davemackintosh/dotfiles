@@ -22,7 +22,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'kristijanhusak/defx-git'
 
 	" Code plugins
-  Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ludovicchabant/vim-gutentags'
   Plug 'terryma/vim-multiple-cursors'
   Plug 'eslint/eslint'
