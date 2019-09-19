@@ -62,7 +62,7 @@ echo -e "$RED $BOLD"
 # Make sure whomever is doing this is super sure they're committing OS suicide and wants to be reborn.
 confirm "Are you sure you want to destroy the world as you know it and start fresh? [yY][eE][sS]|[yY]" || exit
 echo -e "\n"
-confirm "Seriously? Are you sure, there's no going back at *any* point in this. Once I start, this thing is dead until I finish. Make sure you have a charger plugged in, you've back everything up (documents, downloads, work folders, dotfiles, ssh/GPG/Public/Private keys, etc) and come back and ask me again. I'm not resposible what you do with this thing. [yY][eE][sS]|[yY]" || exit
+confirm "Seriously? Are you sure, there's no going back at *any* point in this. Once I start, this thing is dead until I finish. Make sure you have a charger plugged in, you've back everything up \(documents, downloads, work folders, dotfiles, ssh/GPG/Public/Private keys, etc\) and come back and ask me again. I'm not resposible what you do with this thing. [yY][eE][sS]|[yY]" || exit
 
 echo -e "$RESET"
 
