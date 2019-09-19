@@ -74,7 +74,7 @@ read -rep $'Please type the phrase "erase all my data please"\n\n$> ' phrase
 
 if [ "$phrase" != "erase all my data please" ]; then
   echo -e "$RESET $GREEN $BOLD"
-  echo -e "Probably wise, make sure everything is backed up and you have a charger plugged in then come back and we'll try this again :)"
+  echo -e "Probably wise, make sure everything is backed up and you have a charger plugged in then come back and we'll try this again :\)"
   echo -e "$RESET"
   exit -1
 fi
