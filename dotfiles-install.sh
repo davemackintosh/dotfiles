@@ -27,10 +27,10 @@ FILES["$PWD/shared/.gitconfig"]="$HOME/.gitconfig"
 FILES["$PWD/shared/.zshrc"]="$HOME/.zshrc"
 FILES["$PWD/shared/aliases.sh"]="$HOME/aliases.sh"
 FILES["$PWD/shared/z.sh"]="$HOME/z.sh"
-FILES["$PWD/.config/nvim"]="$HOME/.config/nvim",
+FILES["$PWD/.config/nvim"]="$HOME/.config/nvim"
 FILES["$PWD/.config/neofetch"]="$HOME/.config/neofetch"
 
-if [ "$1" = "arch" ]; then
+if [ $1 = "x86" ]; then
   FILES["$PWD/.config/awesome"]="$HOME/.config/awesome"
   FILES["$PWD/.config/compton"]="$HOME/.config/compton"
   FILES["$PWD/.config/ranger"]="$HOME/.config/ranger"
@@ -45,3 +45,4 @@ do
 done
 
 unset FILES
+echo -e "I strongly suggest you restart your computer now."

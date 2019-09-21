@@ -3,14 +3,22 @@ export LANG="en_GB.UTF-8"
 export TERM=screen-256color
 export ZSH="$HOME/.oh-my-zsh"
 
-source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+if [ "$ANDROID_ROOT" = "/system" ]; then
+  source $HOME/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme
+else
+  source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+fi
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs_joined)
-plugins=(git vi-mode safe-paste)
+plugins=(git safe-paste)
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ "$ANDROID_ROOT" = "/system" ]; then
+  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 
 # Tools
 . $ZSH/oh-my-zsh.sh
@@ -39,6 +47,8 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
-tmux
+if hash gdate 2>/dev/null; then
+  tmux
+fi
 neofetch
 
