@@ -47,7 +47,7 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
   bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
-if hash gdate 2>/dev/null; then
+if hash tmux 2>/dev/null; then
   tmux
 fi
 neofetch
