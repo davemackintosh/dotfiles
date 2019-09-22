@@ -18,6 +18,7 @@
 
   "eslint.autoFixOnSave": true,
   "eslint.autoFix": true,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
   "git.enableGutters": true,
   "git.addGlameToBufferVar": true,
