@@ -12,7 +12,12 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs_joined)
-plugins=(git safe-paste)
+if [ "$ANDROID_ROOT" = "/system" ]; then
+else
+  plugins=(git safe-paste)
+fi
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 if [ "$ANDROID_ROOT" = "/system" ]; then
   source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
