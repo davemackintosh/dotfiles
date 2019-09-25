@@ -39,6 +39,10 @@ if [ $1 = "x86" ]; then
   FILES["$PWD/.tmux"]="$HOME/.tmux"
 fi
 
+if [ $1 = "android" ]; then
+  FILES["$PWD/android/.termux"]="$HOME/.termux"
+fi
+
 for src in "${!FILES[@]}"
 do
   installFile "$src" "${FILES[$src]}"
