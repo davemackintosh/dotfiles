@@ -1,21 +1,15 @@
 # ZSH config.
-export LANG="en_GB.UTF-8"
-export TERM=screen-256color
+export LC_ALL=en_GB.UTF-8  
+export LANG=en_GB.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 
-if [ "$ANDROID_ROOT" = "/system" ]; then
-  source $HOME/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme
-else
-  source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
-fi
+# git clone https://github.com/dracula/zsh.git ~/.oh-my-zsh/themes/dracula
+. ~/.oh-my-zsh/themes/dracula/dracula.zsh-theme
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs_joined)
-if [ "$ANDROID_ROOT" = "/system" ]; then
-else
-  plugins=(git safe-paste)
-fi
+plugins=(git safe-paste tmux)
 
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -19,7 +19,7 @@ if [[ $OS = "Android" ]]; then
   alias chcolor="$HOME/.termux/colors.sh"
   alias chfont="$HOME/.termux/fonts.sh"
   alias startPostgres='pg_ctl -D $PREFIX/var/lib/postgresql start'
-  alias stopPostgres='pg_ctl  -D $PREFIX/var/lib/postgresql stop'
+  alias stopPostgres='pg_ctl -D $PREFIX/var/lib/postgresql stop'
 fi
 
 if [[ $OS = "Linux" ]]; then
@@ -28,7 +28,7 @@ if [[ $OS = "Linux" ]]; then
 
   # Project specific aliases
   alias rbs='reset && bin/server'
-  alias dclf='docker-compose logs -f'
+  alias dclf='docker-compose logs -f' 
 
   eval $(thefuck --alias)
 fi

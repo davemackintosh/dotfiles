@@ -52,7 +52,7 @@ beautiful.init("~/.config/awesome/themes/vex/theme.lua")
 local apply_shape = require("utils").apply_shape
 
 -- This is used later as the default terminal and editor to run.
-terminal = "termite -e tmux"
+terminal = "termite -e 'tmux -u'"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -302,11 +302,17 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- Run our compositor.
 awful.spawn.easy_async_with_shell("compton --config ~/.config/compton/compton.conf", function() end)
 
--- Mount Google drive.
-awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", function() end)
-
 -- Turn bluetooth on. This needs moving to xinitrc I think.
 -- would be nice to have wireless mouse/keyboard in XDG/LightDM.
 awful.spawn.easy_async_with_shell("bluetoothctl power on", function() end)
 awful.spawn.easy_async_with_shell("touchegg", function() end)
 
+-- Mount Google drive.
+awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", function() end)
+
+-- Set up touch gestures.
+awful.spawn.easy_async_with_shell("touchegg", function() end)
+awful.spawn.easy_async_with_shell("onboard", function() end)
+
+-- Open a terminal
+awful.spawn.easy_async_with_shell(terminal, function() end)
