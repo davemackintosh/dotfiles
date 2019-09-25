@@ -6,6 +6,8 @@ set nocompatible
 set shell=/bin/bash\ --login
 
 call plug#begin('~/.config/nvim/bundle')
+  Plug 'christoomey/vim-tmux-navigator'
+
 	" File plugins.
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'kristijanhusak/defx-icons'
