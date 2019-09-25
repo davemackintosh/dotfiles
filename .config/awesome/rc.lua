@@ -13,7 +13,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- local cairo = require("lgi").cairo
+
+local tags = { " code ", " browser ", "  social ", " misc " }
 
 local themePath = os.getenv("HOME") .. "/.config/awesome/themes/mim"
 
@@ -111,12 +112,19 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    s.tags = awful.tag({ " code ", " browser ", "  social ", " misc " }, s, awful.layout.layouts[1])
+    s.tags = awful.tag(tags, s, awful.layout.layouts[1])
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
 end)
+
+-- Close the current tag and open the one
+-- in our tags table at the index.
+local function openTagByIndex(index)
+  awful.tag.viewtoggle(awful.tag.selected())
+  awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), tags[index]))
+end
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -127,10 +135,10 @@ globalkeys = gears.table.join(
   awful.key({  }, "XF86AudioLowerVolume", function () beautiful.volumeWidget.decVolume() end, { description = "Increase volume", group = "media" }),
   awful.key({  }, "XF86AudioMute", function () beautiful.volumeWidget.toggleVolume() end, { description = "Increase volume", group = "media" }),
 
-  awful.key({modkey, }, "1", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "code")) end),
-  awful.key({modkey, }, "2", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "browser")) end),
-  awful.key({modkey, }, "3", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "social")) end),
-  awful.key({modkey, }, "4", function() awful.tag.viewtoggle(awful.tag.find_by_name(awful.screen.focused(), "misc")) end),
+  awful.key({modkey, }, "1", function() openTagByIndex(1) end),
+  awful.key({modkey, }, "2", function() openTagByIndex(2) end),
+  awful.key({modkey, }, "3", function() openTagByIndex(3) end),
+  awful.key({modkey, }, "4", function() openTagByIndex(4) end),
 
   awful.key({ "Mod1", "Control", "Shift" }, "4", function()
     awful.spawn.easy_async_with_shell([===[
