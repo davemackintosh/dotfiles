@@ -51,7 +51,7 @@ beautiful.init("~/.config/awesome/themes/vex/theme.lua")
 local apply_shape = require("utils").apply_shape
 
 -- This is used later as the default terminal and editor to run.
-terminal = "termite"
+terminal = "termite -e tmux"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
