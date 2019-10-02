@@ -4,7 +4,14 @@ export LANG=en_GB.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 
 # git clone https://github.com/dracula/zsh.git ~/.oh-my-zsh/themes/dracula
-. ~/.oh-my-zsh/themes/dracula/dracula.zsh-theme
+#. ~/.oh-my-zsh/themes/dracula/dracula.zsh-theme
+
+if [ "$ANDROID_ROOT" = "/system" ]; then
+  source $HOME/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme
+else
+  source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+fi
+
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
@@ -28,6 +35,7 @@ fi
 # Editor config
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='fd --type f'
+export ANDROID_HOME="$HOME/Android/Sdk"
 
 # Export NVM program.
 export NVM_DIR="$HOME/.nvm"
