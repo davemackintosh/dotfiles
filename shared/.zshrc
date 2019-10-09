@@ -35,7 +35,10 @@ fi
 # Editor config
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='fd --type f'
+
+# Paths.
 export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Export NVM program.
 export NVM_DIR="$HOME/.nvm"
@@ -50,9 +53,9 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+# We can't specify start up args to Termux
+# so if we're on Android. Run TMux.
 if [ "$ANDROID_ROOT" = "/system" ]; then
   tmux -u
 fi
-
-neofetch
 
