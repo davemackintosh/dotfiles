@@ -9,12 +9,12 @@ set background=dark
 syntax on
 
 " colorscheme OceanicNext
-" colorscheme taffy
+" colorscheme candid
 colorscheme challenger_deep
 
 " Enable transparent backgrounds.
 hi Normal ctermbg=NONE ctermfg=NONE
-hi LineNr ctermbg=NONE
+hi LineNr ctermbg=NONE ctermfg=grey
 hi StatusLine ctermbg=NONE
 hi TabLine ctermbg=NONE
 hi TabLineFill ctermbg=NONE

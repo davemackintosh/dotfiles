@@ -21,8 +21,8 @@
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
   "git.enableGutters": true,
-  "git.addGlameToBufferVar": true,
-  "git.addGlameToVirtualText": true,
+  "git.addGblameToBufferVar": true,
+  "git.addGblameToVirtualText": true,
   "git.virtualTextPrefix": " ❯❯❯ ",
 
   "languageserver": {
