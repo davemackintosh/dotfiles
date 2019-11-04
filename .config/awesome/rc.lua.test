@@ -46,7 +46,7 @@ do
 end
 -- }}}
 
-beautiful.init("~/.config/awesome/themes/vex/theme.lua")
+beautiful.init("~/.config/awesome/themes/min/theme.lua")
 local apply_shape = require("utils").apply_shape
 
 -- This is used later as the default terminal and editor to run.
