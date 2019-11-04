@@ -60,3 +60,5 @@ if [ "$ANDROID_ROOT" = "/system" ]; then
   tmux -u
 fi
 
+
+eval $(thefuck --alias)

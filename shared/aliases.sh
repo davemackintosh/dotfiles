@@ -29,6 +29,8 @@ if [[ $OS = "Linux" ]]; then
   # Project specific aliases
   alias rbs='reset && bin/server'
   alias dclf='docker-compose logs -f' 
+  alias ff='firefox'
+  alias chrome='google-chrome-stable'
 
   eval $(thefuck --alias)
 fi

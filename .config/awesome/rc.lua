@@ -129,11 +129,15 @@ end
 -- {{{ Key bindings
 globalkeys = gears.table.join(
   awful.key({ modkey }, "XF86AudioRaiseVolume", function () awful.spawn.easy_async_with_shell("onboard", function() end) end),
-  awful.key({  }, "XF86MonBrightnessUp", function () beautiful.brightnessWidget.incBrightness() end, { desription = "Increase LCD brightness", group = "client" }),
-  awful.key({  }, "XF86MonBrightnessDown", function () beautiful.brightnessWidget.decBrightness() end, { desription = "Decrease LCD brightness", group = "client" }),
+  awful.key({  }, "XF86MonBrightnessUp", function () beautiful.brightnessWidget.incBrightness() end, { desription = "Increase LCD brightness" }),
+  awful.key({  }, "XF86MonBrightnessDown", function () beautiful.brightnessWidget.decBrightness() end, { desription = "Decrease LCD brightness" }),
   awful.key({  }, "XF86AudioRaiseVolume", function () beautiful.volumeWidget.incVolume() end, { description = "Increase volume", group = "media" }),
   awful.key({  }, "XF86AudioLowerVolume", function () beautiful.volumeWidget.decVolume() end, { description = "Increase volume", group = "media" }),
   awful.key({  }, "XF86AudioMute", function () beautiful.volumeWidget.toggleVolume() end, { description = "Increase volume", group = "media" }),
+
+  -- Useful when theonly keyboard is Onboard.
+  awful.key({modkey,  }, "XF86AudioRaiseVolume", function () beautiful.brightnessWidget.incBrightness() end, { desription = "Increase LCD brightness" }),
+  awful.key({modkey,  }, "XF86AudioLowerVolume", function () beautiful.brightnessWidget.decBrightness() end, { desription = "Decrease LCD brightness" }),
 
   awful.key({modkey, }, "1", function() openTagByIndex(1) end),
   awful.key({modkey, }, "2", function() openTagByIndex(2) end),
@@ -313,6 +317,7 @@ awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", funct
 -- Set up touch gestures.
 awful.spawn.easy_async_with_shell("touchegg", function() end)
 awful.spawn.easy_async_with_shell("onboard", function() end)
+awful.spawn.easy_async_with_shell("screenrotator", function() end)
 
 -- Open a terminal
 awful.spawn.easy_async_with_shell(terminal, function() end)
