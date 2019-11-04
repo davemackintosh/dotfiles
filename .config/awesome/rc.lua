@@ -13,6 +13,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local wibox = require("wibox")
 
 local tags = { " code ", " browser ", "  social ", " misc " }
 
@@ -26,24 +27,24 @@ local separators = lain.util.separators
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
+  naughty.notify({ preset = naughty.config.presets.critical,
+  title = "Oops, there were errors during startup!",
+  text = awesome.startup_errors })
 end
 
 -- Handle runtime errors after startup
 do
-    local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
-        in_error = true
+  local in_error = false
+  awesome.connect_signal("debug::error", function (err)
+    -- Make sure we don't go into an endless error loop
+    if in_error then return end
+    in_error = true
 
-        naughty.notify({ preset = naughty.config.presets.critical,
-                         title = "Oops, an error happened!",
-                         text = tostring(err) })
-        in_error = false
-    end)
+    naughty.notify({ preset = naughty.config.presets.critical,
+    title = "Oops, an error happened!",
+    text = tostring(err) })
+    in_error = false
+  end)
 end
 -- }}}
 
@@ -65,9 +66,9 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.fair,
-    awful.layout.suit.tile,
-    awful.layout.suit.fair.horizontal,
+  awful.layout.suit.fair,
+  awful.layout.suit.tile,
+  awful.layout.suit.fair.horizontal,
 }
 -- }}}
 
@@ -79,44 +80,45 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 client.connect_signal("manage", function (c)
-    c.shape = function(cr,w,h)
-        gears.shape.rounded_rect(cr, w, h, 15)
-    end
+  c.shape = function(cr,w,h)
+    gears.shape.rounded_rect(cr, w, h, 15)
+  end
 end)
 
 clientbuttons = awful.util.table.join(
-    awful.button({ }, 1, function (c)
-      if c.name ~= "Onboard" then
-        client.focus = c; c:raise() 
-      end
-    end)
+awful.button({ }, 1, function (c)
+  if c.name ~= "Onboard" then
+    client.focus = c;
+    c:raise() 
+  end
+end)
 )
 
 local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
-        -- If wallpaper is a function, call it with the screen
-        if type(wallpaper) == "function" then
-            wallpaper = wallpaper(s)
-        end
-        gears.wallpaper.maximized(wallpaper, s, true)
+  -- Wallpaper
+  if beautiful.wallpaper then
+    local wallpaper = beautiful.wallpaper
+    -- If wallpaper is a function, call it with the screen
+    if type(wallpaper) == "function" then
+      wallpaper = wallpaper(s)
     end
+    gears.wallpaper.maximized(wallpaper, s, true)
+  end
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
-    set_wallpaper(s)
+  -- Wallpaper
+  set_wallpaper(s)
 
-    -- Each screen has its own tag table.
-    s.tags = awful.tag(tags, s, awful.layout.layouts[1])
+  -- Each screen has its own tag table.
+  s.tags = awful.tag(tags, s, awful.layout.layouts[1])
 
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox(s)
+  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+  -- We need one layoutbox per screen.
+  s.mylayoutbox = awful.widget.layoutbox(s)
 end)
 
 -- Close the current tag and open the one
@@ -187,42 +189,24 @@ globalkeys = gears.table.join(
 
 )
 
+local function moveClientToTagIndex(index)
+  -- get current tag
+  local t = client.focus and client.focus.first_tag or nil
+  if t == nil then
+      return
+  end
+  -- get previous tag (modulo 9 excluding 0 to wrap from 1 to 9)
+  local tag = client.focus.screen.tags[index]
+  awful.client.movetotag(tag)
+end
+
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
-        function (c)
-            c.fullscreen = not c.fullscreen
-            c:raise()
-        end,
-        {description = "toggle fullscreen", group = "client"}),
-    awful.key({ "Control" }, "q",      function (c) c:kill()                         end,
-              {description = "close", group = "client"}),
-    awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-              {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end ,
-        {description = "minimize", group = "client"}),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized = not c.maximized
-            c:raise()
-        end ,
-        {description = "(un)maximize", group = "client"}),
-    awful.key({ modkey, "Control" }, "m",
-        function (c)
-            c.maximized_vertical = not c.maximized_vertical
-            c:raise()
-        end ,
-        {description = "(un)maximize vertically", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end ,
-        {description = "(un)maximize horizontally", group = "client"})
+  awful.key({ "Control" }, "q", function (c) c:kill() end, {description = "close", group = "client"}),
+  awful.key({ modkey, }, "o", function (c) c:move_to_screen() end, {description = "move to screen", group = "client"}),
+  awful.key({ modkey, "Control", "Shift" }, 1, function() moveClientToTagIndex(1) end, {description = "move client to previous tag", group = "layout"}),
+  awful.key({ modkey, "Control", "Shift" }, 2, function() moveClientToTagIndex(2) end, {description = "move client to previous tag", group = "layout"}),
+  awful.key({ modkey, "Control", "Shift" }, 3, function() moveClientToTagIndex(3) end, {description = "move client to previous tag", group = "layout"}),
+  awful.key({ modkey, "Control", "Shift" }, 4, function() moveClientToTagIndex(4) end, {description = "move client to previous tag", group = "layout"})
 )
 
 -- Set keys
@@ -232,71 +216,71 @@ root.keys(globalkeys)
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
-    -- All clients will match this rule.
-    { 
-      rule = { },
-      properties = { 
-        border_width = beautiful.border_width,
-        border_color = beautiful.border_normal,
-        focus = awful.client.focus.filter,
-        raise = true,
-        keys = clientkeys,
-        buttons = clientbuttons,
-        screen = awful.screen.preferred,
-        placement = awful.placement.no_overlap + awful.placement.no_offscreen,
-      }
-    },
+  -- All clients will match this rule.
+  { 
+    rule = { },
+    properties = { 
+      border_width = beautiful.border_width,
+      border_color = beautiful.border_normal,
+      focus = awful.client.focus.filter,
+      raise = true,
+      keys = clientkeys,
+      buttons = clientbuttons,
+      screen = awful.screen.preferred,
+      placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+    }
+  },
 
-    {
-      rule = {
-        class = "Onboard",
+  {
+    rule = {
+      class = "Onboard",
+    },
+    properties = {
+      border_width = 0,
+      focusable = false,
+    },
+  },
+
+  -- Floating clients.
+  { 
+    rule_any = {
+      instance = {
+        "pinentry",
+        "peek",
+        "xvkbd",
       },
-        properties = {
-          border_width = 0,
-          focusable = false,
-        },
-    },
+      class = {
+        "Arandr",
+      },
+    }, 
+    properties = { 
+      floating = true 
+    }
+  },
 
-    -- Floating clients.
-    { 
-      rule_any = {
-        instance = {
-          "pinentry",
-          "peek",
-          "xvkbd",
-        },
-        class = {
-          "Arandr",
-        },
-      }, 
-      properties = { 
-        floating = true 
+  { 
+    rule_any = {
+      type = { 
+        "normal", 
+        "dialog" 
       }
-    },
-
-    { 
-      rule_any = {
-        type = { 
-          "normal", 
-          "dialog" 
-        }
-      }, 
-      properties = { 
-        titlebars_enabled = false 
-      }
-    },
+    }, 
+    properties = { 
+      titlebars_enabled = false 
+    }
+  },
 }
 -- }}}
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
-    if awesome.startup
-      and not c.size_hints.user_position
-      and not c.size_hints.program_position then
-        -- Prevent clients from being unreachable after screen count changes.
-        awful.placement.no_offscreen(c)
-    end
+  if awesome.startup
+    and not c.size_hints.user_position
+    and not c.size_hints.program_position then
+    -- Prevent clients from being unreachable after screen count changes.
+    awful.placement.no_offscreen(c)
+  end
 end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)

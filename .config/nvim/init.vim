@@ -37,8 +37,8 @@ call plug#begin('~/.config/nvim/bundle')
 
   " Look and feel plugins. I'm so very fickle.
   " these are my favourites.
-  " Plug 'mhartington/oceanic-next'
-  " Plug 'flrnprz/taffy.vim'
+  Plug 'mhartington/oceanic-next'
+  Plug 'flrnd/candid.vim'
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 call plug#end()
 

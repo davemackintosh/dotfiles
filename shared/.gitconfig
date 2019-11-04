@@ -1,3 +1,5 @@
 [user]
 	email = me@davemackintosh.co.uk
 	name = davemackintosh
+[mergetool "nvim"]
+  cmd = nvim -f -c \"Gdiff\" \"$MERGED\"

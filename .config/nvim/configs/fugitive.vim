@@ -3,6 +3,7 @@
 " Found this code at the link below.
 " @link https://github.com/junegunn/vim-plug/issues/164#issuecomment-366483364
 command! Gstatus call LazyLoadFugitive('Gstatus') command! Gdiff call LazyLoadFugitive('Gdiff') 
+command! Merge call LazyLoadFugitive('Gvdiff') command! Gdiff call LazyLoadFugitive('Gvdiff') 
 command! Glog call LazyLoadFugitive('Glog') 
 command! Gblame call LazyLoadFugitive('Gblame') 
 
