@@ -58,7 +58,7 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # so if we're on Android. Run TMux.
 if [ "$ANDROID_ROOT" = "/system" ]; then
   tmux -u
+  export PATH="~/android-ndk-r17/:$PATH"
 fi
 
-
-eval $(thefuck --alias)
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

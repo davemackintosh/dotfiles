@@ -12,6 +12,7 @@ alias gc='git commit -m'
 alias gca='git commit -a -v'
 alias ga='git add'
 alias gaa='git add -A'
+alias gir='echo "GRRRRR TYPOS 🤓" && git'
 
 alias open='xdg-open'
 
