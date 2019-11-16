@@ -21,7 +21,7 @@ drive=$(lsblk -d -p -n -l -o NAME -e 7,11) # This will default to the first disk
 lvPartition="2"
 bootPartition="1"
 
-BLUE="\u001b[34m
+BLUE="\u001b[34m"
 UNDERLINE="\u001b[4m"
 SWAP_BG_FG="\u001b[7m"
 WHITE="\u001b[37;1m"
