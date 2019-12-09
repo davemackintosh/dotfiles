@@ -1,5 +1,4 @@
 # ZSH config.
-export LC_ALL=en_GB.UTF-8  
 export LANG=en_GB.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 export MOZ_USE_XINPUT2 DEFAULT=1
@@ -8,6 +7,7 @@ export MOZ_USE_XINPUT2 DEFAULT=1
 #. ~/.oh-my-zsh/themes/dracula/dracula.zsh-theme
 
 if [ "$ANDROID_ROOT" = "/system" ]; then
+export LC_ALL=en_GB.UTF-8  
   source $HOME/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme
 else
   source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
@@ -23,8 +23,10 @@ plugins=(git safe-paste tmux)
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 if [ "$ANDROID_ROOT" = "/system" ]; then
+  ANDROID_NDK="$HOME/android-ndk-r17"
   source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
+  ANDROID_NDK="$HOME/android-ndk-r17"
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
@@ -58,7 +60,6 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # so if we're on Android. Run TMux.
 if [ "$ANDROID_ROOT" = "/system" ]; then
   tmux -u
-  export PATH="~/android-ndk-r17/:$PATH"
 fi
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$ANDROID_NDK:$PATH"
