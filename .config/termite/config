@@ -1,12 +1,12 @@
 [options]
-#allow_bold = true
+allow_bold = true
 #audible_bell = false
 #bold_is_bright = true
 #cell_height_scale = 1.0
 #cell_width_scale = 1.0
 clickable_url = true
-#dynamic_title = true
-font = Iosevka,Iosevka Nerd Font Mono 13
+dynamic_title = true
+font = Iosevka,Iosevka Nerd Font Mono 25
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -41,58 +41,81 @@ hyperlinks = true
 #scrollbar = off
 
 [colors]
+cursor = #d8dee9
+cursor_foreground = #2e3440
+
+foreground = #d8dee9
+foreground_bold = #d8dee9
+background = #2e3440
+
+highlight = #4c566a
+
+color0  = #3b4252
+color1  = #bf616a
+color2  = #a3be8c
+color3  = #ebcb8b
+color4  = #81a1c1
+color5  = #b48ead
+color6  = #88c0d0
+color7  = #e5e9f0
+color8  = #4c566a
+color9  = #bf616a
+color10 = #a3be8c
+color11 = #ebcb8b
+color12 = #81a1c1
+color13 = #b48ead
+color14 = #8fbcbb
+color15 = #eceff4
+
 # If both of these are unset, cursor falls back to the foreground color,
 # and cursor_foreground falls back to the background color.
 #cursor = #dcdccc
 #cursor_foreground = #dcdccc
-cursor = #DA70D6
+#cursor = #DA70D6
 
 # If unset, will reverse foreground and background
-highlight = #2f2f2f
+#highlight = #2f2f2f
 
 # Black
-color0 = #282a2e
-color8 = #373b41
+#color0 = #282a2e
+#color8 = #373b41
 
 # red
-color1 = #a54242
-color9 = #cc6666
+#color1 = #a54242
+#color9 = #cc6666
 
 # green
-color2 = #8c9440
-color10 = #b5bd68
+#color2 = #8c9440
+#color10 = #b5bd68
 
 # yellow
-color3 = #de935f
-color11 = #f0c674
+#color3 = #de935f
+#color11 = #f0c674
 
 # blue
-color4 = #5f819d
-color12 = #81a2be
+#color4 = #5f819d
+#color12 = #81a2be
 
 # magenta
-color5 = #85678f
-color13 = #b294bb
+#color5 = #85678f
+#color13 = #b294bb
 
 # cyan
-color6 = #5e8d87
-color14 = #8abeb7
+#color6 = #5e8d87
+#color14 = #8abeb7
 
 # white
-color7 = #707880
-color15 = #c5c8c6
+#color7 = #707880
+#color15 = #c5c8c6
 
 [hints]
 foreground = #c5c8c6
 background = #1d1f21
-#font = Monospace 12
-#foreground = #dcdccc
-#background = #3f3f3f
-#active_foreground = #e68080
-#active_background = #3f3f3f
-#padding = 2
-#border = #3f3f3f
-#border_width = 0.5
-#roundness = 2.0
+active_foreground = #e68080
+active_background = #3f3f3f
+padding = 2
+border = #3f3f3f
+border_width = 0.5
+roundness = 2.0
 
 # vim: ft=dosini cms=#%s
