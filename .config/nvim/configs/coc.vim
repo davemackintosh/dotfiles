@@ -11,4 +11,5 @@ if expand('$INSTALL_COC_PLUGINS') == 'yes'
   :CocInstall coc-tslint
   :CocInstall coc-eslint
   :CocInstall coc-emoji
+  :CocInstall coc-rls
 endif

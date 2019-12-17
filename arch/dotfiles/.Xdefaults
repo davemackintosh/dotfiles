@@ -1,112 +1,59 @@
-URxvt.scrollBar: false
-URxvt*termName: rxvt-256color
-
 *.foreground: #c5c8c6
 *.background: [10]#1d1f21
 *.cursorColor: #DA70D6
 
+*.color:#  3b4252
+*.color1: #bf616a
+*.color2: #a3be8c
+*.color3: #ebcb8b
+*.color4: #81a1c1
+*.color5: #b48ead
+*.color6: #88c0d0
+*.color7: #e5e9f0
+*.color8: #4c566a
+*.color9: #bf616a
+*.color10: #a3be8c
+*.color11: #ebcb8b
+*.color12: #81a1c1
+*.color13: #b48ead
+*.color14: #8fbcbb
+*.color15: #eceff4
 ! Black
-*.color0: #282a2e
-*.color8: #373b41
+!*.color0: #282a2e
+!*.color8: #373b41
 
 ! red
-*.color1: #a54242
-*.color9: #cc6666
+!*.color1: #a54242
+!*.color9: #cc6666
 
 ! green
-*.color2: #8c9440
-*.color10: #b5bd68
+!*.color2: #8c9440
+!*.color10: #b5bd68
 
 ! yellow
-*.color3: #de935f
-*.color11: #f0c674
+!*.color3: #de935f
+!*.color11: #f0c674
 
 ! blue
-*.color4: #5f819d
-*.color12: #81a2be
+!*.color4: #5f819d
+!*.color12: #81a2be
 
 ! magenta
-*.color5: #85678f
-*.color13: #b294bb
+!*.color5: #85678f
+!*.color13: #b294bb
 
 ! cyan
-*.color6: #5e8d87
-*.color14: #8abeb7
+!*.color6: #5e8d87
+!*.color14: #8abeb7
 
 ! white
-*.color7: #707880
-*.color15: #c5c8c6
+!*.color7: #707880
+!*.color15: #c5c8c6
 
-
-! Fonts
-urxvt*font: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10,\
-            xft:PowerlineSymbols:style=Medium
-urxvt*boldFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10,\
-            xft:PowerlineSymbols:style=Medium
-
-urxvt*italicFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10,\
-            xft:PowerlineSymbols:style=Medium
-
-urxvt*boldItalicFont: xft:FuraCode Nerd Font Mono:style=Medium,Regular,\
-            xft:Noto Color Emoji:size=10,\
-            xft:PowerlineSymbols:style=Medium
-
-
-! Transparency
-urxvt*transparent: true
-urxvt*shading: 15
-! urxvt*blurRadius: 25
-! urxvt.inheritPixmap: true
-
-Xft.dpi:                        96
-Xft.antialias:                  1
-Xft.autohint:                   1
-Xft.hinting:                    1
-Xft.hintstyle:                  hintslight
-Xft.lcdfilter:                  lcdlight
-Xft.rgba:                       rgb
-
-URxvt.depth:                    32
-URxvt.letterSpace:              -1
-URxvt.iso14755:                 false
-URxvt.iso14755_52:              false
-URxvt*loginShell:               true
-URxvt.internalBorder:           10
-URxvt.perl-ext:	 	            	tabbed,default,matcher,resize-font
-URxvt.url-launcher:             /usr/bin/xdg-open
-Rxvt.matcher.button:            1
-URxvt.matcher.rend.0:           Uline Bold fg0
-
-URxvt.tabbed.tabbar-fg: 7
-URxvt.tabbed.tabbar-bg: 0
-URxvt.tabbed.tab-fg:    15
-URxvt.tabbed.tab-bg: 9
-
-! Keybindings
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-URxvt.keysym.Control-Down:  resize-font:smaller
-URxvt.keysym.Control-Up:    resize-font:bigger
-
-! XDM Display Manager
-xlogin*width: 300
-xlogin*height: 200
-xlogin*x: 100
-xlogin*y: 100
-!xlogin*geometry
-!xlogin*foreground
-!xlogin*background
-!xlogin*font
-!xlogin*greeting
-!xlogin*greetFont
-!xlogin*greetColor
-!xlogin*namePrompt
-!xlogin*passwdPrompt
-!xlogin*promptFont
-!xlogin*promptColor
-!xlogin*fail
-!xlogin*failFont
-!xlogin*failColor
+Xft.dpi: 180
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb

@@ -2,6 +2,7 @@
 export LANG=en_GB.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 export MOZ_USE_XINPUT2 DEFAULT=1
+export GDK_DPI_SCALE=2
 
 # git clone https://github.com/dracula/zsh.git ~/.oh-my-zsh/themes/dracula
 #. ~/.oh-my-zsh/themes/dracula/dracula.zsh-theme
