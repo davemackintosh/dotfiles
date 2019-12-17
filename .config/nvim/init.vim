@@ -34,6 +34,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'prabirshrestha/async.vim'
   Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-typescript'
+  Plug 'rust-lang/rust.vim'
 
   " Look and feel plugins. I'm so very fickle.
   " these are my favourites.
