@@ -35,11 +35,13 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'prabirshrestha/vim-lsp'
   Plug 'ryanolsonx/vim-lsp-typescript'
   Plug 'rust-lang/rust.vim'
+  Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
   " Look and feel plugins. I'm so very fickle.
   " these are my favourites.
   Plug 'mhartington/oceanic-next'
   Plug 'flrnd/candid.vim'
+  Plug 'arcticicestudio/nord-vim'
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 call plug#end()
 

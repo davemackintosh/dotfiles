@@ -10,7 +10,8 @@ syntax on
 
 " colorscheme OceanicNext
 " colorscheme candid
-colorscheme challenger_deep
+" colorscheme challenger_deep
+colorscheme nord
 
 " Enable transparent backgrounds.
 hi Normal ctermbg=NONE ctermfg=NONE

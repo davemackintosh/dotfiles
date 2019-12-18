@@ -8,9 +8,9 @@ export GDK_DPI_SCALE=2
 #. ~/.oh-my-zsh/themes/dracula/dracula.zsh-theme
 
 if [ "$ANDROID_ROOT" = "/system" ]; then
-export LC_ALL=en_GB.UTF-8  
   source $HOME/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme
 else
+  export LC_ALL=en_GB.UTF-8  
   source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
 fi
 
@@ -61,6 +61,8 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # so if we're on Android. Run TMux.
 if [ "$ANDROID_ROOT" = "/system" ]; then
   tmux -u
+else
+  pfetch
 fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$ANDROID_NDK:$PATH"
