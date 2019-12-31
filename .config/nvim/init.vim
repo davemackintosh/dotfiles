@@ -43,6 +43,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'flrnd/candid.vim'
   Plug 'arcticicestudio/nord-vim'
   Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+  Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " Directory path to the vim config.
