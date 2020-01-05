@@ -241,6 +241,18 @@ awful.rules.rules = {
     },
   },
 
+  -- Fullscreen clients.
+  { 
+    rule_any = {
+      class = {
+        "Wine",
+      },
+    }, 
+    properties = { 
+      fullscreen = true 
+    }
+  },
+
   -- Floating clients.
   { 
     rule_any = {
