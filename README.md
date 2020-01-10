@@ -1,4 +1,5 @@
 # My setup
 
-## I have recently moved to Arch on my laptop, this is now just a clusterfuck of scripts until I find time to update them to be platform agnostic.
+Run `bash dotfiles-install.sh x86` on your laptop Dave and `bash dotfiles-install.sh android` on your tablet and phone.
 
+Backs up what it writes and everything is symlinked so it can be committed easily. Many improvements expected as i screw up my system.
