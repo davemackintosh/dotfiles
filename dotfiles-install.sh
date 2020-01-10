@@ -28,15 +28,14 @@ FILES["$PWD/shared/.zshrc"]="$HOME/.zshrc"
 FILES["$PWD/shared/aliases.sh"]="$HOME/aliases.sh"
 FILES["$PWD/shared/z.sh"]="$HOME/z.sh"
 FILES["$PWD/.config/nvim"]="$HOME/.config/nvim"
-FILES["$PWD/.config/neofetch"]="$HOME/.config/neofetch"
+FILES["$PWD/arch/.tmux.conf"]="$HOME/.tmux.conf"
+FILES["$PWD/.config/ranger"]="$HOME/.config/ranger"
 
 if [ $1 = "x86" ]; then
   FILES["$PWD/.config/awesome"]="$HOME/.config/awesome"
   FILES["$PWD/.config/compton"]="$HOME/.config/compton"
-  FILES["$PWD/.config/ranger"]="$HOME/.config/ranger"
   FILES["$PWD/.config/rofi"]="$HOME/.config/rofi"
   FILES["$PWD/.config/termite"]="$HOME/.config/termite"
-  FILES["$PWD/.tmux"]="$HOME/.tmux"
 fi
 
 if [ $1 = "android" ]; then
