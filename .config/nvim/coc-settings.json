@@ -40,7 +40,7 @@
       "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {
          "cache": {
-           "directory": "$PREFIX/tmp/ccls"
+           "directory": "/tmp/ccls"
          }
        }
     },

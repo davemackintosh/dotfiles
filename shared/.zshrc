@@ -27,7 +27,6 @@ if [ "$ANDROID_ROOT" = "/system" ]; then
   ANDROID_NDK="$HOME/android-ndk-r17"
   source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
-  ANDROID_NDK="$HOME/android-ndk-r17"
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
@@ -42,6 +41,7 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Paths.
 export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:/opt/android-sdk/build-tools/29.0.2"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Export NVM program.
