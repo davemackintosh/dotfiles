@@ -36,6 +36,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'ryanolsonx/vim-lsp-typescript'
   Plug 'rust-lang/rust.vim'
   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+  Plug 'beyondmarc/glsl.vim'
 
   " Look and feel plugins. I'm so very fickle.
   " these are my favourites.

@@ -6,7 +6,7 @@ allow_bold = true
 #cell_width_scale = 1.0
 clickable_url = true
 dynamic_title = true
-font = Iosevka,Iosevka Nerd Font Mono 25
+font = Iosevka,Iosevka Nerd Font Mono 15
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -14,7 +14,7 @@ font = Iosevka,Iosevka Nerd Font Mono 25
 #scroll_on_keystroke = true
 # Length of the scrollback buffer, 0 disabled the scrollback buffer
 # and setting it to a negative value means "infinite scrollback"
-scrollback_lines = 10000
+scrollback_lines = -1
 #search_wrap = true
 #urgent_on_bell = true
 hyperlinks = true

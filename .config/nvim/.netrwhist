@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/dave/www/node/dav3-website/.git'
+let g:netrw_dirhist_4='/home/dave/www/node/brisket/customer-ui/src/shared/components'
+let g:netrw_dirhist_3='/home/dave/www/node/brisket/customer-ui/src/shared/components/promo-code-form'
 let g:netrw_dirhist_2='/home/dave/www/node/brisket/admin-ui/src/shared/components/page/list-page'
 let g:netrw_dirhist_1='/home/dave/www/node/awesome-themer/electron/src/types/fontmanager-redux'

@@ -305,12 +305,11 @@ awful.spawn.easy_async_with_shell("compton --config ~/.config/compton/compton.co
 -- Turn bluetooth on. This needs moving to xinitrc I think.
 -- would be nice to have wireless mouse/keyboard in XDG/LightDM.
 awful.spawn.easy_async_with_shell("bluetoothctl power on", function() end)
-awful.spawn.easy_async_with_shell("touchegg", function() end)
 
 -- Mount Google drive.
 awful.spawn.easy_async_with_shell("google-drive-ocamlfuse ~/google-drive", function() end)
 
--- Set up touch gestures.
+awful.spawn.easy_async_with_shell("udiskie", function() end)
 awful.spawn.easy_async_with_shell("touchegg", function() end)
 awful.spawn.easy_async_with_shell("onboard", function() end)
 awful.spawn.easy_async_with_shell("screenrotator", function() end)
