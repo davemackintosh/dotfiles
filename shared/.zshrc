@@ -43,6 +43,7 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 export ANDROID_HOME="$HOME/Android/Sdk"
 export PATH="$PATH:/opt/android-sdk/build-tools/29.0.2"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin"
 
 # Export NVM program.
 export NVM_DIR="$HOME/.nvm"
@@ -66,3 +67,6 @@ else
 fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$ANDROID_NDK:$PATH"
+
+# Created by `userpath` on 2020-02-03 14:05:48
+export PATH="$PATH:/home/dave/.local/bin"

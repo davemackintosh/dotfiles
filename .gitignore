@@ -4,3 +4,4 @@ vim_session
 .git # Because some plugins want in.
 tags*
 vim_session
+.netrwhist
