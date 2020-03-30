@@ -23,7 +23,7 @@ function! s:defx_my_settings() abort
 	nnoremap <silent><buffer><expr> dd
 		\ defx#do_action('move')
 	nnoremap <silent><buffer><expr> pp
-		\ defx#do_action('paste')<Paste>
+		\ defx#do_action('paste')
 	nnoremap <silent><buffer><expr> mm
 		\ defx#do_action('rename')
 	nnoremap <silent><buffer><expr> q

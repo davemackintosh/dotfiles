@@ -11,7 +11,7 @@ if [ "$ANDROID_ROOT" = "/system" ]; then
   source $HOME/.oh-my-zsh/custom/themes/powerlevel9k/powerlevel9k.zsh-theme
 else
   export LC_ALL=en_GB.UTF-8  
-  source /usr/share/zsh-theme-powerlevel9k/powerlevel9k.zsh-theme
+  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 fi
 
 ENABLE_CORRECTION="true"
@@ -33,15 +33,21 @@ fi
 # Tools
 . $ZSH/oh-my-zsh.sh
 . ~/z.sh
-. ./aliases.sh
+. ~/aliases.sh
 
 # Editor config
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='fd --type f'
 
 # Paths.
+export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+export ANDROID_SDK_HOME="$HOME/Android/Sdk"
 export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_AVD_HOME="$HOME/.android/avd"
 export PATH="$PATH:/opt/android-sdk/build-tools/29.0.2"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 
