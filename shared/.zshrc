@@ -1,4 +1,7 @@
 # ZSH config.
+if [[ $OS = "" ]]; then
+export OS=$(uname -s)
+fi
 export LANG=en_GB.UTF-8
 export ZSH="$HOME/.oh-my-zsh"
 export MOZ_USE_XINPUT2 DEFAULT=1
@@ -32,8 +35,8 @@ fi
 
 # Tools
 . $ZSH/oh-my-zsh.sh
-. ~/z.sh
-. ~/aliases.sh
+. $HOME/z.sh
+. $HOME/aliases.sh
 
 # Editor config
 export EDITOR='nvim'
@@ -76,3 +79,5 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$ANDROI
 
 # Created by `userpath` on 2020-02-03 14:05:48
 export PATH="$PATH:/home/dave/.local/bin"
+
+eval $(thefuck --alias)
