@@ -81,3 +81,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$ANDROI
 export PATH="$PATH:/home/dave/.local/bin"
 
 eval $(thefuck --alias)
+export PATH="$HOME/flutter/bin:$PATH"
