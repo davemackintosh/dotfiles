@@ -80,5 +80,7 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$ANDROI
 # Created by `userpath` on 2020-02-03 14:05:48
 export PATH="$PATH:/home/dave/.local/bin"
 
+if [ "$ANDROID_ROOT" != "/system" ]; then
 eval $(thefuck --alias)
 export PATH="$HOME/flutter/bin:$PATH"
+fi
