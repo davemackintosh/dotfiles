@@ -51,6 +51,8 @@ export PATH="$PATH:/opt/android-sdk/build-tools/29.0.2"
 export PATH="$PATH:$ANDROID_HOME/emulator"
 export PATH="$PATH:$ANDROID_HOME/tools"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$HOME/Android/Sdk/cmdline-tools/latest/bin/"
+export PATH="$PATH:/opt/android-sdk/platform-tools/"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 
