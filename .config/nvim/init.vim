@@ -3,14 +3,14 @@ set nocompatible
 " Ignore dotfiles when opening Fugitive
 " so it opens pretty instantly instead of 
 " setting up an entire environment.
-set shell=/bin/bash\ --login
+set shell=/bin/bash
 
 call plug#begin('~/.config/nvim/bundle')
   Plug 'christoomey/vim-tmux-navigator'
 
 	" File plugins.
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'kristijanhusak/defx-icons'
+  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+	" Plug 'kristijanhusak/defx-icons'
   Plug '/usr/local/opt/fzf'
   Plug 'junegunn/fzf.vim'
 

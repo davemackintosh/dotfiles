@@ -5,21 +5,10 @@ hi User3 ctermbg=005 ctermfg=004 " Pink background, blue foreground
 hi User4 ctermbg=NONE ctermfg=005 " No background, pink foreground.
 hi User5 ctermbg=NONE ctermfg=004 " No background, pink foreground.
 
-function! GetFIcon(ext)
-let ext = expand('%:e')
-let icons = defx_icons#get()
-  if has_key(icons.extensions, ext)
-    return icons.extensions[ext].icon
-  else
-    return icons.default_icon
-  endif
-  return ''
-endfunction
-
 set statusline =
 set statusline+=%1*\ %{toupper(mode())}\ 
 set statusline+=%3*
-set statusline+=%2*\ %{GetFIcon(expand('%:e'))}\ 
+set statusline+=%2*\ %{expand('%:e')}\ 
 set statusline+=%2*\ %t@%l:%c\ 
 set statusline+=%4*
 
