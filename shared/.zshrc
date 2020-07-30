@@ -26,9 +26,12 @@ plugins=(git safe-paste tmux)
 # git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-if [ "$ANDROID_ROOT" = "/system" ]; then
-  ANDROID_NDK="$HOME/android-ndk-r17"
+if [ "$OS" = "Android" ]; then
+  echo "Adding Android specifics to env"
+  export ANDROID_NDK="$HOME/NDK"
+  export NDK="$ANDROID_NDK"
   source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  export PATH="$PATH:$HOME/NDK/toolchains/llvm/prebuilt/linux-aarch64/bin/"
 else
   source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
@@ -55,6 +58,7 @@ export PATH="$PATH:$HOME/Android/Sdk/cmdline-tools/latest/bin/"
 export PATH="$PATH:/opt/android-sdk/platform-tools/"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/clang+llvm-10/clang+llvm-10.0.0-armv7a-linux-gnueabihf/bin"
 
 # Export NVM program.
 export NVM_DIR="$HOME/.nvm"

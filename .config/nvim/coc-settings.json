@@ -21,8 +21,8 @@
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
   "git.enableGutters": true,
-  "git.addGblameToBufferVar": true,
-  "git.addGblameToVirtualText": true,
+  "git.addGBlameToBufferVar": true,
+  "git.addGBlameToVirtualText": true,
   "git.virtualTextPrefix": " ❯❯❯ ",
 
   "tsserver.log": "verbose",
@@ -52,15 +52,6 @@
     "lua": {
       "command": "lua-lsp",
       "filetypes": ["lua"]
-    },
-    "flow": {
-      "command": "flow",
-      "args": ["lsp"],
-      "filetypes": ["javascript", "javascript.jsx", "javascriptreact"],
-      "initializationOptions": {},
-      "requireRootPattern": true,
-      "settings": {},
-      "rootPatterns": [".flowconfig"]
     }
   }
 }

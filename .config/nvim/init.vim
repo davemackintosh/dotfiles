@@ -39,6 +39,7 @@ call plug#begin('~/.config/nvim/bundle')
   Plug 'rhysd/vim-clang-format'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'beyondmarc/glsl.vim'
+  Plug 'pboettch/vim-cmake-syntax'
 
   " Look and feel plugins. I'm so very fickle.
   " these are my favourites.

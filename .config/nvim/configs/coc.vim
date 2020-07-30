@@ -7,8 +7,6 @@ if expand('$INSTALL_COC_PLUGINS') == 'yes'
   :CocInstall coc-css
   :CocInstall coc-svg
   :CocInstall coc-marketplace
-  :CocInstall coc-tslint-plugin
-  :CocInstall coc-tslint
   :CocInstall coc-eslint
   :CocInstall coc-emoji
   :CocInstall coc-rls
