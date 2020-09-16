@@ -3,3 +3,5 @@
 	name = davemackintosh
 [mergetool "nvim"]
   cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+[pull]
+	rebase = true
