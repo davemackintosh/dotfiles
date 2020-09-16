@@ -2,6 +2,7 @@ let g:vista_default_executive = 'ctags'
 
 let g:vista_executive_for = {
   \ 'go': 'ctags',
+  \ 'rust': 'ctags',
   \ 'javascript': 'coc',
   \ 'typescript': 'coc',
   \ 'javascript.jsx': 'coc',

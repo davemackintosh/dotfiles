@@ -7,6 +7,7 @@ set nobackup
 set nowritebackup
 set noswapfile
 set noexpandtab
+set tabstop=2
 
 " Keep our dotfiles away from commands such as :Gstatus
 " https://github.com/tpope/vim-fugitive/issues/1176

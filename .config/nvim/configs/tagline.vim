@@ -17,7 +17,7 @@ function! GitDirty()
 
   let s:dirty = system('git status 2>/dev/null | tail -n 1')
 
-  if s:dirty == 'nothing to commit (working directory clean)'
+  if s:dirty == 'no changes added to commit (use "git add" and/or "git commit -a")'
     return ''
   else
     return '*'

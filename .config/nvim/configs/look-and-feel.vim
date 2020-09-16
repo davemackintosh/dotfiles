@@ -1,5 +1,4 @@
-" set tabstop=2
-" set shiftwidth=2
+set shiftwidth=1
 " set expandtab
 set ruler
 set number
@@ -8,9 +7,6 @@ set background=dark
 
 syntax on
 
-" colorscheme OceanicNext
-" colorscheme candid
-" colorscheme challenger_deep
 colorscheme nord
 
 " Enable transparent backgrounds.
