@@ -1,5 +1,6 @@
 {
   "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "dart","javascript", "javascriptreact", "typescript", "typescriptreact"],
   "tsserver.enableJavascript": true,
   "tslint.enable": true,
   "tslint.autoFixOnSave": true,
@@ -34,15 +35,16 @@
       "args": ["start"],
       "ignoredRootPaths": ["~"]
     },
+    "rust": {
+      "command": "rls",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"],
+      "ignoredRootPaths": ["~"]
+    },
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-         "cache": {
-           "directory": "/tmp/ccls"
-         }
-       }
+      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"]
     },
     "dockerfile": {
       "command": "docker-langserver",
