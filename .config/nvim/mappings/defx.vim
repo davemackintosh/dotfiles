@@ -1,5 +1,5 @@
 " Open or close Defx
-map <C-o> :Defx -toggle -show-ignored-files -columns=indent:icons:filename:type -split=vertical -winwidth=50 -direction=topleft<CR>
+map <silent><C-o> :Defx -toggle -show-ignored-files -columns=indent:icons:filename:type -split=vertical -winwidth=50 -direction=topleft<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
