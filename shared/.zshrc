@@ -58,6 +58,7 @@ export PATH="$PATH:$HOME/Android/Sdk/cmdline-tools/latest/bin/"
 export PATH="$PATH:/opt/android-sdk/platform-tools/"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/clang+llvm-10/clang+llvm-10.0.0-armv7a-linux-gnueabihf/bin"
 
 # Export NVM program.

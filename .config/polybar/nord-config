@@ -43,7 +43,7 @@ wm-restack = bspwm
 # clipmenu-widget: showing clipmenu service
 
 # Top modules
-top-left = title
+top-left = i3
 top-center = none
 top-right = alsa network-short battery date
 
@@ -56,7 +56,7 @@ systray-top = left
 systray-bottom = none
 
 # global style
-line-size = 6
+line-size = 5
 
 # Modules configure option
 # the default value in this section should work in most cases,

@@ -40,7 +40,7 @@ inherit = bar/base
 
 module-margin = 1
 
-font-0 = WenQuanYiMicroHei:size=12
+font-0 = Iosevka:size=11
 font-1 = FontAwesome5FreeSolid:pixelsize=12;1
 font-2 = FontAwesome5FreeRegular:pixelsize=12;1
 font-3 = FontAwesome5Brands:pixelsize=8;1
@@ -52,22 +52,3 @@ modules-right = ${config.top-right}
 
 tray-position = ${config.systray-top}
 
-[bar/nord-down]
-inherit = bar/base
-
-bottom = true
-
-padding = 2
-module-margin = 2
-
-font-0 = WenQuanYiMicroHei:size=12
-font-1 = FontAwesome5FreeSolid:pixelsize=12;1
-font-2 = FontAwesome5Brands:pixelsize=8;1
-font-3 = Weather Icons:style=Regular:size=12;1
-font-4 = FiraCodeRegular:pixelsize=12
-
-modules-left = ${config.bottom-left}
-modules-center = ${config.bottom-center}
-modules-right = ${config.bottom-right}
-
-tray-position = ${config.systray-bottom}
