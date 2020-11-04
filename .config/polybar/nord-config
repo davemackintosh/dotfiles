@@ -14,7 +14,7 @@ radius = 0.0
 
 fixed-center = true
 override-redirect = false
-wm-restack = bspwm
+wm-restack = i3
 
 # module list:
 # alsa: Display current volume
@@ -43,16 +43,16 @@ wm-restack = bspwm
 # clipmenu-widget: showing clipmenu service
 
 # Top modules
-top-left = i3
+top-left = i3 bspwm
 top-center = none
-top-right = alsa network-short battery date
+top-right = alsa network-short battery date 
 
 # Bottom modules
 bottom-left = 
 bottom-center = 
 bottom-right = 
 
-systray-top = left
+systray-top = center
 systray-bottom = none
 
 # global style

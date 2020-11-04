@@ -177,7 +177,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh dark
 
 # Launch tools.
 exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
-exec_always --no-startup-id bluetoothctl power on
+# exec_always --no-startup-id bluetoothctl power on
 exec_always --no-startup-id udiskie
 exec_always --no-startup-id touchegg
 exec_always --no-startup-id google-drive-ocamlfuse ~/google-drive
@@ -193,3 +193,6 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5
 
+# Floating windows.
+# Android emulator
+for_window [title=".*Emulator.*"] floating enable

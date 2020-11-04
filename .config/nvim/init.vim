@@ -29,15 +29,15 @@ call plug#begin('~/.config/nvim/bundle')
 	Plug 'eslint/eslint'
 	Plug 'yannickcr/eslint-plugin-react'
 	" Plug 'HerringtonDarkholme/yats.vim'
-	Plug 'ap/vim-css-color'
-	Plug 'prabirshrestha/async.vim'
-	Plug 'prabirshrestha/vim-lsp'
-	Plug 'ryanolsonx/vim-lsp-typescript'
+	" Plug 'ap/vim-css-color'
+	" Plug 'prabirshrestha/async.vim'
+	" Plug 'prabirshrestha/vim-lsp'
+	" Plug 'ryanolsonx/vim-lsp-typescript'
+	Plug 'pangloss/vim-javascript'
+	Plug 'leafgarland/typescript-vim'
+	Plug 'peitalin/vim-jsx-typescript'
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-	Plug 'rhysd/vim-clang-format'
-	Plug 'dart-lang/dart-vim-plugin'
-	Plug 'beyondmarc/glsl.vim'
-	Plug 'pboettch/vim-cmake-syntax'
+	Plug 'jparise/vim-graphql'
 	Plug 'rust-lang/rust.vim'
 
 	" Look and feel plugins. I'm so very fickle.
@@ -54,6 +54,8 @@ function! SourceAllIn(path)
 		exe 'source' s:fpath
 	endfor
 endfunction
+
+let mapleader=","
 
 " Get our files.
 call SourceAllIn('/configs/')

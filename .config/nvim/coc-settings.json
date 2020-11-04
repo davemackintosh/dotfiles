@@ -1,10 +1,6 @@
 {
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["rust", "dart","javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "tsserver.enableJavascript": true,
-  "tslint.enable": true,
-  "tslint.autoFixOnSave": true,
-  "javascript.validate.enable": false,
   "codeLens.enable": true,
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
@@ -26,7 +22,9 @@
   "git.addGBlameToVirtualText": true,
   "git.virtualTextPrefix": " ❯❯❯ ",
 
+	"tsserver.formatOnType": true,
   "tsserver.log": "verbose",
+  "tsserver.enableJavascript": true,
 
   "languageserver": {
     "bash": {
