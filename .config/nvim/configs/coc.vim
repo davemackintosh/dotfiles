@@ -10,11 +10,11 @@
 	\ 'coc-prettier',
 	\ 'coc-eslint',
 	\ 'coc-rls',
-	\ 'coc-rust',
+	\ 'coc-rust-analyzer',
   \ ]
 
  " Show a description on cursor hover
- function! ShowDocIfNoDiagnostic(timer_id)
+function! ShowDocIfNoDiagnostic(timer_id)
   if (coc#float#has_float() == 0)
     silent call CocActionAsync('doHover')
   endif

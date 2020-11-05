@@ -173,7 +173,7 @@ configuration {
 	spacing: 0;
 	background-color: transparent;
 
-	font: "Fira Mono 13";
+	font: "Iosevka 28";
 }
 
 window {

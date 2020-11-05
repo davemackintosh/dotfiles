@@ -35,7 +35,7 @@
     },
     "rust": {
       "command": "rls",
-      "filetypes": ["rust"],
+      "filetypes": ["rust", "rs"],
       "rootPatterns": ["Cargo.toml"],
       "ignoredRootPaths": ["~"]
     },
