@@ -1,5 +1,5 @@
 " Open or close Defx
-map <silent><C-o> :Defx -toggle -show-ignored-files -columns=indent:icons:filename:type -split=vertical -winwidth=50 -direction=topleft<CR>
+map <silent><C-o> :Defx -toggle -show-ignored-files -columns=indent:icons:filename:type -split=vertical -winwidth=50 -direction=topleft -search=`expand('%:p')` -buffer-name=defx<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
@@ -7,7 +7,7 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
         \ defx#is_directory() 
 					\ ? defx#do_action('open_or_close_tree') 
-					\ : defx#do_action('drop')
+					\ : defx#do_action('multi', [['drop', 'vsplit']]) 
   nnoremap <silent><buffer><expr> s
         \ defx#do_action('multi', [['drop', 'split']])
   nnoremap <silent><buffer><expr> v
