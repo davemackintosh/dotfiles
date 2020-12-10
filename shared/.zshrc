@@ -1,61 +1,64 @@
-# ZSH config.
-if [[ $OS = "" ]]; then
-export OS=$(uname -s)
+
+export ZSH=$HOME/.oh-my-zsh
+export ZPLUG_HOME=$HOME/dotfiles/.zplug
+
+if [[ ! -d $ZPLUG_HOME ]]; then
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+  source $ZPLUG_HOME/init.zsh && zplug update --self
+else
+ source $ZPLUG_HOME/init.zsh
 fi
-export LANG=en_GB.UTF-8
-export ZSH="$HOME/.oh-my-zsh"
-export GDK_DPI_SCALE=1
 
-source /usr/share/powerline/zsh/powerline.zsh
+# ZSH Plugins
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
-ENABLE_CORRECTION="true"
-COMPLETION_WAITING_DOTS="true"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir newline vcs )
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(background_jobs_joined)
-plugins=(git firewalld safe-paste tmux zsh-syntax-highlighting zsh-autosuggestions)
+# Zplug plugins
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
-# Tools
-. $ZSH/oh-my-zsh.sh
-. $HOME/z.sh
-. $HOME/aliases.sh
+zplug "modules/tmux",       from:prezto
+zplug "modules/history",    from:prezto
+zplug "modules/utility",    from:prezto
+zplug "modules/ssh",        from:prezto
+zplug "modules/terminal",   from:prezto
+zplug "modules/editor",     from:prezto
+zplug "modules/directory",  from:prezto
+zplug "modules/completion", from:prezto
 
-# Editor config
-export EDITOR='nvim'
-export FZF_DEFAULT_COMMAND='fd --type f'
+# zsh users
+zplug "zsh-users/zsh-completions",              defer:0
+zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
+zplug "skywind3000/z.lua"
 
-# Paths.
-export ANDROID_HOME="$HOME/Android/Sdk"
-export ANDROID_SDK_HOME="$HOME/Android/Sdk"
-export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/22.0.6917172"
-export PATH="$PATH:$HOME/node_modules/.bin"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.cargo/bin"
-export PATH="$PATH:$ANDROID_SDK_HOME/build-tools/30.0.2"
+# Plugins from oh my zsh
+zplug "plugins/git", from:oh-my-zsh
 
-# Export NVM program.
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Check for non-installed plugins
+if ! zplug check --verbose; then
+	 printf "Install? [y/N]: "
+	 if read -q; then
+			 zplug install &&
+			 zplug load
+	 fi
+ else
+	# Then, source plugins and add commands to $PATH
+	zplug load
+fi
 
-# Start typing and use arrows to search history.
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-tmux -u
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$ANDROID_NDK:$PATH"
+# Fix home/end keys.
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 
-# Created by `userpath` on 2020-02-03 14:05:48
-export PATH="$PATH:/home/dave/.local/bin"
+# Source anything else here
+[[ ! -f ~/aliases.sh ]] || source ~/aliases.sh
 
-eval $(thefuck --alias)
-
-PATH="/home/dave/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/dave/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/dave/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/dave/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/dave/perl5"; export PERL_MM_OPT;
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
