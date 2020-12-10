@@ -1,3 +1,6 @@
 [submodule ".config/awesome/themes/vex"]
 	path = .config/awesome/themes/vex
 	url = https://github.com/davemackintosh/vex.git
+[submodule ".zplug"]
+	path = .zplug
+	url = https://github.com/zplug/zplug
