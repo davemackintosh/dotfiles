@@ -1,9 +1,11 @@
-
+# Set some envs.
 export ZSH=$HOME/.oh-my-zsh
 export ZPLUG_HOME=$HOME/dotfiles/.zplug
+export DEFAULT_TPM_PATH=$HOME/dotfiles/.tmp
 
+# Check we've got what we need.
 if [[ ! -d $ZPLUG_HOME ]]; then
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+  git submodule update --init --recursive &&
   source $ZPLUG_HOME/init.zsh && zplug update --self
 else
  source $ZPLUG_HOME/init.zsh
@@ -50,5 +52,6 @@ fi
 
 # Source anything else here
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/paths.zsh ]] || source ~/paths.zsh
 [[ ! -f ~/aliases.zsh ]] || source ~/aliases.zsh
 [[ ! -f ~/keybindings.zsh ]] || source ~/keybindings.zsh
