@@ -1,3 +1,8 @@
+# Editor specifics.
+export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_SDK_HOME="$HOME/Android/Sdk"
+export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/22.0.6917172"
+
 # System paths.
 export PATH="$PATH:$HOME/node_modules/.bin"
 export PATH="$PATH:$HOME/.yarn/bin"
@@ -5,11 +10,7 @@ export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$ANDROID_SDK_HOME/build-tools/30.0.2"
-
-# Editor specifics.
-export ANDROID_HOME="$HOME/Android/Sdk"
-export ANDROID_SDK_HOME="$HOME/Android/Sdk"
-export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/22.0.6917172"
+export PATH="$PATH:$ANDROID_SDK_HOME/platform-tools"
 
 # Language specifics.
 export NVM_DIR="$HOME/.nvm"
