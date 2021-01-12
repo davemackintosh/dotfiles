@@ -15,7 +15,11 @@ export PATH="$PATH:$ANDROID_SDK_HOME/platform-tools"
 # Language specifics.
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if ! [ "$OS" = "Android" ]; then
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+eval $(thefuck --alias)
 
 PATH="/home/dave/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/dave/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
