@@ -57,8 +57,4 @@ source ~/aliases.zsh
 source ~/keybindings.zsh
 
 # Start tmux
-if which tmux 2>&1 >/dev/null; then
-  if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-    tmux attach -t hack || tmux new -s hack;
-  fi
-fi
+tmux
