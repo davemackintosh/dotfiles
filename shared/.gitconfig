@@ -1,10 +1,7 @@
 [user]
 	email = me@davemackintosh.co.uk
 	name = davemackintosh
-	signingkey = 384135369A947A17
 [mergetool "nvim"]
   cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [pull]
 	rebase = true
-[commit]
-	gpgsign = true

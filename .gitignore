@@ -7,3 +7,5 @@ vim_session
 .netrwhist
 .zplug
 .tpm
+.config/coc
+.config/configstore
