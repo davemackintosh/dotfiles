@@ -1,7 +1,7 @@
 # Set some envs.
 export ZSH=$HOME/.oh-my-zsh
 export ZPLUG_HOME=$HOME/dotfiles/.zplug
-export DEFAULT_TPM_PATH=$HOME/dotfiles/.tmp
+export DEFAULT_TPM_PATH=$HOME/dotfiles/.tpm
 
 # Check we've got what we need.
 if [[ ! -d $ZPLUG_HOME ]]; then
