@@ -26,6 +26,12 @@
   "tsserver.log": "verbose",
   "tsserver.enableJavascript": true,
 
+	"sql.formatOptions": {
+	 "language": "postgresql",
+	 "linesBetweenQueries": 2,
+	 "tabIndent": true
+	},
+
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -52,7 +58,11 @@
     "lua": {
       "command": "lua-lsp",
       "filetypes": ["lua"]
-    }
+    },
+    "sql": {
+		  "command": "sql-language-server up --method stdio",
+			"filetypes": ["sql"]
+		}
   }
 }
 
