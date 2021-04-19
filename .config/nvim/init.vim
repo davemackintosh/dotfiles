@@ -3,6 +3,7 @@ set nocompatible
 " Ignore dotfiles when opening Fugitive
 " so it opens pretty instantly instead of 
 " setting up an entire environment.
+" https://github.com/tpope/vim-fugitive/issues/1176
 set shell=/bin/bash
 
 call plug#begin('~/.config/nvim/bundle')
@@ -26,16 +27,16 @@ call plug#begin('~/.config/nvim/bundle')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'ludovicchabant/vim-gutentags'
 	Plug 'terryma/vim-multiple-cursors'
-	Plug 'eslint/eslint'
-	Plug 'yannickcr/eslint-plugin-react'
+	" Plug 'eslint/eslint'
+	" Plug 'yannickcr/eslint-plugin-react'
 	Plug 'HerringtonDarkholme/yats.vim'
 	Plug 'ap/vim-css-color'
 	" Plug 'prabirshrestha/async.vim'
 	" Plug 'prabirshrestha/vim-lsp'
 	" Plug 'ryanolsonx/vim-lsp-typescript'
-	Plug 'pangloss/vim-javascript'
-	Plug 'leafgarland/typescript-vim'
-	Plug 'peitalin/vim-jsx-typescript'
+	" Plug 'pangloss/vim-javascript'
+	" Plug 'leafgarland/typescript-vim'
+	" Plug 'peitalin/vim-jsx-typescript'
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 	Plug 'jparise/vim-graphql'
 	Plug 'rust-lang/rust.vim'
