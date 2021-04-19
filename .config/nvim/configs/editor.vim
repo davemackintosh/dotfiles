@@ -2,16 +2,12 @@
 filetype plugin indent on
 
 set mouse=a
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set nobackup
 set nowritebackup
 set noswapfile
 set noexpandtab
 set tabstop=2
-
-" Keep our dotfiles away from commands such as :Gstatus
-" https://github.com/tpope/vim-fugitive/issues/1176
-set shell=/usr/bin/bash
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=magenta
