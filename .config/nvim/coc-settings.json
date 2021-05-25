@@ -7,7 +7,7 @@
   "signature.target": "echo",
 
   "suggest.triggerAfterInsertEnter": false,
-  "suggest.timeout": 500,
+  "suggest.timeout": 2000,
   "suggest.noselect": false,
   "suggest.snippetIndicator": "★",
   "suggest.triggerCompletionWait": 100,
