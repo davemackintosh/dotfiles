@@ -25,6 +25,7 @@ call plug#begin('~/.config/nvim/bundle')
 
 	" Code plugins
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'dense-analysis/ale'
 	Plug 'ludovicchabant/vim-gutentags'
 	Plug 'terryma/vim-multiple-cursors'
 	" Plug 'eslint/eslint'
@@ -39,7 +40,6 @@ call plug#begin('~/.config/nvim/bundle')
 	" Plug 'peitalin/vim-jsx-typescript'
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 	Plug 'jparise/vim-graphql'
-	Plug 'rust-lang/rust.vim'
 
 	" Look and feel plugins. I'm so very fickle.
 	" these are my favourites.
