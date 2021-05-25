@@ -2,7 +2,6 @@
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_SDK_HOME="$HOME/Android/Sdk"
 export ANDROID_NDK_HOME="$ANDROID_HOME/ndk/23.0.7123448"
-export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-11.0.10.0.9-0.fc33.x86_64"
 
 # System paths.
 export PATH="$PATH:$HOME/node_modules/.bin"
