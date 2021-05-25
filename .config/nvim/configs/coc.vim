@@ -10,7 +10,6 @@
 	\ 'coc-prettier',
 	\ 'coc-eslint',
 	\ 'coc-rls',
-	\ 'coc-rust-analyzer',
   \ ]
 
 " Auto fix.
