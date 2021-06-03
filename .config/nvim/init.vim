@@ -40,6 +40,7 @@ call plug#begin('~/.config/nvim/bundle')
 	" Plug 'peitalin/vim-jsx-typescript'
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 	Plug 'jparise/vim-graphql'
+	Plug 'jxnblk/vim-mdx-js'
 
 	" Look and feel plugins. I'm so very fickle.
 	" these are my favourites.
