@@ -35,3 +35,7 @@ if [[ $OS = "Linux" ]]; then
 
   eval $(thefuck --alias)
 fi
+
+killPort() {
+	lsof -i TCP:$1 | grep LISTEN | awk '{print $2}'
+}

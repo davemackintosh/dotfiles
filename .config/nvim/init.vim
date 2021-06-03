@@ -44,6 +44,7 @@ call plug#begin('~/.config/nvim/bundle')
 	" Look and feel plugins. I'm so very fickle.
 	" these are my favourites.
 	Plug 'arcticicestudio/nord-vim'
+	Plug 'sonph/onehalf', {'rtp': 'vim/'}
 call plug#end()
 
 " Directory path to the vim config.
