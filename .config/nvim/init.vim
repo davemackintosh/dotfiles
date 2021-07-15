@@ -41,6 +41,7 @@ call plug#begin('~/.config/nvim/bundle')
 	Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 	Plug 'jparise/vim-graphql'
 	Plug 'jxnblk/vim-mdx-js'
+	Plug 'neoclide/jsonc.vim'
 
 	" Look and feel plugins. I'm so very fickle.
 	" these are my favourites.
