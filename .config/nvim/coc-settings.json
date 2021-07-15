@@ -7,7 +7,7 @@
   "signature.target": "echo",
 
   "suggest.triggerAfterInsertEnter": false,
-  "suggest.timeout": 500,
+  "suggest.timeout": 2000,
   "suggest.noselect": false,
   "suggest.snippetIndicator": "★",
   "suggest.triggerCompletionWait": 100,
@@ -25,6 +25,12 @@
 	"tsserver.formatOnType": true,
   "tsserver.log": "verbose",
   "tsserver.enableJavascript": true,
+
+	"sql.formatOptions": {
+	 "language": "postgresql",
+	 "linesBetweenQueries": 2,
+	 "tabIndent": true
+	},
 
   "languageserver": {
     "bash": {
@@ -52,7 +58,11 @@
     "lua": {
       "command": "lua-lsp",
       "filetypes": ["lua"]
-    }
+    },
+    "sql": {
+		  "command": "sql-language-server up --method stdio",
+			"filetypes": ["sql"]
+		}
   }
 }
 
