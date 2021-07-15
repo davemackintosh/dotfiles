@@ -37,5 +37,5 @@ if [[ $OS = "Linux" ]]; then
 fi
 
 killPort() {
-	lsof -i TCP:$1 | grep LISTEN | awk '{print $2}'
+ kill -9 $(lsof -i TCP:$1 | grep LISTEN | awk '{print $2}')
 }
