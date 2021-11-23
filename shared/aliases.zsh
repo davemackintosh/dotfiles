@@ -14,6 +14,8 @@ alias ga='git add'
 alias gaa='git add -A'
 alias gir='echo "GRRRRR TYPOS 🤓" && git'
 
+alias dclf='docker-compose logs -f' 
+
 if [[ $OS = "Android" ]]; then
   alias chcolor="$HOME/.termux/colors.sh"
   alias chfont="$HOME/.termux/fonts.sh"
@@ -23,19 +25,10 @@ fi
 
 alias set-java='sudo alternatives --config java;export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::");source  ~/.zshrc'
 
-if [[ $OS = "Linux" ]]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
-  # Project specific aliases
-  alias rbs='reset && bin/server'
-  alias dclf='docker-compose logs -f' 
-  alias ff='firefox'
-  alias chrome='google-chrome-stable'
-
-  eval $(thefuck --alias)
-fi
-
 killPort() {
  kill -9 $(lsof -i TCP:$1 | grep LISTEN | awk '{print $2}')
 }
+
+alias j17="export JAVA_HOME=$(/usr/libexec/java_home -v 17); java -version"
+alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
+alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
