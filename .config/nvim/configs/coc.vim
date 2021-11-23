@@ -2,6 +2,7 @@
   \ 'coc-tsserver',
 	\ 'coc-json',
 	\ 'coc-github',
+	\ 'coc-explorer',
 	\ 'coc-git',
 	\ 'coc-html',
 	\ 'coc-css',
@@ -9,7 +10,6 @@
 	\ 'coc-marketplace',
 	\ 'coc-prettier',
 	\ 'coc-eslint',
-	\ 'coc-rls',
   \ ]
 
 " Auto fix.

@@ -9,3 +9,4 @@ vim_session
 .tpm
 .config/coc
 .config/configstore
+.DS_Store

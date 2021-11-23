@@ -10,23 +10,18 @@ call plug#begin('~/.config/nvim/bundle')
 	Plug 'christoomey/vim-tmux-navigator'
 
 	" File plugins.
-	Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'kristijanhusak/defx-icons'
-	Plug '/usr/local/opt/fzf'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'editorconfig/editorconfig-vim'
 
-	" Status plugins
-	Plug 'liuchengxu/vista.vim'
-
 	" SCM plugins
 	Plug 'tpope/vim-fugitive', { 'on': [] }
-	Plug 'kristijanhusak/defx-git'
 
 	" Code plugins
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	Plug 'dense-analysis/ale'
-	Plug 'ludovicchabant/vim-gutentags'
+	" Plug 'dense-analysis/ale'
+	" Plug 'ludovicchabant/vim-gutentags'
 	Plug 'terryma/vim-multiple-cursors'
 	" Plug 'eslint/eslint'
 	" Plug 'yannickcr/eslint-plugin-react'
