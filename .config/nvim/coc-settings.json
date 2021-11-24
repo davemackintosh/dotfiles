@@ -55,7 +55,7 @@
     "<cr>": [
       "expandable?",
       ["expanded?", "collapse", "expand"],
-      "open"
+      "open:vsplit"
     ],
     "e": "open",
     "s": "open:split",
