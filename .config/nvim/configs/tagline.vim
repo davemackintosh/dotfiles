@@ -1,4 +1,4 @@
-set showtabline=2
+set showtabline=0
 
 function! GitBranchName()
   let s:gitPath = getcwd() . '/.git'

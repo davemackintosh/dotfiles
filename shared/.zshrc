@@ -31,17 +31,7 @@ zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-synta
 zplug "plugins/git", from:oh-my-zsh
 zplug "skywind3000/z.lua"
 
-# Check for non-installed plugins
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-		zplug install &&
-		zplug load
-  fi
- else
- # Then, source plugins and add commands to $PATH
- zplug load
-fi
+zplug load
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

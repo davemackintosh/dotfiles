@@ -37,6 +37,7 @@ call plug#begin('~/.config/nvim/bundle')
 	Plug 'jparise/vim-graphql'
 	Plug 'jxnblk/vim-mdx-js'
 	Plug 'neoclide/jsonc.vim'
+	Plug 'andrejlevkovitch/vim-lua-format'
 
 	" Look and feel plugins. I'm so very fickle.
 	" these are my favourites.

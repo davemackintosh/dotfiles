@@ -16,3 +16,5 @@ call matchadd('ColorColumn', '\%81v', 100)
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 let g:gutentags_file_list_command = 'ag -l'
+
+autocmd BufWrite *.lua call LuaFormat()

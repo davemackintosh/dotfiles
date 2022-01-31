@@ -154,7 +154,7 @@
       "filetypes": ["lua"]
     },
     "sql": {
-      "command": "sql-language-server up --method stdio",
+      "command": "pgformatter",
       "filetypes": ["sql"]
     }
   }
