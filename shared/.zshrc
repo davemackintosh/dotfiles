@@ -2,6 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 export ZPLUG_HOME=$HOME/dotfiles/.zplug
 export DEFAULT_TPM_PATH=$HOME/dotfiles/.tpm
+eval "$(direnv hook zsh)"
 
 # Check we've got what we need.
 if [[ ! -d $ZPLUG_HOME ]]; then
