@@ -10,3 +10,5 @@ vim_session
 .config/coc
 .config/configstore
 .DS_Store
+nvim/plugin/*.lua
+./ranger/plugins/*
