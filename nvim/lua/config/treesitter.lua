@@ -7,13 +7,6 @@ function M.setup()
 
   -- Extra parser configs
   local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-  parser_configs.haskell = {
-    install_info = {
-      url = "https://github.com/tree-sitter/tree-sitter-haskell",
-      files = { "src/parser.c", "src/scanner.cc" },
-    },
-    filetype = "haskell",
-  }
   parser_configs.markdown = {
     install_info = {
       url = "https://github.com/ikatyang/tree-sitter-markdown",
@@ -32,7 +25,7 @@ function M.setup()
   }
 
   -- Main treesitter config
-  require("nvim-treesitter.configs").setup({
+  require "nvim-treesitter.configs".setup {
     ensure_installed = "all",
     additional_vim_regex_highlighting = { "org" },
 
@@ -150,7 +143,7 @@ function M.setup()
     refactor = {
       highlight_definitions = { enable = true },
     },
-  })
+  }
 end
 
 return M

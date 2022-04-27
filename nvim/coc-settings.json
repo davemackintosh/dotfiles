@@ -1,0 +1,158 @@
+{
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "go",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "codeLens.enable": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": true,
+  "signature.target": "echo",
+  "go.goplsOptions": {
+    "gofumpt": true,
+	"experimentalWorkspaceModule": true,
+	"completeUnimported": true
+  },
+
+  "suggest.triggerAfterInsertEnter": false,
+  "suggest.timeout": 2000,
+  "suggest.noselect": false,
+  "suggest.snippetIndicator": "★",
+
+  "eslint.autoFixOnSave": true,
+
+  "git.enableGutters": true,
+  "git.addGBlameToBufferVar": true,
+  "git.addGBlameToVirtualText": true,
+  "git.virtualTextPrefix": " ❯❯❯ ",
+
+  "tsserver.formatOnType": true,
+  "tsserver.log": "verbose",
+  "tsserver.enableJavascript": true,
+
+  "explorer.keyMappings.global": {
+    "i": false,
+    "<c-o>": "noop",
+
+    "<space>": "toggleSelection",
+    "<tab>": "actionMenu",
+
+    "gk": ["wait", "expandablePrev"],
+    "gj": ["wait", "expandableNext"],
+    "h": ["wait", "collapse"],
+    "l": ["wait", "expandable?", "expand", "open"],
+    "J": ["wait", "toggleSelection", "normal:j"],
+    "K": ["wait", "toggleSelection", "normal:k"],
+    "gl": ["wait", "expand:recursive"],
+    "gh": ["wait", "collapse:recursive"],
+    "<2-LeftMouse>": [
+      "expandable?",
+      ["expanded?", "collapse", "expand"],
+      "open"
+    ],
+    "o": ["wait", "expanded?", "collapse", "expand"],
+    "<cr>": ["expandable?", ["expanded?", "collapse", "expand"], "open:vsplit"],
+    "e": "open",
+    "s": "open:split",
+    "E": "open:vsplit",
+    "t": "open:tab",
+    "<bs>": ["wait", "gotoParent"],
+    "gs": ["wait", "reveal:select"],
+    "il": "preview:labeling",
+    "ic": "preview:content",
+    "Il": "previewOnHover:toggle:labeling",
+    "Ic": "previewOnHover:toggle:content",
+    "II": "previewOnHover:disable",
+
+    "yp": "copyFilepath",
+    "yn": "copyFilename",
+    "yy": "copyFile",
+    "dd": "cutFile",
+    "p": "pasteFile",
+    "df": "delete",
+    "dF": "deleteForever",
+
+    "a": "addFile",
+    "A": "addDirectory",
+    "r": "rename",
+
+    "zh": "toggleHidden",
+    "g<dot>": "toggleHidden",
+    "R": "refresh",
+
+    "?": "help",
+    "q": "quit",
+    "<esc>": "esc",
+    "X": "systemExecute",
+    "gd": "listDrive",
+
+    "f": "search",
+    "F": "searchRecursive",
+
+    "gf": "gotoSource:file",
+    "gb": "gotoSource:buffer",
+
+    "[[": ["wait", "sourcePrev"],
+    "]]": ["wait", "sourceNext"],
+
+    "[i": ["wait", "indentPrev"],
+    "]i": ["wait", "indentNext"],
+
+    "[m": ["wait", "markPrev:modified"],
+    "]m": ["wait", "markNext:modified"],
+
+    "[d": ["wait", "markPrev:diagnosticError:diagnosticWarning"],
+    "]d": ["wait", "markNext:diagnosticError:diagnosticWarning"],
+    "[D": ["wait", "markPrev:diagnosticError"],
+    "]D": ["wait", "markNext:diagnosticError"],
+
+    "[c": ["wait", "markPrev:git"],
+    "]c": ["wait", "markNext:git"],
+    "<<": "gitStage",
+    ">>": "gitUnstage"
+  },
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.openAction.for.directory": "expandOrCollapse",
+
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".golangci-lint.yml", "go.sum"],
+      "filetypes": ["go"]
+    },
+    "bash": {
+      "command": "bash-language-server",
+      "filetypes": ["sh"],
+      "args": ["start"],
+      "ignoredRootPaths": ["~"]
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
+    },
+    "sql": {
+      "command": "pgformatter",
+      "filetypes": ["sql"]
+    }
+  }
+}

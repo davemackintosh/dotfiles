@@ -45,7 +45,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.shortmess:append("c")
 
 -- Indent Settings
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -83,16 +83,11 @@ end
 
 vim.cmd("autocmd UIEnter * call v:lua.FirenvimSetup(deepcopy(v:event.chan))")
 
--- Get a project root from vimL
-function _G.get_project_root()
-  return require("project_nvim.project").get_project_root()
-end
-
 -- Change directory to the current buffer
-vim.cmd("autocmd BufEnter * silent! lcd %:p:h")
+-- vim.cmd("autocmd BufEnter * silent! lcd %:p:h")
 
 -- Make containing directory if missing
-vim.cmd("autocmd BufWritePre * silent! Mkdir! ")
+-- vim.cmd("autocmd BufWritePre * silent! Mkdir! ")
 
 -- Highlight on yank
 vim.cmd([[
@@ -102,7 +97,7 @@ vim.cmd([[
   augroup end
 ]])
 
--- Installed packer if it's missing
+-- Installed packer if it"s missing
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 -- TODO Improve this
@@ -129,9 +124,19 @@ return require("packer").startup({
 
     -- Packer (needed to manage packer packages to manage packages to manage...)
     use "wbthomason/packer.nvim"
+	use {
+		"neoclide/coc.nvim",
+		branch = 'release',
+		config = function(config)
+			require "config.coc".setup(config)
+		end
+	}
     use "liuchengxu/vista.vim"
     use "mhinz/vim-startify"
     use "jparise/vim-graphql"
+    use "sebdah/vim-delve"
+    use "preservim/vimux"
+	use "evanleck/vim-svelte"
 
     -- Most important package; the colour scheme
     use {
@@ -224,18 +229,20 @@ return require("packer").startup({
 
     -- The big daddy
     use {
-        'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        "nvim-telescope/telescope.nvim",
+        requires = { {"nvim-lua/plenary.nvim"} }
     }
 
     -- 􏿽
-    use("chrisbra/unicode.vim")
+    use "chrisbra/unicode.vim"
 
     -- :w !sudo tee % > /dev/null
     use {
       "lambdalisue/suda.vim",
       cmd = { "SudaWrite", "SudaRead" },
     }
+
+    use "direnv/direnv.vim"
 
     -- Comment all the things
     use "tpope/vim-commentary"
@@ -297,21 +304,6 @@ return require("packer").startup({
       end,
     }
 
-    -- Tab bar plugin
-    -- TODO Hide this in firenvim
-    use {
-      "akinsho/bufferline.nvim",
-      config = function()
-        require("bufferline").setup({
-          options = {
-            separator_style = "slant",
-            always_show_bufferline = false,
-          },
-        })
-      end,
-      requires = "kyazdani42/nvim-web-devicons",
-    }
-
     -- Better QuickFix
     use "kevinhwang91/nvim-bqf"
 
@@ -320,7 +312,7 @@ return require("packer").startup({
     use {
       "mfussenegger/nvim-dap",
       config = function()
-        -- require("nvim-dap-virtual-text").setup()
+        require "nvim-dap-virtual-text".setup()
         local dap = require("dap")
         dap.configurations.lua = {
           {
@@ -333,13 +325,13 @@ return require("packer").startup({
           callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8088 })
         end
         vim.cmd([[
-            nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
-            nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
-            nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
-            nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
-            nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
-            nnoremap <silent> <leader>dB :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
-            nnoremap <silent> <leader>dl :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+            nnoremap <silent> <F5> :lua require"dap".continue()<CR>
+            nnoremap <silent> <F10> :lua require"dap".step_over()<CR>
+            nnoremap <silent> <F11> :lua require"dap".step_into()<CR>
+            nnoremap <silent> <F12> :lua require"dap".step_out()<CR>
+            nnoremap <silent> <leader>db :lua require"dap".toggle_breakpoint()<CR>
+            nnoremap <silent> <leader>dB :lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>
+            nnoremap <silent> <leader>dl :lua require"dap".set_breakpoint(nil, nil, vim.fn.input("Log point message: "))<CR>
         ]])
       end,
       module = "dap",
@@ -349,26 +341,13 @@ return require("packer").startup({
       },
     }
 
+    use "leoluz/nvim-dap-go"
+
     -- UI for above
     use { "rcarriga/nvim-dap-ui", after = "nvim-dap" }
 
-    -- EZ installer for DAP servers
-    use {
-      "Pocco81/DAPInstall.nvim",
-      config = function()
-        local dap = require("dap-install")
-
-        local debugger_list = require("dap-install.debuggers_list").debuggers
-
-        for debugger, _ in pairs(debugger_list) do
-          dap.config(debugger, {})
-        end
-      end,
-      cmd = { "DIInstall", "DIUninstall", "DIList" },
-    }
-
     -- Fancy IDE stuff
-    use {
+    --[[use {
       "neovim/nvim-lspconfig",
       config = function()
         require "config.lspconfig".setup()
@@ -380,20 +359,61 @@ return require("packer").startup({
       },
     }
 
-    use {
+	use {
+		"glepnir/lspsaga.nvim",
+		config = function()
+			require "lspsaga".init_lsp_saga {
+				error_sign = "",
+				warn_sign = "",
+				hint_sign = "",
+				infor_sign = "",
+				border_style = "round",
+			}
+		end,
+		after = "nvim-lspconfig",
+		requires = {
+			"nvim-lspconfig",
+		}
+	}]]
+
+	use {
+		"aserowy/tmux.nvim",
+		config = function()
+			require("tmux").setup({
+				-- overwrite default configuration
+				-- here, e.g. to enable default bindings
+				copy_sync = {
+					-- enables copy sync and overwrites all register actions to
+					-- sync registers *, +, unnamed, and 0 till 9 from tmux in advance
+					enable = true,
+				},
+				navigation = {
+					-- enables default keybindings (C-hjkl) for normal mode
+					enable_default_keybindings = true,
+				},
+				resize = {
+					-- enables default keybindings (A-hjkl) for normal mode
+					enable_default_keybindings = true,
+				}
+			})
+		end
+	}
+
+    --[[use {
         "crispgm/nvim-go", 
         after = "nvim-lspconfig",
         config = function ()
-            require('go').setup({
+            require("go").setup({
                 notify = true,
                 auto_format = true,
                 auto_lint = true,
                 linter = "golangci-lint",
-                formatter = "gofumpt",
+                -- formatter = "gofumpt",
                 test_popup = false,
                 lint_prompt_style = "vt"
             })
-            require 'lspconfig'.gopls.setup({})
+            require "lspconfig".gopls.setup({})
+            require "config.go".setup()
         end
     }
 
@@ -404,7 +424,7 @@ return require("packer").startup({
         require "config.cmp".setup()
       end,
       requires = {
-        "nvim-treesitter",
+        "nvim-treesitter/nvim-treesitter",
         "hrsh7th/cmp-nvim-lsp",
         "onsails/lspkind-nvim",
         "L3MON4D3/LuaSnip",
@@ -416,12 +436,10 @@ return require("packer").startup({
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp-document-symbol",
       },
-    }
+    }]]
+
     -- Automatic pair matching
     use "LunarWatcher/auto-pairs"
-
-    -- Async Lint Engine
-    use "dense-analysis/ale"
 
     -- Simple popup notification library
     use {
@@ -434,14 +452,14 @@ return require("packer").startup({
     -- Free real estate for startup perf
     use "nathom/filetype.nvim"
 
-    -- Trying out nvimtree, probably won't last
-    use {
+    -- Trying out nvimtree, probably won"t last
+    --[[use {
       "kyazdani42/nvim-tree.lua",
       requires = "kyazdani42/nvim-web-devicons",
       config = function()
         require("nvim-tree").setup({})
       end,
-    }
+    }]]
 
     -- Delete buffers without wiping layout
     use "famiu/bufdelete.nvim"

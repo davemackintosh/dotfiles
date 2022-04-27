@@ -11,13 +11,6 @@ function M.setup()
       },
     },
   })
-  require("project_nvim").setup({
-      update_cwd = true,
-      update_focused_file = {
-          enable = true,
-          update_cwd = true
-      }
-  })
   require("neoclip").setup({
     enable_persistant_history = true,
   })

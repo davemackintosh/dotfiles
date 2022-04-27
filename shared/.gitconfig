@@ -2,10 +2,8 @@
 	email = me@davemackintosh.co.uk
 	name = davemackintosh
 [mergetool "nvim"]
-  cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
-[url "git@github.com:"]
-	insteadOf = https://github.com/
