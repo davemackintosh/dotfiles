@@ -47,5 +47,7 @@ source ~/paths.zsh
 source ~/aliases.zsh
 source ~/keybindings.zsh
 
+export GPG_TTY=$(tty)
+
 # Start tmux
 tmux

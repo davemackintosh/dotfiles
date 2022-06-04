@@ -1,9 +1,19 @@
 [user]
 	email = me@davemackintosh.co.uk
 	name = davemackintosh
+	signingkey = F4A588AC40475923
 [mergetool "nvim"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
+[commit]
+	template = /Users/dave/.gitmessage
+	gpgsign = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git@git-codecommit.eu-west-1.amazonaws.com/v1/repos/"]
+	insteadOf = https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/
+[gpg]
+	program = gpg

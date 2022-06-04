@@ -11,6 +11,9 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # System paths.
+export GOROOT="/opt/homebrew/Cellar/go/1.18.3/libexec"
+export GOBIN="$GOROOT/bin"
+export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/node_modules/.bin"
 export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
