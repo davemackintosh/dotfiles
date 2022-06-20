@@ -17,4 +17,3 @@ case $current_window_style in
         tmux set window-style $default_window_style
         ;;
 esac
-

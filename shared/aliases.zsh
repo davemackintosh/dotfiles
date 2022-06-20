@@ -19,7 +19,7 @@ alias gaa='git add -A'
 alias gir='echo "GRRRRR TYPOS 🤓" && git'
 
 alias da='direnv allow'
-alias dclf='docker-compose logs -f' 
+alias dclf='docker-compose logs -f'
 
 function killPort {
  kill -9 $(lsof -i TCP:$1 | grep LISTEN | awk '{print $2}')
