@@ -51,3 +51,5 @@ export GPG_TTY=$(tty)
 
 # Start tmux
 tmux
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
