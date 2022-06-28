@@ -7,7 +7,7 @@ eval "$(direnv hook zsh)"
 # Check we've got what we need.
 if [[ ! -d $ZPLUG_HOME ]]; then
  git submodule update --init --recursive &&
- source $ZPLUG_HOME/init.zsh && zplug update --self
+ source $ZPLUG_HOME/init.zsh && zplug update
 else
  source $ZPLUG_HOME/init.zsh
 fi
@@ -17,7 +17,7 @@ zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 # ZSH Plugins
 zplug "romkatv/powerlevel10k", as:theme, depth:1
-zplug "modules/tmux",   from:prezto
+# zplug "modules/tmux",   from:prezto
 zplug "modules/history", from:prezto
 zplug "modules/utility", from:prezto
 zplug "modules/ssh", from:prezto
@@ -31,6 +31,10 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3, on:"zsh-users/zsh-autosugges
 zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
 zplug "plugins/git", from:oh-my-zsh
 zplug "skywind3000/z.lua"
+
+if ! zplug check --verbose; then
+	echo; zplug install
+fi
 
 zplug load
 
@@ -51,5 +55,3 @@ export GPG_TTY=$(tty)
 
 # Start tmux
 tmux
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

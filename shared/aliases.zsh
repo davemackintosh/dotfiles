@@ -30,6 +30,7 @@ alias da='direnv allow'
 alias dclf='docker-compose logs -f'
 
 # Go aliases
+alias gmt='go mod tidy'
 alias gtc='go test -cover -race'
 alias gv='go vet ./...'
 alias glci='golangci-lint run --fix -c .golangci.json'
