@@ -31,6 +31,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:3, on:"zsh-users/zsh-autosugges
 zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
 zplug "plugins/git", from:oh-my-zsh
 zplug "skywind3000/z.lua"
+zplug "RiverGlide/zsh-goenv", from:gitlab
 
 if ! zplug check --verbose; then
 	echo; zplug install
@@ -54,4 +55,10 @@ source ~/keybindings.zsh
 export GPG_TTY=$(tty)
 
 # Start tmux
-tmux
+tmux new-session -A -s wikisync
+eval "$(goenv init -)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
