@@ -9,13 +9,9 @@
 [init]
 	defaultBranch = main
 [commit]
-	template = /Users/dave/.gitmessage
+	template = ~/.gitmessage
 	gpgsign = true
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[url "git@git-codecommit.eu-west-1.amazonaws.com/v1/repos/"]
-	insteadOf = https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/
 [gpg]
 	program = gpg
-[url "git@github.com"]
-	insteadOf = https://github.com
