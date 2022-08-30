@@ -13,6 +13,9 @@ ln -sf ~/dotfiles/shared/.p10k.zsh $HOME/
 ln -sf ~/dotfiles/shared/.tmux.conf $HOME/
 ln -sf ~/dotfiles/shared/.gitconfig $HOME/
 
+zplug update &
+wait $!
+
 # Ask the user for their Github username
 read -p "Enter your Github username: " github_username
 git config --global user.name "$github_username"

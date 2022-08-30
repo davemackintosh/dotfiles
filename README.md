@@ -9,9 +9,16 @@ Requires:
 * [zsh](https://zsh.sourceforge.io)
 * [oh-my-zsh](https://ohmyz.sh/#install)
 * [tmux](https://github.com/tmux/tmux)
-* [direnv](https://direnv.net)
-* [thefuck](https://pypi.org/project/thefuck/)
-* [goenv](https://github.com/syndbg/goenv)
+
+Technically, you don't __need__ the below *but* you'll see non-fatal errors about them not being present on each shell. I take no responsibility in making all these quiet about their being missing as I use them all regularly.
+
+* [homebrew](https://brew.sh) _optional_
+* [direnv](https://direnv.net) _optional_
+* [thefuck](https://pypi.org/project/thefuck/) _optional_
+* [goenv](https://github.com/syndbg/goenv) _optional_
+* [luaver](https://dhavalkapil.com/luaver/) _optional_
+
+# Install
 
 ```
 git clone --recursive https://github.com/davemackintosh/dotfiles.git ~/dotfiles &&
