@@ -9,6 +9,7 @@ export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 
 export MOLTENVK_HOME="$HOME/www/cpp/MoltenVK/MoltenVK"
 
