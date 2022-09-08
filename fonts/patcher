@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-set -e
-
-# Get the glyphs from Nerd Fonts.
-svn co https://github.com/ryanoasis/nerd-fonts/trunk/src/glyphs
-
-# Patch the font we care about.
-python3 font-patcher.py --glyphdir ./glyphs/ --complete -out ./patched/ ./CozetteVector.ttf

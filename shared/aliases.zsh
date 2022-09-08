@@ -13,8 +13,7 @@ alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 
-# Fix reset command
-alias reset='echo -e "\e[3J" && reset'
+alias docker='podman'
 
 # Git aliases
 alias gs='git status'
