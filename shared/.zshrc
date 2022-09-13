@@ -17,7 +17,6 @@ zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
 # ZSH Plugins
 zplug "romkatv/powerlevel10k", as:theme, depth:1
-# zplug "modules/tmux",   from:prezto
 zplug "modules/history", from:prezto
 zplug "modules/utility", from:prezto
 zplug "modules/ssh", from:prezto
@@ -55,8 +54,6 @@ source ~/keybindings.zsh
 
 export GPG_TTY=$(tty)
 
-# Start tmux
-tmux new-session -A -s wikisync
 eval "$(goenv init -)"
 
 export NVM_DIR="$HOME/.nvm"
@@ -69,3 +66,6 @@ HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-
 if [ -f "$HB_CNF_HANDLER" ]; then
 source "$HB_CNF_HANDLER";
 fi
+
+# Start tmux
+tmux new-session -A -s dev
