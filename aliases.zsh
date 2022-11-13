@@ -1,11 +1,5 @@
 #!/bin/env bash
 
-export EDITOR=nvim
-
-################################################################################
-# Aliases
-################################################################################
-# CD-ing backwards.
 alias ..='cd ../'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -14,6 +8,11 @@ alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 
 alias docker='podman'
+
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -lA'
+alias l='ls -CF'
 
 # Git aliases
 alias gs='git status'
@@ -33,9 +32,5 @@ alias gmt='go mod tidy'
 alias gtc='go test -cover -race'
 alias gv='go vet ./...'
 alias glci='golangci-lint run --fix -c .golangci.json'
-
-function killPort {
- kill -9 $(lsof -i TCP:$1 | grep LISTEN | awk '{print $2}')
-}
 
 alias python="python3"

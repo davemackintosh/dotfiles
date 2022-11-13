@@ -2,13 +2,13 @@
 
 > If you're looking for my [neovim dotfiles, they're here](https://github.com/davemackintosh/nvim)
 
-Dotfiles that I use across all my systems (Mac, Arch Linux, Debian and iOS iSH, Android Termux).
+Dotfiles that I use across all my systems (Mac, Linux, iOS iSH, Android Termux).
 
 Requires:
 
 * [zsh](https://zsh.sourceforge.io)
-* [oh-my-zsh](https://ohmyz.sh/#install)
-* [tmux](https://github.com/tmux/tmux)
+* [Startship](https://starship.rs)
+* [GNU screen](https://www.gnu.org/software/screen/)
 
 Technically, you don't __need__ the below *but* you'll see non-fatal errors about them not being present on each shell. I take no responsibility in making all these quiet about their being missing as I use them all regularly.
 
@@ -24,17 +24,6 @@ Technically, you don't __need__ the below *but* you'll see non-fatal errors abou
 git clone --recursive https://github.com/davemackintosh/dotfiles.git ~/dotfiles &&
 ~/dotfiles/install.zsh`
 ```
-
-# Keybindings
-
-## `tmux`
-
-A very stock keybinding setup.
-
-`ctrl+b` is the leader.
-`ctrl+b I` install zplug plugins.
-`ctrl+b U` update zplug.
-`ctrl+b ]` enter copy-mode
 
 # FAQs
 
