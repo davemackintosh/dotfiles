@@ -16,21 +16,20 @@ alias l='ls -CF'
 
 # Git aliases
 alias gs='git status'
+alias gd='git diff'
 alias gp='git push'
 alias gc='git commit -m'
-alias gca='git commit -a -v'
 alias ga='git add'
 alias gaa='git add -A'
 alias gir='echo "GRRRRR TYPOS 🤓" && git'
 
 # Other aliases
 alias da='direnv allow'
-alias dclf='docker-compose logs -f'
 
 # Go aliases
 alias gmt='go mod tidy'
 alias gtc='go test -cover -race'
-alias gv='go vet ./...'
+alias gv='go vet'
 alias glci='golangci-lint run --fix -c .golangci.json'
 
 alias python="python3"

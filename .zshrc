@@ -27,16 +27,16 @@ fi
 
 zplug load
 
-eval "$(starship init zsh)"
-eval "$(goenv init -)"
-eval "$(direnv hook zsh)"
-eval "$(thefuck --alias)"
-
 # Source anything else here
 source ~/dotfiles/paths.zsh
 source ~/dotfiles/aliases.zsh
 source ~/dotfiles/keybindings.zsh
 source ~/.cargo/env
+
+eval "$(starship init zsh)"
+eval "$(goenv init -)"
+eval "$(direnv hook zsh)"
+eval "$(thefuck --alias)"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

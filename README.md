@@ -14,7 +14,6 @@ Technically, you don't __need__ the below *but* you'll see non-fatal errors abou
 
 * [homebrew](https://brew.sh) _optional_
 * [direnv](https://direnv.net) _optional_
-* [thefuck](https://pypi.org/project/thefuck/) _optional_
 * [goenv](https://github.com/syndbg/goenv) _optional_
 * [luaver](https://dhavalkapil.com/luaver/) _optional_
 
