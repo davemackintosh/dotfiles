@@ -20,7 +20,9 @@ alias gd='git diff'
 alias gp='git push'
 alias gc='git commit -m'
 alias ga='git add'
+alias gl='git pull'
 alias gaa='git add -A'
+alias gco='git checkout'
 alias gir='echo "GRRRRR TYPOS 🤓" && git'
 
 # Other aliases
@@ -33,3 +35,4 @@ alias gv='go vet'
 alias glci='golangci-lint run --fix -c .golangci.json'
 
 alias python="python3"
+alias updatekitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
