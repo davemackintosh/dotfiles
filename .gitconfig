@@ -15,3 +15,5 @@
 	insteadOf = https://github.com/
 [gpg]
 	program = gpg
+[push]
+	autoSetupRemote = true
