@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<!-- I install ngrok with Homebrew so it's in /opt/homebrew/bin -->
+	<dict>
+		<key>Label</key>
+		<string>com.ngrok.onstartup</string>
+
+		<key>ProgramArguments</key>
+		<array>
+			<string>/opt/homebrew/bin/ngrok</string>
+			<string>start</string>
+			<string>--all</string>
+			<string>--config</string>
+			<string>/opt/ngrok.yml</string>
+			<string>--log</string>
+			<string>stdout</string>
+		</array>
+
+		<key>StandardOutPath</key>
+		<string>/var/log/nvim.log</string>
+		<key>StandardErrorPath</key>
+		<string>/var/log/nvim.log</string>
+
+		<key>KeepAlive</key>
+		<true />
+	</dict>
+</plist>
