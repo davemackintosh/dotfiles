@@ -29,9 +29,10 @@ if [ ! -d ~/.goenv ]; then
 fi
 await goenv install 1.19.2 &
 await goenv global 1.19.2 &
+await pip install -r ./requirements.txt
 
 # Install rustup.
-await curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+await curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y || echo "Couldn't install Rustup/Rust."
 
 # Install nodejs.
 await curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
@@ -48,6 +49,10 @@ ln -sf ~/dotfiles/.zshrc $HOME/
 ln -sf ~/dotfiles/.gitconfig $HOME/
 ln -sf ~/dotfiles/.screenrc $HOME/
 ln -sf ~/dotfiles/.tmux.conf $HOME/
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	sudo ln -sf $HOME/dotfiles/ngrok-service.plist /Library/LaunchDaemons/com.ngrok.onstartup.plist
+fi
 
 mkdir -p "$HOME/.config/kitty"
 ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
