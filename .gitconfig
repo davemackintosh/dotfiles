@@ -1,7 +1,7 @@
 [user]
 	email = me@davemackintosh.co.uk
 	name = davemackintosh
-	signingkey = F4A588AC40475923
+	signingkey = 80C2FDA6F6F3F932
 [mergetool "nvim"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [pull]
@@ -14,6 +14,6 @@
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [gpg]
-	program = gpg
+	program = gpg2
 [push]
 	autoSetupRemote = true

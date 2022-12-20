@@ -2,7 +2,7 @@ source ~/dotfiles/exports.zsh
 
 # Check we've got what we need.
 if [[ ! -d $ZPLUG_HOME ]]; then
- git submodule update --init --recursive &&
+ zsh ./install.zsh
  source $ZPLUG_HOME/init.zsh && zplug update
 else
  source $ZPLUG_HOME/init.zsh
@@ -37,15 +37,20 @@ eval "$(starship init zsh)"
 eval "$(goenv init -)"
 eval "$(direnv hook zsh)"
 eval "$(thefuck --alias)"
-eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
-if [ -f "$HB_CNF_HANDLER" ]; then
-source "$HB_CNF_HANDLER";
+source "$HOME/.cargo/env"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+	if [ -f "$HB_CNF_HANDLER" ]; then
+		source "$HB_CNF_HANDLER";
+	fi
 fi
 
 # Start tmux

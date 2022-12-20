@@ -52,7 +52,7 @@ ln -sf ~/dotfiles/.tmux.conf $HOME/
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	sudo ln -sf $HOME/dotfiles/ngrok-service.plist /Library/LaunchDaemons/com.ngrok.onstartup.plist
+	mkdir -p "$HOME/.config/kitty"
+	ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 fi
 
-mkdir -p "$HOME/.config/kitty"
-ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
