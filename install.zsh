@@ -27,6 +27,7 @@ fi
 ln -sf ~/dotfiles/.zshrc $HOME/
 ln -sf ~/dotfiles/.gitconfig $HOME/
 ln -sf ~/dotfiles/.tmux.conf $HOME/
+ln -sf ~/dotfiles/.gitmessage $HOME/
 ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -55,5 +56,3 @@ await nvm install 16
 
 # Install starship.
 await curl -sS https://starship.rs/install.sh | sh
-
-
