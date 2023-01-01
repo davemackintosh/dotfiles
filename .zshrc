@@ -62,3 +62,7 @@ fi
 
 # Start tmux
 tmux new-session -A -s dev
+
+# >>> xmake >>>
+[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
+# <<< xmake <<<
