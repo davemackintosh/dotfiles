@@ -11,7 +11,14 @@ fi
 # Zplug plugins
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 
-# ZSH Plugins
+# ZSH Pluginsforce
+zplug "modules/history", from:prezto
+zplug "modules/utility", from:prezto
+zplug "modules/ssh", from:prezto
+zplug "modules/terminal",   from:prezto
+zplug "modules/editor",   from:prezto
+zplug "modules/directory", from:prezto
+zplug "modules/completion",  from:prezto
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions", defer:0
 zplug "zsh-users/zsh-autosuggestions", defer:2, on:"zsh-users/zsh-completions"
