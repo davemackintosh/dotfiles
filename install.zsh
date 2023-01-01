@@ -16,11 +16,23 @@ function await {
 # Pull our dependencies.
 await git submodule update --init --recursive --remote
 
-mkdir -p ~/.tmux/plugins
+mkdir -p ~/.tmux/plugins ~/.config/kitty
 if [ ! -d ~/.tmux/plugins/nord-tmux ]; then
 	await git clone git@github.com:arcticicestudio/nord-tmux.git ~/.tmux/plugins/nord-tmux
 else
 	await git -C ~/.tmux/plugins/nord-tmux pull
+fi
+
+# Install some configs that live at $HOME
+ln -sf ~/dotfiles/.zshrc $HOME/
+ln -sf ~/dotfiles/.gitconfig $HOME/
+ln -sf ~/dotfiles/.tmux.conf $HOME/
+ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	sudo ln -sf $HOME/dotfiles/ngrok-service.plist /Library/LaunchDaemons/com.ngrok.onstartup.plist
+	mkdir -p "$HOME/.config/kitty"
+	ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 fi
 
 # Install goenv.
@@ -44,15 +56,4 @@ await nvm install 16
 # Install starship.
 await curl -sS https://starship.rs/install.sh | sh
 
-# Install some configs that live at $HOME
-ln -sf ~/dotfiles/.zshrc $HOME/
-ln -sf ~/dotfiles/.gitconfig $HOME/
-ln -sf ~/dotfiles/.screenrc $HOME/
-ln -sf ~/dotfiles/.tmux.conf $HOME/
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	sudo ln -sf $HOME/dotfiles/ngrok-service.plist /Library/LaunchDaemons/com.ngrok.onstartup.plist
-	mkdir -p "$HOME/.config/kitty"
-	ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
-fi
 
