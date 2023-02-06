@@ -1,7 +1,13 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
 format = """
 [ $directory ](bg:#89dceb fg:#2E3440)[](fg:#89dceb bg:#f5c2e7)\
 [ $git_branch$git_status ](bg:#f5c2e7 fg:#2E3440)[](fg:#f5c2e7 bg:#fab387)\
 [ $c$golang$nodejs$rust ](bg:#fab387 fg:#2E3440)[](fg:#fab387)
+"""
+right_format = """
+[ $time ](fg:#6E6466)
 """
 
 # Disable the blank line at the start of the prompt
@@ -19,6 +25,7 @@ truncation_symbol = "…/"
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
+
 # Keep in mind that the order matters. For example:
 # "Important Documents" = "  "
 # will not be replaced, because "Documents" was already substituted before.

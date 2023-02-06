@@ -7,8 +7,6 @@ alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 
-alias docker='podman'
-
 alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -lA'
@@ -34,5 +32,4 @@ alias gtc='go test -cover -race'
 alias gv='go vet'
 alias glci='golangci-lint run --fix -c .golangci.json'
 
-alias python="python3"
 alias updatekitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'

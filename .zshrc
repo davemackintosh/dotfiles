@@ -51,7 +51,6 @@ eval "$(pyenv virtualenv-init -)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -s ~/.luaver/luaver ] && . ~/.luaver/luaver
-source "$HOME/.cargo/env"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
@@ -62,7 +61,3 @@ fi
 
 # Start tmux
 tmux new-session -A -s dev
-
-# >>> xmake >>>
-[[ -s "$HOME/.xmake/profile" ]] && source "$HOME/.xmake/profile" # load xmake profile
-# <<< xmake <<<
