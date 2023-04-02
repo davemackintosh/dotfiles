@@ -1,16 +1,12 @@
-// clock, weather, systray
-// workspaces
-// audio, temp, net
-
 {
     "position": "left",
     "layer": "top",
-    "output": ["eDP-1", "DP-2"],
+    "output": ["eDP-1"],
     "width": 44,
     "margin": "10 0 10 10",
     "modules-left": ["clock", "custom/sep", "tray"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network"],
+    "modules-right": ["pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network", "bluetooth"],
     "wlr/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
@@ -39,7 +35,6 @@
             "headset": "",
             "phone": "",
             "portable": "",
-            "car": "",
             "default": ["", ""]
         },
     },
@@ -72,7 +67,13 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 
+	"bluetooth": {
+		"rotate": 90
+	},
+
     "clock": {
         "format": "{:%H\n%M}",
     },
 }
+
+# vim: ft=json
