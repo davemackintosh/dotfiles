@@ -8,9 +8,8 @@ Requires:
 
 * [zsh](https://zsh.sourceforge.io)
 * [Startship](https://starship.rs)
-* [GNU screen](https://www.gnu.org/software/screen/)
 
-Technically, you don't __need__ the below *but* you'll see non-fatal errors about them not being present on each shell. I take no responsibility in making all these quiet about their being missing as I use them all regularly.
+Technically, you don't __need__ the below *but* you'll see errors about them not being present on each shell if you don't edit both `install.zsh` and `.zshrc`
 
 * [homebrew](https://brew.sh) _optional_
 * [direnv](https://direnv.net) _optional_
@@ -36,8 +35,3 @@ I sign all my commits these days and this is _my_ config, if you are able you sh
 
 You can then edit `~/.gitconfig` and set your `signingkey`
 
-## Why doesn't git ask me for my github username and password?
-
-I spend much of my time writing private go packages so never need to clone from https://github.com. Thus I have a `insteadOf` to do this for me in my `~/.gitconfig`.
-
-Remove the `[url "git@github.com:"]` from `~/.gitconfig` and try again.
