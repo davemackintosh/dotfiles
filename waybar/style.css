@@ -1,0 +1,46 @@
+window#waybar {
+    background: #24273A;
+    font-family: 'CozetteVector';
+	color: #CFCFCF;
+	border-radius: 8px;
+}
+
+window > box {
+    border-radius: 10px;
+    opacity: 0.9;
+}
+
+#workspaces {
+    margin: 0px 6px 0px 6px;
+    padding: 0px 2px 0px 0px;
+  border-radius: 50px;
+  font-size: 12px;    
+}
+
+#workspaces button {
+   padding: 6px 6px 6px 6px;
+}
+
+#workspaces button:hover {
+   box-shadow: inherit;
+    text-shadow: inherit;
+    background: transparent;
+    border: transparent;
+}
+
+#clock {
+    font-size: 1.2em;
+    margin: 8px 0px 2px 0px;
+}
+
+#custom-sep {
+    margin: 0px 0px 8px 0px;
+}
+
+#pulseaudio, #temperature, #network, #battery {
+    margin-bottom: 8px;
+}
+
+#network {
+    margin-bottom: 10px;
+}

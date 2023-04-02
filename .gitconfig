@@ -11,8 +11,6 @@
 [commit]
 	template = ~/.gitmessage
 	gpgsign = true
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 [gpg]
 	program = gpg2
 [push]

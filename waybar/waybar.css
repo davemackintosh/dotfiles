@@ -1,0 +1,15 @@
+window > box {{
+    background: {background};
+}}
+
+#workspaces {{
+    background-color: {color4};
+}}
+
+#workspaces button {{
+    color: {foreground};
+}}
+
+#clock, #custom-sep, #pulseaudio, #temperature, #network, #battery {{
+    color: {foreground};
+}}                                                               

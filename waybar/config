@@ -1,0 +1,78 @@
+// clock, weather, systray
+// workspaces
+// audio, temp, net
+
+{
+    "position": "left",
+    "layer": "top",
+    "output": ["eDP-1", "DP-2"],
+    "width": 44,
+    "margin": "10 0 10 10",
+    "modules-left": ["clock", "custom/sep", "tray"],
+    "modules-center": ["wlr/workspaces"],
+    "modules-right": ["pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network"],
+    "wlr/workspaces": {
+        "on-click": "activate",
+        "format": "{icon}",
+           "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+          },
+    },
+    "custom/sep": {
+        "format": "──"
+    },
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+    
+    "pulseaudio": {
+        "rotate": 90,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "MUTE ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+    },
+    
+    "battery": {
+        "rotate": 90,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+    },
+
+    "temperature": {
+        "rotate": 90,
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "network": {
+        "rotate": 90,
+        "format-wifi": "{signalStrength}% ",
+        "format-ethernet": "{ipaddr} ",
+        "format-linked": "{ifname} ",
+        "format-disconnected": "None ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "clock": {
+        "format": "{:%H\n%M}",
+    },
+}

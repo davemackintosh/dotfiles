@@ -16,9 +16,9 @@ function await {
 # Pull our dependencies.
 await git submodule update --init --recursive --remote
 
-mkdir -p ~/.tmux/plugins ~/.config/kitty
+mkdir -p ~/.tmux/plugins
 if [ ! -d ~/.tmux/plugins/nord-tmux ]; then
-	await git clone git@github.com:arcticicestudio/nord-tmux.git ~/.tmux/plugins/nord-tmux
+	await git clone https://github.com/arcticicestudio/nord-tmux.git ~/.tmux/plugins/nord-tmux
 else
 	await git -C ~/.tmux/plugins/nord-tmux pull
 fi
@@ -28,13 +28,12 @@ ln -sf ~/dotfiles/.zshrc $HOME/
 ln -sf ~/dotfiles/.gitconfig $HOME/
 ln -sf ~/dotfiles/.tmux.conf $HOME/
 ln -sf ~/dotfiles/.gitmessage $HOME/
-ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	sudo ln -sf $HOME/dotfiles/ngrok-service.plist /Library/LaunchDaemons/com.ngrok.onstartup.plist
-	mkdir -p "$HOME/.config/kitty"
-	ln -sf ~/dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
-fi
+ln -sf ~/dotfiles/kitty $HOME/.config/
+ln -sf ~/dotfiles/hypr $HOME/.config/
+ln -sf ~/dotfiles/swaylock $HOME/.config/
+ln -sf ~/dotfiles/waybar $HOME/.config/
+ln -sf ~/dotfiles/wofi $HOME/.config/
+ln -sf ~/dotfiles/dunst $HOME/.config/
 
 # Install goenv.
 if [ ! -d ~/.goenv ]; then
@@ -43,9 +42,6 @@ fi
 await goenv install 1.19.2 &
 await goenv global 1.19.2 &
 await pip install -r ./requirements.txt
-
-# Install rustup.
-await curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y || echo "Couldn't install Rustup/Rust."
 
 # Install nodejs.
 await curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
