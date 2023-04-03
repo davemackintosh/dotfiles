@@ -39,8 +39,8 @@ ln -sf ~/dotfiles/dunst $HOME/.config/
 if [ ! -d ~/.goenv ]; then
 	await git clone https://github.com/syndbg/goenv.git ~/.goenv
 fi
-await goenv install 1.19.2 &
-await goenv global 1.19.2 &
+await goenv install 1.20.2 &
+await goenv global 1.20.2 &
 await pip install -r ./requirements.txt
 
 # Install nodejs.

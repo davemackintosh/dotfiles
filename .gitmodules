@@ -1,6 +1,6 @@
 [submodule ".zplug"]
 	path = .zplug
 	url = https://github.com/zplug/zplug
-[submodule "catpuccin"]
+[submodule "catppuccin"]
 	path = catpuccin
 	url = https://github.com/catppuccin/tmux
