@@ -16,3 +16,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	export PATH="$PATH:$HOME/Library/Python/3.8/bin"
 fi
 
+eval "$(direnv hook zsh)"

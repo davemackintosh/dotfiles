@@ -1,5 +1,5 @@
 window#waybar {
-    background: #24273A;
+    background: rgba(36, 39, 58, 0.75);
     font-family: 'CozetteVector';
 	color: #CFCFCF;
 	border-radius: 8px;
@@ -13,16 +13,17 @@ window > box {
 #workspaces {
     margin: 0px 6px 0px 6px;
     padding: 0px 2px 0px 0px;
-  border-radius: 50px;
-  font-size: 12px;    
+	border-radius: 50px;
+	font-size: 14px;
 }
 
 #workspaces button {
    padding: 6px 6px 6px 6px;
+   color: rgba(255, 255, 255, 0.5);
 }
 
 #workspaces button:hover {
-   box-shadow: inherit;
+	box-shadow: inherit;
     text-shadow: inherit;
     background: transparent;
     border: transparent;

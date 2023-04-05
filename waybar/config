@@ -4,9 +4,9 @@
     "output": ["eDP-1"],
     "width": 44,
     "margin": "10 0 10 10",
-    "modules-left": ["clock", "custom/sep", "tray"],
+    "modules-left": ["clock", "custom/sep", "wlr/taskbar"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network", "bluetooth"],
+    "modules-right": ["tray", "pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network", "bluetooth"],
     "wlr/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
@@ -16,6 +16,14 @@
             "default": ""
           },
     },
+	"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 14,
+		"icon-theme": "MaterialOS",
+		"tooltip-format": "{title}",
+		"on-click": "activate"
+	},
+
     "custom/sep": {
         "format": "──"
     },
