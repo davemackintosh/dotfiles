@@ -90,7 +90,7 @@
     frame_width = 1
 
     # Background
-    background = "#1E1E2E"
+    background = "rgba(36, 39, 58, 0.9)"
 
     # Defines color of the frame around the notification window.
     frame_color = "#1E1E2E"
@@ -120,7 +120,7 @@
     # idle_threshold = 120
 
     ### Text ###
-    font = CozetteVector
+    font = Liga SFMono Nerd Font
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.

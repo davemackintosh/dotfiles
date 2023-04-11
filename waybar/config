@@ -6,7 +6,7 @@
     "margin": "10 0 10 10",
     "modules-left": ["clock", "custom/sep", "wlr/taskbar"],
     "modules-center": ["wlr/workspaces"],
-    "modules-right": ["tray", "pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network", "bluetooth"],
+    "modules-right": ["tray", "custom/sep", "pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network", "bluetooth"],
     "wlr/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
@@ -25,7 +25,7 @@
 	},
 
     "custom/sep": {
-        "format": "──"
+        "format": "-"
     },
     "tray": {
         "icon-size": 18,

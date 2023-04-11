@@ -34,6 +34,7 @@ ln -sf ~/dotfiles/swaylock $HOME/.config/
 ln -sf ~/dotfiles/waybar $HOME/.config/
 ln -sf ~/dotfiles/wofi $HOME/.config/
 ln -sf ~/dotfiles/dunst $HOME/.config/
+ln -sf ~/dotfiles/waycorner $HOME/.config/
 
 # Install goenv.
 if [ ! -d ~/.goenv ]; then

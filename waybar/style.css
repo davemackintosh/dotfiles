@@ -1,20 +1,20 @@
 window#waybar {
-    background: rgba(36, 39, 58, 0.75);
-    font-family: 'CozetteVector';
+    background: rgba(36, 39, 58, 1);
+    font-family: 'Liga SFMono Nerd Font';
 	color: #CFCFCF;
-	border-radius: 8px;
+	border-radius: 6px;
+	letter-spacing: -1px;
 }
 
 window > box {
-    border-radius: 10px;
-    opacity: 0.9;
+    border-radius: 3px;
 }
 
 #workspaces {
     margin: 0px 6px 0px 6px;
     padding: 0px 2px 0px 0px;
 	border-radius: 50px;
-	font-size: 14px;
+	font-size: 11px;
 }
 
 #workspaces button {
@@ -38,7 +38,8 @@ window > box {
     margin: 0px 0px 8px 0px;
 }
 
-#pulseaudio, #temperature, #network, #battery, #bluetooth {
+#pulseaudio, #temperature, #network, #battery, #bluetooth, #tray {
+	font-size: 0.8em;
     margin-bottom: 8px;
 }
 
