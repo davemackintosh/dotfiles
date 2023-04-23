@@ -1,0 +1,42 @@
+window {
+	background-color: rgba(17, 17, 27, 0.85);
+}
+
+button {
+	background-color: #313244;
+	outline-style: none;
+	border: none;
+	border-width: 0px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 10%;
+	border-radius: 0px;
+	box-shadow: none;
+	text-shadow: none;
+    color: #b4befe;
+}
+
+button:focus {
+	background-color: #222330;
+	background-size: 15%;
+}
+
+button:hover {
+	background-color: #222330;
+}
+
+#lock {
+    background-image: image(url("/home/dave/.config/wlogout/icons/lock.png"), url("/usr/share/wlogout/icons/lock.png"), url("/usr/local/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/home/dave/.config/wlogout/icons/logout.png"), url("/usr/share/wlogout/icons/logout.png"), url("/usr/local/share/wlogout/icons/logout.png"));
+}
+
+#shutdown {
+    background-image: image(url("/home/dave/.config/wlogout/icons/shutdown.png"), url("/usr/share/wlogout/icons/shutdown.png"), url("/usr/local/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/home/dave/.config/wlogout/icons/reboot.png"), url("/usr/share/wlogout/icons/reboot.png"), url("/usr/local/share/wlogout/icons/reboot.png"));
+}

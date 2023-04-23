@@ -1,12 +1,12 @@
 {
     "position": "left",
     "layer": "top",
-    "output": ["eDP-1"],
+    "output": ["eDP-1", "HDMI-A-2"],
     "width": 44,
     "margin": "10 0 10 10",
     "modules-left": ["clock", "custom/sep", "wlr/taskbar"],
-    "modules-center": ["wlr/workspaces"],
-    "modules-right": ["tray", "custom/sep", "pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network", "bluetooth"],
+    "modules-center": [],
+    "modules-right": ["tray", "custom/sep", "pulseaudio", "custom/sep", "temperature", "battery", "custom/sep", "network"],
     "wlr/workspaces": {
         "on-click": "activate",
         "format": "{icon}",
