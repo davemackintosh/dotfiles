@@ -31,7 +31,7 @@ git clone --recursive https://github.com/davemackintosh/dotfiles.git ~/dotfiles 
 I have a work Mac which is fine. Dotfiles work on all systems however most of the dotfiles in this repo are for my personal computer which I have riced the heck out of.
 
 ![image](https://user-images.githubusercontent.com/1430657/231270294-853108e5-78a9-4cb3-933f-e997ff4d23e6.png)
-![image](https://user-images.githubusercontent.com/1430657/233859695-9e575e27-5d62-4687-9a60-a86eae8cbb6e.png)
+![image](https://user-images.githubusercontent.com/1430657/233860547-727e911c-04ee-4852-a681-a68e0c91e289.png)
 
 ## I'm not able to commit, something about signing commits.
 
