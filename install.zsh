@@ -28,6 +28,7 @@ ln -sf ~/dotfiles/.zshrc $HOME/
 ln -sf ~/dotfiles/.gitconfig $HOME/
 ln -sf ~/dotfiles/.tmux.conf $HOME/
 ln -sf ~/dotfiles/.gitmessage $HOME/
+ln -sf ~/dotfiles/alacritty $HOME/.config/
 ln -sf ~/dotfiles/kitty $HOME/.config/
 ln -sf ~/dotfiles/hypr $HOME/.config/
 ln -sf ~/dotfiles/swaylock $HOME/.config/

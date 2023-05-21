@@ -17,7 +17,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = none
+    follow = mouse
 
     ### Geometry ###
 
@@ -93,7 +93,7 @@
     background = "rgba(36, 39, 58, 0.9)"
 
     # Defines color of the frame around the notification window.
-    frame_color = "#1E1E2E"
+    frame_color = "#000000"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -215,9 +215,6 @@
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 64
 
-    # Paths to default icons (only neccesary when not using recursive icon lookup)
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
@@ -316,7 +313,6 @@
     foreground = "#cdd6f4"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
-    #default_icon = /path/to/icon
 
 [urgency_normal]
     background = "#1E1E2E"
