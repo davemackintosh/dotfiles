@@ -34,3 +34,7 @@ alias glci='golangci-lint run --fix -c .golangci.json'
 alias gocov='go test -coverprofile=coverage.out ./... && go tool cover -html=coverage.out'
 
 alias updatekitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
+
+function gitMergeLatestRemote {
+	git fetch origin $1:$1 && git merge $1
+}
