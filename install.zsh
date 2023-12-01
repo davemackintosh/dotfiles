@@ -16,13 +16,18 @@ function await {
 # Pull our dependencies.
 await git submodule update --init --recursive --remote
 
-await git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
+if [[ -f "$HOME/.ssh/id_ecdsa.pub" ]]; then
+	await git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim &
+else
+	echo -e "WARN: No SSH key so cloning read only nvim config"
+	await git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim &
+fi
 
 mkdir -p $HOME/.tmux/plugins
 if [ ! -d $HOME/.tmux/plugins/nord-tmux ]; then
-	await git clone https://github.com/arcticicestudio/nord-tmux.git $HOME/.tmux/plugins/nord-tmux
+	await git clone https://github.com/arcticicestudio/nord-tmux.git $HOME/.tmux/plugins/nord-tmux &
 else
-	await git -C $HOME/.tmux/plugins/nord-tmux pull
+	await git -C $HOME/.tmux/plugins/nord-tmux pull &
 fi
 
 # Install some configs that live at $HOME
