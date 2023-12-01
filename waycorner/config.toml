@@ -1,9 +1,0 @@
-[waybar]
-command = []
-enter_command = ["pkill", "-USR1", "waybar"]
-exit_command = ["pkill", "-USR1", "waybar"]
-locations = ["top_left", "top_right"]
-size = 15
-margin = 100
-color = "green"
-timeout_ms = 1000
