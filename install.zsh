@@ -43,6 +43,7 @@ if [ ! -d ~/.goenv ]; then
 fi
 await goenv install 1.21.3
 await goenv global 1.21.3
+await curl https://pyenv.run | bash
 
 # If it's not Termux.
 if [[ -z "${TERMUX_VERSION}" ]]; then
