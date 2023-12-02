@@ -63,5 +63,9 @@ if [[ -z "$NO_NVIM" ]]; then
 		git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
 	fi
 
-	$HOME/.config/nvim/collateral/dependencies
+
+	if [[ ! -z "${TERMUX_VERSION}" ]]; then
+		pkg i neovim
+		$HOME/.config/nvim/collateral/dependencies
+	fi
 fi
