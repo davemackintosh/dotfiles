@@ -35,13 +35,14 @@ ln -sf ~/dotfiles/.zshrc $HOME/
 ln -sf ~/dotfiles/.gitconfig $HOME/
 ln -sf ~/dotfiles/.tmux.conf $HOME/
 ln -sf ~/dotfiles/.gitmessage $HOME/
+ln -sf ~/dotfiles/efm-langserver $HOME/.config/
 
 # Install goenv.
 if [ ! -d ~/.goenv ]; then
 	await git clone https://github.com/syndbg/goenv.git $HOME/.goenv
 fi
-await goenv install 1.20.2
-await goenv global 1.20.2
+await goenv install 1.21.3
+await goenv global 1.21.3
 
 # If it's not Termux.
 if [[ -z "${TERMUX_VERSION}" ]]; then
