@@ -51,6 +51,17 @@ if [[ -z "${TERMUX_VERSION}" ]]; then
 else
 	await pkg i -y getconf
 	ln -sf ~/dotfiles/.termux $HOME/
-	cp ./patched-fonts/CozetteVector Nerd Font Complete Mono.ttf $HOME/.termux/font.ttf
+	cp "./patched-fonts/CozetteVector Nerd Font Complete Mono.ttf" $HOME/.termux/font.ttf
 	await curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+fi
+
+# Install Nvim dotfiles.
+if [[ -z "$NO_NVIM" ]]; then
+	if [[ -f $HOME/.ssh/id_ed25519 ]]; then
+		git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
+	else
+		git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
+	fi
+
+	$HOME/.config/nvim/collateral/dependencies
 fi
