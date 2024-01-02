@@ -112,7 +112,7 @@ trove-classifiers==2023.4.20
 typeguard==2.13.3
 typing_extensions==4.4.0
 ufw==0.36.1
-urllib3==1.26.13
+urllib3==1.26.18
 urwid==2.1.2
 validate-pyproject==0.12.2.post1.dev0+g2940279.d20230328
 virtualenv==20.17.1
