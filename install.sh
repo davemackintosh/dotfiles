@@ -17,12 +17,12 @@ function await {
 # Pull our dependencies.
 await git submodule update --init --recursive --remote
 
-if [[ -f "$HOME/.ssh/id_ecdsa.pub" ]]; then
+if test -f "$HOME/.ssh/id_ecdsa.pub"
 	await git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
 else
 	echo -e "WARN: No SSH key so cloning read only nvim config"
 	await git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
-fi
+end
 
 # Install some configs.
 ln -sf ~/dotfiles/fish $HOME/.config/
@@ -34,7 +34,7 @@ ln -sf ~/dotfiles/efm-langserver $HOME/.config/
 await curl https://pyenv.run | bash
 
 # If it's not Termux.
-if [[ -z "${TERMUX_VERSION}" ]]; then
+if test -z "$TERMUX_VERSION"
 	# Install goenv, termux doesn't support this.
 	if [ ! -d ~/.goenv ]; then
 		await git clone https://github.com/syndbg/goenv.git $HOME/.goenv
@@ -56,19 +56,19 @@ else
 
 	# Install starship (note the specifics for termux here.)
 	await curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
-fi
+end
 
 # Install Nvim dotfiles.
-if [[ -z "$NO_NVIM" ]]; then
-	if [[ -f $HOME/.ssh/id_ed25519 ]]; then
+if test -z "$NO_NVIM"
+	if test -f $HOME/.ssh/id_ed25519
 		git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
 	else
 		git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
-	fi
+	end
 
 
-	if [[ ! -z "${TERMUX_VERSION}" ]]; then
+	if ! test -z "$TERMUX_VERSION"
 		pkg i neovim fzf fd ripgrep nodejs go rust clang
 		$HOME/.config/nvim/collateral/dependencies
-	fi
-fi
+	end
+end

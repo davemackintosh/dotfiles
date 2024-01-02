@@ -1,8 +1,8 @@
-if [[ -z "${TERMUX_VERSION}" ]]; then
+if test -z "$TERMUX_VERSION"
 	export GOENV_ROOT="$HOME/.goenv"
 	export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 	export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
-fi
+end
 
 export PATH="$PATH:$HOME/node_modules/.bin"
 export PATH="$PATH:$HOME/.yarn/bin"
