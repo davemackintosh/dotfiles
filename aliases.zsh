@@ -35,3 +35,6 @@ alias gocov='go test -coverprofile=coverage.out ./... && go tool cover -html=cov
 
 alias updatekitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
 alias cat=bat
+
+function last_history_item; echo $history[1]; end
+abbr -a !! --position anywhere --function last_history_item
