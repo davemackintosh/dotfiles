@@ -12,3 +12,5 @@ vim_session
 .DS_Store
 nvim/plugin/*.lua
 ./ranger/plugins/*
+Repos
+*.zwc

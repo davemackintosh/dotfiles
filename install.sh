@@ -17,24 +17,29 @@ function await {
 # Pull our dependencies.
 await git submodule update --init --recursive --remote
 
-if test -f "$HOME/.ssh/id_ecdsa.pub"
-	await git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
-else
-	echo -e "WARN: No SSH key so cloning read only nvim config"
-	await git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
-end
+# Download Znap, if it's not there yet.
+[[ -r $HOME/dotfiles/Repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git $HOME/dotfiles/Repos/znap
+znap source marlonrichert/zsh-autocomplete
+source $HOME/dotfiles/Repos/znap/znap.zsh  # Start Znap
 
 # Install some configs.
-ln -sf ~/dotfiles/fish $HOME/.config/
-ln -sf ~/dotfiles/.gitconfig $HOME/
-ln -sf ~/dotfiles/.tmux.conf $HOME/
-ln -sf ~/dotfiles/.gitmessage $HOME/
-ln -sf ~/dotfiles/efm-langserver $HOME/.config/
+ln -sf $HOME/dotfiles/fish $HOME/.config/
+ln -sf $HOME/dotfiles/.zshrc $HOME/
+ln -sf $HOME/dotfiles/.gitconfig $HOME/
+ln -sf $HOME/dotfiles/.tmux.conf $HOME/
+ln -sf $HOME/dotfiles/.gitmessage $HOME/
+mkdir -p $HOME/.config/efm-langserver/
+ln -sf $HOME/dotfiles/efm-langserver/.config.yaml $HOME/.config/efm-langserver/
+ln -sf $HOME/dotfiles/starship.toml $HOME/.config/
 
-await curl https://pyenv.run | bash
+if ! test -d $HOME/.pyenv/; then
+	await curl https://pyenv.run | bash
+fi
 
 # If it's not Termux.
-if test -z "$TERMUX_VERSION"
+if test -z "$TERMUX_VERSION"; then
 	# Install goenv, termux doesn't support this.
 	if [ ! -d ~/.goenv ]; then
 		await git clone https://github.com/syndbg/goenv.git $HOME/.goenv
@@ -56,19 +61,22 @@ else
 
 	# Install starship (note the specifics for termux here.)
 	await curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
-end
+fi
 
 # Install Nvim dotfiles.
-if test -z "$NO_NVIM"
-	if test -f $HOME/.ssh/id_ed25519
-		git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
-	else
-		git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
-	end
+if test -z "$NO_NVIM"; then
+	if ! test -d "$HOME/.config/nvim"; then
+		if test -f "$HOME/.ssh/id_ecdsa.pub"; then
+			await git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
+		else
+			echo -e "WARN: No SSH key so cloning read only nvim config"
+			await git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
+		fi
+	fi
 
 
-	if ! test -z "$TERMUX_VERSION"
+	if ! test -z "$TERMUX_VERSION"; then
 		pkg i neovim fzf fd ripgrep nodejs go rust clang
 		$HOME/.config/nvim/collateral/dependencies
-	end
-end
+	fi
+fi

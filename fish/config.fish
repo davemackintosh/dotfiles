@@ -5,3 +5,5 @@ if status is-interactive
 	source $HOME/dotfiles/paths.zsh
 	source $HOME/dotfiles/aliases.zsh
 end
+
+thefuck --alias | source

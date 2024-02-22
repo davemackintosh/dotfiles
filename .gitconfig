@@ -19,3 +19,8 @@
 	insteadOf = https://github.com/
 [url "ssh://git@github.com"]
 	insteadOf = https://github.com
+[core]
+	excludesFile = ~/.gitignore
+[maintenance]
+	repo = /Users/dave/dotfiles/Repos/znap
+	repo = /Users/dave/dotfiles/Repos/marlonrichert/zsh-autocomplete

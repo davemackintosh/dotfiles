@@ -25,6 +25,7 @@ alias gir='echo "GRRRRR TYPOS 🤓" && git'
 
 # Other aliases
 alias da='direnv allow'
+alias cat='bat'
 
 # Go aliases
 alias gmt='go mod tidy'
@@ -34,7 +35,3 @@ alias glci='golangci-lint run --fix -c .golangci.json'
 alias gocov='go test -coverprofile=coverage.out ./... && go tool cover -html=coverage.out'
 
 alias updatekitty='curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin'
-alias cat=bat
-
-function last_history_item; echo $history[1]; end
-abbr -a !! --position anywhere --function last_history_item
