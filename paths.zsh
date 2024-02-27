@@ -4,6 +4,7 @@ if test -z "$TERMUX_VERSION"; then
 	export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
 fi
 
+export PATH="$PATH:$HOME/.goenv/versions/1.21.3/bin/"
 export PATH="$PATH:$HOME/node_modules/.bin"
 export PATH="$PATH:$HOME/.yarn/bin"
 export PATH="$PATH:$HOME/.config/yarn/global/node_modules/.bin"
