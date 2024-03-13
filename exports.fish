@@ -5,6 +5,6 @@ export EDITOR=nvim
 export STARSHIP_CONFIG="$HOME/dotfiles/starship.toml"
 
 # Kill whatever process is using a port.
-function killPort {
+function killPort
 	kill -9 $(lsof -i TCP:$1 | grep LISTEN | awk '{print $2}')
-}
+end

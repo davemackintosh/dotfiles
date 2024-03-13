@@ -6,22 +6,19 @@ Dotfiles that I use across all my systems (Mac, Linux, iOS iSH, Android Termux).
 
 Requires:
 
-* [zsh](https://zsh.sourceforge.io)
-* [Startship](https://starship.rs)
+* fish
+* Starship
 
 Technically, you don't __need__ the below *but* you'll see errors about them not being present on each shell if you don't edit both `install.zsh` and `.zshrc`
 
-* [homebrew](https://brew.sh)
 * [direnv](https://direnv.net)
-* [goenv](https://github.com/syndbg/goenv)
-* [luaver](https://dhavalkapil.com/luaver/)
 * python & pip
 
 # Install
 
 ```
 git clone --recursive https://github.com/davemackintosh/dotfiles.git ~/dotfiles &&
-~/dotfiles/install.zsh`
+bash ~/dotfiles/install.zsh` # yes, even though I use fish I wrote the installer in bash/zsh.
 ```
 
 # FAQs (no one has ever asked me any of these but hey ho)

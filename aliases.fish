@@ -25,7 +25,6 @@ alias gir='echo "GRRRRR TYPOS 🤓" && git'
 
 # Other aliases
 alias da='direnv allow'
-alias cat='bat'
 
 # Go aliases
 alias gmt='go mod tidy'
