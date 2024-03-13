@@ -29,6 +29,8 @@ echo "\tinstalling asdf rust\n"
 await asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
 echo "\tinstalling asdf python\n"
 await asdf plugin-add python
+echo "\tinstalling asdf aws-vault"
+await asdf plugin-add aws-vault https://github.com/karancode/asdf-aws-vault.git
 
 asdf await install
 
