@@ -2,8 +2,9 @@ set -U fish_greeting
 
 if status is-interactive
 	zoxide init fish | source
-	source $HOME/dotfiles/paths.zsh
-	source $HOME/dotfiles/aliases.zsh
+	starship init fish | source
+	source $HOME/dotfiles/paths.fish
+	source $HOME/.asdf/asdf.fish
+	source $HOME/dotfiles/aliases.fish
 end
 
-thefuck --alias | source
