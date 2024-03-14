@@ -1,20 +1,9 @@
-# Wait for a command to finish and exit as if it wasn't a subshell on error.
-function await
-	$argv &
-	wait %1
-
-	if [ $status -ne 0 ]
-		echo "Failed to execute $argv"
-		exit $status
-	end
-end
-
 # Pull our dependencies.
-await git submodule update --init --recursive --remote
+git submodule update --init --recursive --remote
 
 if not test -d ~/.asdf
 	ln -sf $HOME/dotfiles/.tool-versions $HOME/
-	await git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
+	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 	source ~/.asdf/asdf.fish
 	mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 end
@@ -22,17 +11,17 @@ end
 # Install plugins.
 echo "installing asdf plugins\n"
 echo "\tinstalling asdf go\n"
-await asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
+asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
 echo "\tinstalling asdf nodejs\n"
-await asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 echo "\tinstalling asdf rust\n"
-await asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
 echo "\tinstalling asdf python\n"
-await asdf plugin-add python
+asdf plugin-add python
 echo "\tinstalling asdf aws-vault"
-await asdf plugin-add aws-vault https://github.com/karancode/asdf-aws-vault.git
+asdf plugin-add aws-vault https://github.com/karancode/asdf-aws-vault.git
 
-asdf await install
+asdf install
 
 # Install some configs.
 echo "Installing standalone dotfiles.\n"
@@ -50,9 +39,9 @@ ln -sf $HOME/dotfiles/starship.toml $HOME/.config/
 if test -z "$TERMUX_VERSION"
 	# Install Starship
 	echo "Installing Starship\n"
-	await curl -sS https://starship.rs/install.sh | sh
+	curl -sS https://starship.rs/install.sh | sh
 else
-	await pkg i -y getconf
+	pkg i -y getconf
 
 	# install terminal config.
 	ln -sf ~/dotfiles/.termux $HOME/
@@ -60,7 +49,7 @@ else
 
 	# Install starship (note the specifics for termux here.)
 	echo "Installing Starship\n"
-	await curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+	curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
 end
 
 # Install Nvim dotfiles.
@@ -68,18 +57,18 @@ if test -z "$NO_NVIM"
 	echo "Installing Neovim dotfiles\n"
 	if not test -d "$HOME/.config/nvim"
 		if test -f "$HOME/.ssh/id_ecdsa.pub"
-			await git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
+			git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
 		else
 			echo -e "WARN: No SSH key so cloning read only nvim config"
-			await git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
+			git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
 		end
 	else
 		mv "$HOME/.config/nvim" "$HOME/.config/nvim.BAK"
 		if test -f "$HOME/.ssh/id_ecdsa.pub"
-			await git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
+			git clone git@github.com:davemackintosh/nvim $HOME/.config/nvim
 		else
 			echo -e "WARN: No SSH key so cloning read only nvim config"
-			await git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
+			git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
 		end
 	end
 
@@ -93,4 +82,3 @@ end
 source "$HOME/dotfiles/exports.fish"
 source "$HOME/dotfiles/paths.fish"
 source "$HOME/dotfiles/aliases.fish"
-
