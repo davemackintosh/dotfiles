@@ -14,8 +14,7 @@ echo "\tinstalling asdf go\n"
 asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
 echo "\tinstalling asdf nodejs\n"
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-echo "\tinstalling asdf rust\n"
-asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+await asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 echo "\tinstalling asdf python\n"
 asdf plugin-add python
 echo "\tinstalling asdf aws-vault"

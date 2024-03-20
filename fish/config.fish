@@ -8,4 +8,6 @@ if status is-interactive
 	starship init fish | source
 
 	source $HOME/dotfiles/aliases.fish
+	source $HOME/dotfiles/exports.fish
+	source $HOME/.cargo/env.fish
 end
