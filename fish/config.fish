@@ -11,3 +11,5 @@ if status is-interactive
 	source $HOME/dotfiles/exports.fish
 	source $HOME/.cargo/env.fish
 end
+
+thefuck --alias | source
