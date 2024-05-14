@@ -1,9 +1,6 @@
 [submodule "catppuccin"]
 	path = catpuccin
 	url = https://github.com/catppuccin/tmux
-[submodule "tpm"]
-	path = tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule "catppucin"]
 	path = catppucin
 	url = https://github.com/catppuccin/tmux

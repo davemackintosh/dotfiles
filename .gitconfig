@@ -15,12 +15,11 @@
 	program = gpg2
 [push]
 	autoSetupRemote = true
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
-[url "ssh://git@github.com"]
-	insteadOf = https://github.com
 [core]
 	excludesFile = ~/.gitignore
+	autocrlf = false
 [maintenance]
 	repo = /Users/dave/dotfiles/Repos/znap
 	repo = /Users/dave/dotfiles/Repos/marlonrichert/zsh-autocomplete
+[safe]
+	directory = /mnt/c/Users/me/Documents/www/go/sale-nook/backend
