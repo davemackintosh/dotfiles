@@ -1,0 +1,38 @@
+# Define color variables
+set -g @norrsken_bg_color 'color0'
+set -g @norrsken_fg_color 'color7'
+set -g @norrsken_red 'color1'
+set -g @norrsken_green 'color2'
+set -g @norrsken_yellow 'color3'
+set -g @norrsken_blue 'color4'
+set -g @norrsken_magenta 'color5'
+set -g @norrsken_cyan 'color6'
+set -g @norrsken_white 'color7'
+
+# Set the status line colors
+set -g status-style 'bg=#{@norrsken_bg_color},fg=#{@norrsken_fg_color}'
+
+# Set the pane border colors
+set -g pane-active-border-style 'fg=#{@norrsken_white}'
+set -g pane-border-style 'fg=#{@norrsken_fg_color}'
+
+# Set window (tab) colors
+set-window-option -g window-status-style 'bg=#{@norrsken_bg_color},fg=#{@norrsken_fg_color}'
+set-window-option -g window-status-current-style 'bg=#{@norrsken_magenta},fg=#{@norrsken_bg_color}'
+
+# Set the status line
+set -g status-left-length 100
+set -g status-right-length 100
+set -g status-justify "left"
+set -g pane-active-border-style 'bg=#{@norrsken_magenta} fg=#{@norrsken_magenta}'
+set -g pane-border-style 'fg=#{@norrsken_fg_color}'
+
+# Define left status components
+set -gF status-left "#[#(tmux list-panes -F '#{pane_index}/#{pane_title}')]"
+set -gF status-left-style 'fg=#{@norrsken_magenta}'
+
+# Define right status components
+set -gF status-right ' %a %d %b %Y %H:%M '
+set -gF status-right-style 'fg=#{@norrsken_bg_color},bg=#{@norrsken_blue}'
+
+# vim: ft=tmux
