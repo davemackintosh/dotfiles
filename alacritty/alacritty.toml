@@ -5,10 +5,12 @@ live_config_reload = true
 [colors]
 draw_bold_text_with_bright_colors = true
 
+[window]
+decorations = 'None'
 
 [window.padding]
-x = 10
-y = 10
+x = 0
+y = 0
 
 [scrolling]
 history = 100_000

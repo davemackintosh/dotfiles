@@ -14,7 +14,7 @@ echo "\tinstalling asdf go\n"
 asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
 echo "\tinstalling asdf nodejs\n"
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-await asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
 echo "\tinstalling asdf python\n"
 asdf plugin-add python
 echo "\tinstalling asdf aws-vault"
@@ -27,12 +27,16 @@ echo "Installing standalone dotfiles.\n"
 if test -d $HOME/.config/fish
 	mv $HOME/.config/fish $HOME/.config/fish.BAK
 end
+if test -d $HOME/.config/alacritty
+	mv $HOME/.config/alacritty $HOME/.config/alacritty.BAK
+end
 ln -sf $HOME/dotfiles/fish $HOME/.config/
 ln -sf $HOME/dotfiles/.gitconfig $HOME/
 ln -sf $HOME/dotfiles/.tmux.conf $HOME/
 mkdir -p $HOME/.config/efm-langserver/ || true
 ln -sf $HOME/dotfiles/efm-langserver/.config.yaml $HOME/.config/efm-langserver/
 ln -sf $HOME/dotfiles/starship.toml $HOME/.config/
+ln -sf $HOME/dotfiles/alacritty $HOME/.config/alacritty
 
 # If it's not Termux.
 if test -z "$TERMUX_VERSION"
