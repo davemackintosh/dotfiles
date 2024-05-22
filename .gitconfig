@@ -9,7 +9,6 @@
 [init]
 	defaultBranch = main
 [commit]
-	template = ~/.gitmessage
 	gpgsign = true
 [gpg]
 	program = gpg2
@@ -18,8 +17,3 @@
 [core]
 	excludesFile = ~/.gitignore
 	autocrlf = false
-[maintenance]
-	repo = /Users/dave/dotfiles/Repos/znap
-	repo = /Users/dave/dotfiles/Repos/marlonrichert/zsh-autocomplete
-[safe]
-	directory = /mnt/c/Users/me/Documents/www/go/sale-nook/backend
