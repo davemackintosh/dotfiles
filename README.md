@@ -17,8 +17,8 @@ Technically, you don't __need__ the below *but* you'll see errors about them not
 # Install
 
 ```
-git clone --recursive https://github.com/davemackintosh/dotfiles.git ~/dotfiles &&
-bash ~/dotfiles/install.zsh` # yes, even though I use fish I wrote the installer in bash/zsh.
+git clone --recursive https://github.com/davemackintosh/dotfiles.git ~/dotfiles && cd ~/dotfiles
+fish ~/install.fish
 ```
 
 # FAQs (no one has ever asked me any of these but hey ho)
