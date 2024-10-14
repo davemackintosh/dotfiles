@@ -7,7 +7,7 @@ Dotfiles that I use across all my systems (Mac, Linux, iOS iSH, Android Termux).
 Requires:
 
 * fish
-* Starship
+* fzf, fd-find and Zoxide
 
 Technically, you don't __need__ the below *but* you'll see errors about them not being present on each shell if you don't edit both `install.zsh` and `.zshrc`
 
