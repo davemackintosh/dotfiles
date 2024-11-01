@@ -6,7 +6,6 @@ fish_add_path -g "$HOME/.asdf/shims"
 fish_add_path -g "$HOME/.asdf/installs/python/3.12.2/bin"
 fish_add_path -g "$HOME/.asdf/installs/rust/1.76.0/bin"
 fish_add_path -g "$HOME/.asdf/installs/nodejs/21.6.2/bin"
-fish_add_path -g (go env GOPATH)/bin
 fish_add_path -g "/home/linuxbrew/.linuxbrew/bin"
 
 direnv hook fish | source
