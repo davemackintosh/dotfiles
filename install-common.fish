@@ -5,9 +5,6 @@ curl -s "https://get.sdkman.io" | bash
 
 fisher install
 
-sdk install gradle
-sdk install java
-
 if not test -d ~/.asdf
 	ln -sf $HOME/dotfiles/.tool-versions $HOME/
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
