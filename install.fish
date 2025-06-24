@@ -1,26 +1,4 @@
-# Pull our dependencies.
-git submodule update --init --recursive --remote
-
-if not test -d ~/.asdf
-	ln -sf $HOME/dotfiles/.tool-versions $HOME/
-	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
-	source ~/.asdf/asdf.fish
-	mkdir -p ~/.config/fish/completions; and ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
-end
-
-# Install plugins.
-echo "installing asdf plugins\n"
-echo "\tinstalling asdf go\n"
-asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
-echo "\tinstalling asdf nodejs\n"
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-echo "\tinstalling asdf python\n"
-asdf plugin-add python
-echo "\tinstalling asdf aws-vault"
-asdf plugin-add aws-vault https://github.com/karancode/asdf-aws-vault.git
-
-asdf install
+fish install-common.fish
 
 # Install some configs.
 echo "Installing standalone dotfiles.\n"
@@ -33,26 +11,19 @@ end
 ln -sf $HOME/dotfiles/fish $HOME/.config/
 ln -sf $HOME/dotfiles/.gitconfig $HOME/
 ln -sf $HOME/dotfiles/.tmux.conf $HOME/
-mkdir -p $HOME/.config/efm-langserver/ || true
-ln -sf $HOME/dotfiles/efm-langserver/.config.yaml $HOME/.config/efm-langserver/
 ln -sf $HOME/dotfiles/starship.toml $HOME/.config/
-ln -sf $HOME/dotfiles/alacritty $HOME/.config/alacritty
 
 # If it's not Termux.
 if test -z "$TERMUX_VERSION"
-	# Install Starship
-	echo "Installing Starship\n"
-	curl -sS https://starship.rs/install.sh | sh
+	fish install-unix-common.fish
+
+	if type -q apt
+		fish install-apt.fish
+	else if type -q pacman
+		fish install-pacman.fish
+	end
 else
-	pkg i -y getconf
-
-	# install terminal config.
-	ln -sf ~/dotfiles/.termux $HOME/
-	cp "./patched-fonts/CozetteVector Nerd Font Complete Mono.ttf" $HOME/.termux/font.ttf
-
-	# Install starship (note the specifics for termux here.)
-	echo "Installing Starship\n"
-	curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+	fish install-termmux.fish
 end
 
 # Install Nvim dotfiles.
@@ -73,12 +44,6 @@ if test -z "$NO_NVIM"
 			echo -e "WARN: No SSH key so cloning read only nvim config"
 			git clone https://github.com/davemackintosh/nvim $HOME/.config/nvim
 		end
-	end
-
-
-	if not test -z "$TERMUX_VERSION"
-		pkg i neovim fzf fd ripgrep nodejs go rust clang
-		$HOME/.config/nvim/collateral/dependencies
 	end
 end
 
