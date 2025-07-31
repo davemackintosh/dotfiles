@@ -1,4 +1,7 @@
-pkg i -y getconf fd-find fzf rust ripgrep neovim tmux git
+pkg i git tmux neovim rust golang nodejs python lua53 luarocks ripgrep fd zoxide fish direnv getconf
+
+pip install pre-commit neovim
+npm install neovim
 
 # install terminal config.
 ln -sf ~/dotfiles/.termux $HOME/

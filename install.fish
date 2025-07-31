@@ -23,7 +23,7 @@ if test -z "$TERMUX_VERSION"
 		fish install-pacman.fish
 	end
 else
-	fish install-termmux.fish
+	fish install-termux.fish
 end
 
 # Install Nvim dotfiles.
